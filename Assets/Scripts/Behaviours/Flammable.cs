@@ -11,7 +11,7 @@ public class Flammable : MonoBehaviour {
     int fireHealth = 0;
 
     public void SetOnFire() {
-        fireHealth = 20;
+        fireHealth = 10;
         fire.Play();
         smoke.Play();
     }

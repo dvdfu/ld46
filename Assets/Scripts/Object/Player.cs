@@ -71,5 +71,10 @@ public class Player : MonoBehaviour {
         if (spriteSquish) {
             spriteSquish.SquishThin();
         }
+
+        Flammable flammable = collision.gameObject.GetComponent<Flammable>();
+        if (flammable) {
+            flammable.SetOnFire();
+        }
     }
 }
