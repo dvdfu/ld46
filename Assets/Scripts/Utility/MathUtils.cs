@@ -21,4 +21,19 @@ public class MathUtils {
         Debug.Assert(upper > lower);
         return Mathf.Repeat(x - upper, upper - lower) + lower;
     }
+
+    public static float Map(float value, float fromLower, float fromUpper, float toLower, float toUpper) {
+        Debug.Assert(fromLower < fromUpper);
+        Debug.Assert(toLower < toUpper);
+
+        float fromAbs = value - fromLower;
+        float fromMaxAbs = fromUpper - fromLower;
+
+        float normal = fromAbs / fromMaxAbs;
+
+        float toMaxAbs = toUpper - toLower;
+        float toAbs = toMaxAbs * normal;
+
+        return toAbs + toLower;
+    }
 }

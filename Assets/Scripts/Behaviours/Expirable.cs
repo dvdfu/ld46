@@ -7,8 +7,10 @@ public class Expirable : MonoBehaviour {
     public UnityEvent expireEvent = new UnityEvent();
 
     [SerializeField] float duration;
+    float startTime;
 
     void Start() {
+        startTime = Time.time;
         StartCoroutine(ExpireRoutine());
     }
 
@@ -16,5 +18,9 @@ public class Expirable : MonoBehaviour {
         yield return new WaitForSeconds(duration);
         expireEvent.Invoke();
         Destroy(gameObject);
+    }
+
+    public float GetElapsed() {
+        return Mathf.Clamp((Time.time - startTime) / duration, 0f, 1f);
     }
 }

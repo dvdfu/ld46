@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4239407308791358373}
   - component: {fileID: 4239407308791358370}
   - component: {fileID: 4239407308791358371}
+  - component: {fileID: 4655519759502637711}
   m_Layer: 0
   m_Name: Puddle
   m_TagString: Untagged
@@ -99,3 +100,15 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   duration: 3
+--- !u!114 &4655519759502637711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4239407308791358368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4df9e718330b2194da92eb1259be3f76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
