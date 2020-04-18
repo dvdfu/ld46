@@ -24,9 +24,9 @@ public class Player : MonoBehaviour {
     [SerializeField] RectTransform waterFill;
     [SerializeField] Text personCount;
 
-    public void RefillWater() {
-        if (waterAmmo + 3 < WATER_AMMO_MAX) {
-            waterAmmo += 3;
+    public void RefillWater(int amount = 1) {
+        if (waterAmmo + amount < WATER_AMMO_MAX) {
+            waterAmmo += amount;
         } else {
             waterAmmo = WATER_AMMO_MAX;
         }
