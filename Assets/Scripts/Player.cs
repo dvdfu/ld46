@@ -35,7 +35,7 @@ public class Player : MonoBehaviour {
     }
 
     void LateUpdate() {
-        waterMeter.anchoredPosition = body.position + Vector2.up * 24;
+        waterMeter.anchoredPosition = body.position - (Vector2) Camera.main.transform.position + Vector2.up * 24;
         waterFill.sizeDelta = new Vector2(20f * waterAmmo / WATER_AMMO_MAX, 4);
     }
 
