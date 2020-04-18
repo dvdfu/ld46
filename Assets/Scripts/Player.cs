@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
     // Consts
@@ -15,6 +16,8 @@ public class Player : MonoBehaviour {
     // Unity vars
     [SerializeField] GameObject waterPelletPrefab;
     [SerializeField] Rigidbody2D body;
+    [SerializeField] RectTransform waterMeter;
+    [SerializeField] RectTransform waterFill;
 
     void Start() {
         StartCoroutine(ShootWaterRoutine());
@@ -23,6 +26,11 @@ public class Player : MonoBehaviour {
     void Update() {
         Vector2 moveDirection = new Vector2(Input.GetAxisRaw("PlayerHorizontal"), Input.GetAxisRaw("PlayerVertical"));
         body.AddForce(moveDirection * MAX_SPEED);
+    }
+
+    void LateUpdate() {
+        waterMeter.anchoredPosition = body.position + Vector2.up * 24;
+        waterFill.sizeDelta = new Vector2(20f * waterAmmo / WATER_AMMO_MAX, 4);
     }
 
     IEnumerator ShootWaterRoutine() {
