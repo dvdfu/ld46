@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: ced93ca8d6bf442bf808f2fcf7e0e898
+guid: 56a513b6c47064bc7aeeaec5a6e76c6b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1098286324429101383
-    second: Fire_0
+      213: 3109470909850504698
+    second: WaterSplash_0
   - first:
-      213: 7419590508823533442
-    second: Fire_1
+      213: -7609535237323443635
+    second: WaterSplash_1
   - first:
-      213: 2333874723133794383
-    second: Fire_2
+      213: -2027876315440518237
+    second: WaterSplash_2
+  - first:
+      213: -2368767539886661019
+    second: WaterSplash_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -52,8 +55,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 7
-  spritePivot: {x: 0.5, y: 0}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 1
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -119,64 +122,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fire_0
+      name: WaterSplash_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b5e333966e8e4441a89a8f4a1385272
-      internalID: 1098286324429101383
+      spriteID: 00dfd43798cd541d6bc6e82776464134
+      internalID: 3109470909850504698
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire_1
+      name: WaterSplash_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7b3b66108b3f439886f23a444b41bc9
+      internalID: -7609535237323443635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterSplash_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 935391cf3219f445caa275e5d4840712
+      internalID: -2027876315440518237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterSplash_3
       rect:
         serializedVersion: 2
         x: 48
         y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0556049816ee14b639768e7e8f10b20b
-      internalID: 7419590508823533442
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fire_2
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a1814a8d58ed847af90e384c731e4609
-      internalID: 2333874723133794383
+      spriteID: bc97edfa39bd64ad19675d2400fe6769
+      internalID: -2368767539886661019
       vertices: []
       indices: 
       edges: []
