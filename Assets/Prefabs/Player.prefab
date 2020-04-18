@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 7385050824163654833}
   - component: {fileID: 1168576685091943813}
   - component: {fileID: 4507226723611971271}
+  - component: {fileID: 590263822564903068}
   - component: {fileID: 996195454246059851}
-  - component: {fileID: 694193942}
   - component: {fileID: 8570948532413824447}
   - component: {fileID: -813523458892034977}
   m_Layer: 0
@@ -123,6 +123,22 @@ MonoBehaviour:
   waterPelletPrefab: {fileID: 4002114695973732639, guid: db6f2d87de5ff406b83b5616d0356907,
     type: 3}
   body: {fileID: 1168576685091943813}
+--- !u!58 &590263822564903068
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411021793290921536}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 7}
+  serializedVersion: 2
+  m_Radius: 7
 --- !u!114 &996195454246059851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,32 +152,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 7385050824163654833}
---- !u!61 &694193942
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4411021793290921536}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 6}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 32, y: 32}
-    newSize: {x: 32, y: 32}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 16, y: 12}
-  m_EdgeRadius: 0
 --- !u!114 &8570948532413824447
 MonoBehaviour:
   m_ObjectHideFlags: 0
