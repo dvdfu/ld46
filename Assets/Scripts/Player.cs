@@ -6,21 +6,36 @@ public class Player : MonoBehaviour {
     // Consts
     [SerializeField]
     Vector2 MAX_SPEED = new Vector2(30.0f, 30.0f);
+    const float WATER_SHOOT_INTERVAL = 0.05f;
 
     // Member vars
     Vector2 speed = Vector2.zero;
 
     // Unity vars
+    [SerializeField] GameObject waterPelletPrefab;
     [SerializeField]
     Rigidbody2D body;
 
     void Start() {
-        
+        StartCoroutine(ShootWaterRoutine());
     }
 
     void Update() {
         Vector2 moveDirection = new Vector2(Input.GetAxisRaw("PlayerHorizontal"), Input.GetAxisRaw("PlayerVertical"));
         speed += ((moveDirection * MAX_SPEED) - speed);
         body.AddForce(speed);
+    }
+
+    IEnumerator ShootWaterRoutine() {
+        while (true) {
+            float x = Input.GetAxisRaw("WaterHorizontal");
+            float y = Input.GetAxisRaw("WaterVertical");
+            if (x != 0 || y != 0) {
+                float angle = Mathf.Atan2(y, x);
+                WaterPellet waterPellet = Instantiate(waterPelletPrefab, transform.position + Vector3.up * 20, Quaternion.identity, transform.parent).GetComponent<WaterPellet>();
+                waterPellet.Shoot(angle);
+            }
+            yield return new WaitForSeconds(WATER_SHOOT_INTERVAL);
+        }
     }
 }
