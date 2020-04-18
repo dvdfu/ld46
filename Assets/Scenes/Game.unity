@@ -261,8 +261,67 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5167408286012535891, guid: 76fcf7d6c118046539c80a42008f11c6,
+        type: 3}
+      propertyPath: dieEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5167408286012535891, guid: 76fcf7d6c118046539c80a42008f11c6,
+        type: 3}
+      propertyPath: dieEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5167408286012535891, guid: 76fcf7d6c118046539c80a42008f11c6,
+        type: 3}
+      propertyPath: dieEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5167408286012535891, guid: 76fcf7d6c118046539c80a42008f11c6,
+        type: 3}
+      propertyPath: dieEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 315895653}
+    - target: {fileID: 5167408286012535891, guid: 76fcf7d6c118046539c80a42008f11c6,
+        type: 3}
+      propertyPath: dieEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Die
+      objectReference: {fileID: 0}
+    - target: {fileID: 5167408286012535891, guid: 76fcf7d6c118046539c80a42008f11c6,
+        type: 3}
+      propertyPath: dieEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582418234381952229, guid: 76fcf7d6c118046539c80a42008f11c6,
+        type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 315895651}
+    - target: {fileID: 6582418234381952229, guid: 76fcf7d6c118046539c80a42008f11c6,
+        type: 3}
+      propertyPath: ashes
+      value: 
+      objectReference: {fileID: 21300000, guid: 32996896b8f004ba78a1b658c0edf2ca,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76fcf7d6c118046539c80a42008f11c6, type: 3}
+--- !u!212 &315895651 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3723231306397001516, guid: 76fcf7d6c118046539c80a42008f11c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 242697840}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &315895653 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6582418234381952229, guid: 76fcf7d6c118046539c80a42008f11c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 242697840}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f0fcaef6c211ee44b7045b8ee410e08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
