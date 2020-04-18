@@ -1108,7 +1108,7 @@ MonoBehaviour:
     height: 75
   - serializedVersion: 2
     x: 75
-    y: 75
+    y: 65
     width: 165
     height: 75
   spawningRate: 5
