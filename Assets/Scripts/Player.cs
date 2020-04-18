@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
     // Consts
     const float MAX_SPEED = 300;
-    const float WATER_SHOOT_INTERVAL = 0.02f;
+    const float WATER_SHOOT_INTERVAL = 0.05f;
 
     // Member vars
     Vector2 speed = Vector2.zero;

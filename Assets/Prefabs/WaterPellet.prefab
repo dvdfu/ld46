@@ -126,10 +126,10 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.05
+  m_Time: 0.1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 4
+    widthMultiplier: 6
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -218,7 +218,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 3
 --- !u!50 &5492904990838659248
 Rigidbody2D:
   serializedVersion: 4
@@ -265,6 +265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 088f89d706ece4f8b8a8ce371fba2dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waterSplashPrefab: {fileID: 5949332143176750326, guid: 7b570883015c1466f95d21357f016f4c,
+    type: 3}
   body: {fileID: 5492904990838659248}
 --- !u!114 &4322704187253912067
 MonoBehaviour:
@@ -280,7 +282,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   expireEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1530676493891385945}
+        m_MethodName: OnExpire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   duration: 0.4
