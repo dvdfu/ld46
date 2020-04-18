@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7486735083943100503}
   - component: {fileID: 328462969791798128}
   - component: {fileID: 4459714853976122455}
+  - component: {fileID: -1407845979374823567}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -127,6 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite8Directional: {fileID: 7119478296476459921}
+  flammable: {fileID: 7486735083943100503}
   target: {fileID: 0}
   body: {fileID: 290704002546281387}
   explosionPrefab: {fileID: 3036107444730739010, guid: 115ddc7a0dcbd42109a497054a4ece9b,
@@ -192,6 +194,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2733590699111656251}
+--- !u!114 &-1407845979374823567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2956700562057853038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ffaf3912207147d5961142216b8243e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shadowPrefab: {fileID: 4239407308791358368, guid: b3e3038c86816469681bc4ec1221a46a,
+    type: 3}
+  scale: {x: 1.5, y: 1}
 --- !u!1 &2990857214289835956
 GameObject:
   m_ObjectHideFlags: 0

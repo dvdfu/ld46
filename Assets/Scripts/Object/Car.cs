@@ -6,6 +6,7 @@ public class Car : MonoBehaviour {
     const float MAX_SPEED = 500;
 
     [SerializeField] Sprite8Directional sprite8Directional;
+    [SerializeField] Flammable flammable;
     [SerializeField] Transform target;
     [SerializeField] Rigidbody2D body;
     [SerializeField] GameObject explosionPrefab;
@@ -31,6 +32,21 @@ public class Car : MonoBehaviour {
 
     void LateUpdate() {
         sprite8Directional.SetAngle(MathUtils.VectorToAngle(moveDirection));
+    }
+
+    void OnCollisionEnter2D(Collision2D collision) {
+        SpriteSquish spriteSquish = collision.gameObject.GetComponent<SpriteSquish>();
+        if (spriteSquish) {
+            spriteSquish.SquishThin();
+        }
+        Flammable flammable = collision.gameObject.GetComponent<Flammable>();
+        if (flammable) {
+            if (collision.gameObject.GetComponent<Car>() == null) {
+                this.flammable.SetOnFire();
+                flammable.SetOnFire();
+            }
+            
+        }
     }
 
     IEnumerator ChaseRoutine() {
