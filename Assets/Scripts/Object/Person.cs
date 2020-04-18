@@ -12,6 +12,10 @@ public class Person : MonoBehaviour {
 
     public void OnDie() {
         Instantiate(tombstonePrefab, transform.position, Quaternion.identity, transform.parent);
+        Remove();
+    }
+
+    public void Remove() {
         Instantiate(poofPrefab, transform.position, Quaternion.identity, transform.parent);
         Destroy(gameObject);
     }

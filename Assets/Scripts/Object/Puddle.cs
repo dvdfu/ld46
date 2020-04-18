@@ -12,9 +12,9 @@ public class Puddle : MonoBehaviour {
     }
 
     void Update() {
-        spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1f - expirable.GetElapsed());
-
-        float scale = MathUtils.Map(expirable.GetElapsed(), 0f, 1f, 0f, 0.3f);
-        transform.localScale = new Vector2(1f, 1f) * (1f - scale);
+        Color color = spriteRenderer.color;
+        spriteRenderer.color = new Color(color.r, color.g, color.b, 1f - expirable.GetElapsed());
+        float scale = 1 - MathUtils.Map(expirable.GetElapsed(), 0, 1, 0, 0.3f);
+        transform.localScale = new Vector2(1, 0.7f) * scale;
     }
 }
