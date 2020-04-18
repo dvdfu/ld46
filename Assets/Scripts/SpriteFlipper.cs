@@ -5,14 +5,14 @@ using UnityEngine;
 // Flips sprites depending on their horizontal velocity
 public class SpriteFlipper : MonoBehaviour {
     [SerializeField]
-    private float threshold = 10.0f;
+    float threshold = 10.0f;
     [SerializeField]
-    private bool flipOtherWay = false;
+    bool flipOtherWay = false;
 
     [SerializeField]
-    private SpriteRenderer sprite;
+    SpriteRenderer sprite;
     [SerializeField]
-    private Rigidbody2D body;
+    Rigidbody2D body;
 
     // Update is called once per frame
     void Update() {
