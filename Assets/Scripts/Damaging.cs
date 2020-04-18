@@ -20,7 +20,7 @@ public class Damaging : MonoBehaviour {
     void doDamage(GameObject otherObject) {
         Mortal m = otherObject.GetComponent<Mortal>();
         if (m != null) {
-            if (m.Damage(amount)) {
+            if (m.Damage(gameObject.tag, amount)) {
                 onKill.Invoke();
             }
         }

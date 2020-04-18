@@ -34,7 +34,7 @@ public class Flammable : MonoBehaviour {
             float currentTime = Time.fixedTime;
             float elapsedTime = currentTime - lastDamageApplied;
             if (elapsedTime >= 1.0f / fireTickRate) {
-                mortal.Damage(fireDamage);
+                mortal.Damage(gameObject.tag, fireDamage);
                 lastDamageApplied = currentTime;
             }
         }

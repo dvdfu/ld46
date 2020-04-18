@@ -35,6 +35,12 @@ public class House : MonoBehaviour {
         }
     }
 
+    void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.tag == "Player") {
+            setOnFire = true;
+        }
+    }
+
     public void Die() {
         sprite.sprite = ashes;
     }
