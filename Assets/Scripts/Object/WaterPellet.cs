@@ -19,6 +19,9 @@ public class WaterPellet : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
+        if (collider.gameObject.GetComponent<Car>()) {
+            collider.gameObject.GetComponent<Rigidbody2D>().velocity = body.velocity;
+        }
         if (collider.gameObject.GetComponent<Flammable>()) {
             Instantiate(waterSplashPrefab, transform.position, Quaternion.identity, transform.parent);
             Destroy(gameObject);
