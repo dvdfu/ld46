@@ -14,9 +14,9 @@ public class Mortal : MonoBehaviour {
     [SerializeField]
     public UnityEvent dieEvent;
 
-    void Damage(float amount) {
+    public void Damage(float amount) {
         health -= amount;
-        if (health < 0.0f && alive) {
+        if (health <= 0.0f && alive) {
             alive = false;
             dieEvent.Invoke();
 
