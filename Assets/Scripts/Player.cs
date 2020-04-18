@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
     const float MAX_SPEED = 3000;
     const float WATER_SHOOT_INTERVAL = 0.05f;
     const int WATER_AMMO_MAX = 200;
+    const int WATER_DEPLETION_IN_FIRE = 10;
 
     // Member vars
     Vector2 speed = Vector2.zero;
@@ -25,6 +26,12 @@ public class Player : MonoBehaviour {
         }
     }
 
+    void DepleteWater(int amount = 1) {
+        if (waterAmmo > 0) {
+            waterAmmo -= amount;
+        }
+    }
+
     void Start() {
         StartCoroutine(ShootWaterRoutine());
     }
@@ -39,6 +46,12 @@ public class Player : MonoBehaviour {
         waterFill.sizeDelta = new Vector2(20f * waterAmmo / WATER_AMMO_MAX, 4);
     }
 
+    void OnCollisionStay2D(Collision2D collision) {
+        if (collision.gameObject.tag == "Fire") {
+            DepleteWater(WATER_DEPLETION_IN_FIRE);
+        }
+    }
+
     IEnumerator ShootWaterRoutine() {
         while (true) {
             if (waterAmmo > 0) {
@@ -48,7 +61,7 @@ public class Player : MonoBehaviour {
                     float angle = Mathf.Atan2(y, x);
                     WaterPellet waterPellet = Instantiate(waterPelletPrefab, transform.position + Vector3.up * 20, Quaternion.identity, transform.parent).GetComponent<WaterPellet>();
                     waterPellet.Shoot(angle);
-                    waterAmmo--;
+                    DepleteWater();
                 }
             }
             yield return new WaitForSeconds(WATER_SHOOT_INTERVAL);

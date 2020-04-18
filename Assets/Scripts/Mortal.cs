@@ -14,8 +14,14 @@ public class Mortal : MonoBehaviour {
     [SerializeField]
     public UnityEvent dieEvent;
 
+    // A list of tags this object is immune to damage from
+    [SerializeField]
+    List<string> immuneToTags = new List<string>();
+
     // Returns whether the mortal object was killed or not
-    public bool Damage(float amount) {
+    public bool Damage(string tag, float amount) {
+        if (immuneToTags.Contains(tag)) return false;
+
         health -= amount;
         if (health <= 0.0f && alive) {
             alive = false;
