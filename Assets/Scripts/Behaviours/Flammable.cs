@@ -8,32 +8,38 @@ public class Flammable : MonoBehaviour {
     [SerializeField] ParticleSystem smoke;
     [SerializeField] Mortal mortal;
 
-    bool isOnFire;
+    int fireHealth = 0;
 
     public void SetOnFire() {
-        if (!isOnFire) {
-            isOnFire = true;
-            fire.Play();
-            smoke.Play();
-        }
+        fireHealth = 20;
+        fire.Play();
+        smoke.Play();
     }
 
     public void Extinguish() {
-        if (isOnFire) {
-            isOnFire = false;
-            fire.Stop();
-            smoke.Stop();
-        }
+        fireHealth = 0;
+        fire.Stop();
+        smoke.Stop();
+    }
+
+    bool IsOnFire() {
+        return fireHealth > 0;
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
         if (collider.gameObject.CompareTag("Fire")) {
             SetOnFire();
+        } else if (collider.gameObject.CompareTag("Water")) {
+            if (IsOnFire()) {
+                fireHealth--;
+            } else {
+                Extinguish();
+            }
         }
     }
 
     void FixedUpdate() {
-        if (isOnFire) {
+        if (IsOnFire()) {
             mortal.Damage(gameObject.tag, fireDamage * Time.deltaTime);
         }
     }
