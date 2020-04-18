@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Flammable : MonoBehaviour {
+    public UnityEvent igniteEvent = new UnityEvent();
+
     [SerializeField] float fireDamage = 30; // Damage per second
     [SerializeField] ParticleSystem fire;
     [SerializeField] ParticleSystem smoke;
@@ -14,6 +17,7 @@ public class Flammable : MonoBehaviour {
         fireHealth = 10;
         fire.Play();
         smoke.Play();
+        igniteEvent.Invoke();
     }
 
     public void Extinguish() {

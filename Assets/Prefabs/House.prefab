@@ -144,6 +144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f0fcaef6c211ee44b7045b8ee410e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  personPrefab: {fileID: 2956700562057853038, guid: 742fbc8f3fff24d8f887ccf884e7753e,
+    type: 3}
   spriteRenderer: {fileID: 8826412745107925807}
   normalHouse: {fileID: 21300000, guid: d936ba2d47f114c5883775cb4686f3db, type: 3}
   burnedHouse: {fileID: 21300000, guid: 748c76d45f75b4375b0a6776b5f75e86, type: 3}
@@ -162,6 +164,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b080119e5e70b42a74e00e1c35e474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  igniteEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 502343201625098341}
+        m_MethodName: OnIgnite
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   fireDamage: 2
   fire: {fileID: 2597089009913971329}
   smoke: {fileID: 7450836005865662710}
@@ -271,6 +289,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire
       objectReference: {fileID: 0}
+    - target: {fileID: 3047203322126321365, guid: 814d0881cd59247239670105a0a73007,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3047203322126321366, guid: 814d0881cd59247239670105a0a73007,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -324,11 +347,6 @@ PrefabInstance:
     - target: {fileID: 3047203322126321366, guid: 814d0881cd59247239670105a0a73007,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3047203322126321365, guid: 814d0881cd59247239670105a0a73007,
-        type: 3}
-      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9216683433366639107, guid: 814d0881cd59247239670105a0a73007,

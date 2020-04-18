@@ -51,6 +51,10 @@ public class Car : MonoBehaviour {
             }
             
         }
+        Mortal mortal = collision.gameObject.GetComponent<Mortal>();
+        if (mortal) {
+            mortal.Damage(gameObject.tag, 10);
+        }
     }
 
     IEnumerator ChaseRoutine() {

@@ -192,3 +192,4 @@ MonoBehaviour:
   shadowPrefab: {fileID: 4239407308791358368, guid: b3e3038c86816469681bc4ec1221a46a,
     type: 3}
   scale: {x: 1.5, y: 1}
+  offset: {x: 0, y: 6}
