@@ -11,10 +11,12 @@ GameObject:
   - component: {fileID: 4002114695973732635}
   - component: {fileID: 4002114695973732632}
   - component: {fileID: 3063455176031142654}
+  - component: {fileID: 6760405667783769367}
   - component: {fileID: 4002114695973732633}
   - component: {fileID: 5492904990838659248}
   - component: {fileID: 4002114695973732638}
   - component: {fileID: 1530676493891385945}
+  - component: {fileID: 4322704187253912067}
   m_Layer: 0
   m_Name: WaterPellet
   m_TagString: Untagged
@@ -75,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c6e91770eedc74c40a9bd37c21562f66, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6666667, g: 1, b: 0.972549, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -127,7 +129,7 @@ TrailRenderer:
   m_Time: 0.2
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 3
+    widthMultiplier: 4
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -154,15 +156,15 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 0, g: 0.85882354, b: 1, a: 1}
+      key0: {r: 0.6666667, g: 1, b: 0.972549, a: 1}
+      key1: {r: 0.6666667, g: 1, b: 0.972549, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 26214
+      ctime0: 0
       ctime1: 65535
       ctime2: 0
       ctime3: 0
@@ -190,6 +192,17 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!210 &6760405667783769367
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4002114695973732639}
+  m_Enabled: 1
+  m_SortingLayerID: -662486785
+  m_SortingLayer: 1
+  m_SortingOrder: 0
 --- !u!58 &4002114695973732633
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -221,7 +234,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 100
+  m_GravityScale: 10
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -253,3 +266,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 5492904990838659248}
+--- !u!114 &4322704187253912067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4002114695973732639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4159546b5b9f342a4ac1bf2663a0a57d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expireEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  duration: 0.4

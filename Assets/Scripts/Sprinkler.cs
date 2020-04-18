@@ -11,7 +11,7 @@ public class Sprinkler : MonoBehaviour {
 
     IEnumerator SprinkleRoutine() {
         while (true) {
-            Instantiate(waterPelletPrefab, transform.parent);
+            Instantiate(waterPelletPrefab, transform.position + Vector3.up * 10, Quaternion.identity, transform.parent);
             yield return new WaitForSeconds(0.1f);
         }
     }
