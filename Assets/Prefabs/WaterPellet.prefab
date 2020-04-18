@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1530676493891385945}
   - component: {fileID: 4322704187253912067}
   - component: {fileID: 5312605824546927514}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: WaterPellet
   m_TagString: Water
   m_Icon: {fileID: 0}

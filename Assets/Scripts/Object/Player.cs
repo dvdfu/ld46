@@ -71,16 +71,17 @@ public class Player : MonoBehaviour {
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
-        SpriteSquish spriteSquish = collision.gameObject.GetComponent<SpriteSquish>();
-        if (spriteSquish) {
-            spriteSquish.SquishThin();
+        // Moving fast enough
+        if (body.velocity.sqrMagnitude > 10000) {
+            Instantiate(collisionPrefab, collision.GetContact(0).point, Quaternion.identity, transform.parent);
+            SpriteSquish spriteSquish = collision.gameObject.GetComponent<SpriteSquish>();
+            if (spriteSquish) {
+                spriteSquish.SquishThin();
+            }
+            Flammable flammable = collision.gameObject.GetComponent<Flammable>();
+            if (flammable) {
+                flammable.SetOnFire();
+            }
         }
-
-        Flammable flammable = collision.gameObject.GetComponent<Flammable>();
-        if (flammable) {
-            flammable.SetOnFire();
-        }
-
-        Instantiate(collisionPrefab, collision.GetContact(0).point, Quaternion.identity, transform.parent);
     }
 }
