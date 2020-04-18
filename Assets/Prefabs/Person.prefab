@@ -124,13 +124,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f79778cf9afb3f429f077a34cd2114a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 1
   alive: 1
   coll: {fileID: 2021657032008242866}
   dieEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7142279558764198614}
         m_MethodName: OnDie
         m_Mode: 1
         m_Arguments:
@@ -185,6 +185,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b7c11109ceee47648422d07ab4ea5f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tombstonePrefab: {fileID: 109610533420614197, guid: 375cf25f4e6f54322bd3e8a6d8a02989,
+    type: 3}
+  poofPrefab: {fileID: 5949332143176750326, guid: 7b570883015c1466f95d21357f016f4c,
+    type: 3}
   body: {fileID: 290704002546281387}
   sprite8Directional: {fileID: 7119478296476459921}
 --- !u!1 &2990857214289835956

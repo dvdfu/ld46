@@ -3,10 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Person : MonoBehaviour {
+    [SerializeField] GameObject tombstonePrefab;
+    [SerializeField] GameObject poofPrefab;
     [SerializeField] Rigidbody2D body;
     [SerializeField] Sprite8Directional sprite8Directional;
 
     float angle;
+
+    public void OnDie() {
+        Instantiate(tombstonePrefab, transform.position, Quaternion.identity, transform.parent);
+        Instantiate(poofPrefab, transform.position, Quaternion.identity, transform.parent);
+        Destroy(gameObject);
+    }
 
     void Start() {
         angle = Random.value * 360;

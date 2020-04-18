@@ -10,6 +10,10 @@ public class Explosion : MonoBehaviour {
             if (flammable) {
                 flammable.SetOnFire();
             }
+            Mortal mortal = result.collider.gameObject.GetComponent<Mortal>();
+            if (mortal) {
+                mortal.Damage(gameObject.tag, 30);
+            }
         }
         Camera.main.gameObject.GetComponent<CameraHelper>().Shake();
     }

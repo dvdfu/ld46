@@ -16,7 +16,8 @@ public class House : MonoBehaviour {
     public void OnIgnite() {
         if (peopleInside > 0) {
             for (int i = 0; i < peopleInside; i++) {
-                Instantiate(personPrefab, transform.position, Quaternion.identity, transform.parent);
+                Vector2 offset = MathUtils.PolarToCartesian(360f * i / peopleInside, 10);
+                Instantiate(personPrefab, transform.position + (Vector3) offset, Quaternion.identity, transform.parent);
             }
             peopleInside = 0;
         }
