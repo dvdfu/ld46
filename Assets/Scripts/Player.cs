@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
     // Consts
-    const float MAX_SPEED = 1000;
+    const float MAX_SPEED = 3000;
     const float WATER_SHOOT_INTERVAL = 0.05f;
     const int WATER_AMMO_MAX = 200;
 
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour {
         StartCoroutine(ShootWaterRoutine());
     }
 
-    void Update() {
+    void FixedUpdate() {
         Vector2 moveDirection = new Vector2(Input.GetAxisRaw("PlayerHorizontal"), Input.GetAxisRaw("PlayerVertical"));
         body.AddForce(moveDirection.normalized * MAX_SPEED);
     }
