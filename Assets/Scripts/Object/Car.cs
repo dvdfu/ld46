@@ -14,6 +14,10 @@ public class Car : MonoBehaviour {
     Vector2 moveDirection;
     bool shouldChase = true;
 
+    public void Chase(Transform target) {
+        this.target = target;
+    }
+
     public void OnDie() {
         Instantiate(explosionPrefab, transform.position, Quaternion.identity, transform.parent);
         Destroy(gameObject);
