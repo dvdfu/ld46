@@ -18,6 +18,7 @@ public class Player : MonoBehaviour {
     // Unity vars
     [SerializeField] Sprite8Directional sprite8Directional;
     [SerializeField] GameObject waterPelletPrefab;
+    [SerializeField] GameObject collisionPrefab;
     [SerializeField] Rigidbody2D body;
     [SerializeField] RectTransform waterFill;
 
@@ -79,5 +80,7 @@ public class Player : MonoBehaviour {
         if (flammable) {
             flammable.SetOnFire();
         }
+
+        Instantiate(collisionPrefab, collision.GetContact(0).point, Quaternion.identity, transform.parent);
     }
 }
