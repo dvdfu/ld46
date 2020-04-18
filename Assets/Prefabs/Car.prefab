@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b192b518a3c545edb6288e56a88c34b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite8Directional: {fileID: 7119478296476459921}
   target: {fileID: 0}
   body: {fileID: 290704002546281387}
   explosionPrefab: {fileID: 3036107444730739010, guid: 115ddc7a0dcbd42109a497054a4ece9b,

@@ -11,10 +11,12 @@ public class Player : MonoBehaviour {
     const int WATER_DEPLETION_IN_FIRE = 10;
 
     // Member vars
+    Vector2 moveDirection = Vector2.zero;
     Vector2 speed = Vector2.zero;
     int waterAmmo = WATER_AMMO_MAX;
 
     // Unity vars
+    [SerializeField] Sprite8Directional sprite8Directional;
     [SerializeField] GameObject waterPelletPrefab;
     [SerializeField] Rigidbody2D body;
     [SerializeField] RectTransform waterFill;
@@ -36,12 +38,13 @@ public class Player : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        Vector2 moveDirection = new Vector2(Input.GetAxisRaw("PlayerHorizontal"), Input.GetAxisRaw("PlayerVertical"));
+        moveDirection = new Vector2(Input.GetAxisRaw("PlayerHorizontal"), Input.GetAxisRaw("PlayerVertical"));
         body.AddForce(moveDirection.normalized * MAX_SPEED);
     }
 
     void LateUpdate() {
         waterFill.sizeDelta = new Vector2(64f * waterAmmo / WATER_AMMO_MAX, 8);
+        sprite8Directional.SetAngle(MathUtils.VectorToAngle(body.velocity));
     }
 
     void OnCollisionStay2D(Collision2D collision) {

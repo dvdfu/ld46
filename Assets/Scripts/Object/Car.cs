@@ -5,6 +5,7 @@ using UnityEngine;
 public class Car : MonoBehaviour {
     const float MAX_SPEED = 500;
 
+    [SerializeField] Sprite8Directional sprite8Directional;
     [SerializeField] Transform target;
     [SerializeField] Rigidbody2D body;
     [SerializeField] GameObject explosionPrefab;
@@ -26,6 +27,10 @@ public class Car : MonoBehaviour {
             moveDirection = (target.position - transform.position).normalized;
         }
         body.AddForce(moveDirection.normalized * MAX_SPEED);
+    }
+
+    void LateUpdate() {
+        sprite8Directional.SetAngle(MathUtils.VectorToAngle(moveDirection));
     }
 
     IEnumerator ChaseRoutine() {
