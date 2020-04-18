@@ -126,7 +126,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.2
+  m_Time: 0.05
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 4
@@ -234,7 +234,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 10
+  m_GravityScale: 40
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

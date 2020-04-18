@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
     // Consts
-    [SerializeField]
-    Vector2 MAX_SPEED = new Vector2(30.0f, 30.0f);
-    const float WATER_SHOOT_INTERVAL = 0.05f;
+    const float MAX_SPEED = 300;
+    const float WATER_SHOOT_INTERVAL = 0.02f;
 
     // Member vars
     Vector2 speed = Vector2.zero;
@@ -22,8 +21,7 @@ public class Player : MonoBehaviour {
 
     void Update() {
         Vector2 moveDirection = new Vector2(Input.GetAxisRaw("PlayerHorizontal"), Input.GetAxisRaw("PlayerVertical"));
-        speed += ((moveDirection * MAX_SPEED) - speed);
-        body.AddForce(speed);
+        body.AddForce(moveDirection * MAX_SPEED);
     }
 
     IEnumerator ShootWaterRoutine() {
