@@ -18,7 +18,7 @@ public class SpriteWobble : MonoBehaviour {
             t += Time.deltaTime;
             phase = (t % 1) * Mathf.PI * 2;
             scale = 1 + Mathf.Sin(phase / PERIOD) / 10;
-            transform.localScale = new Vector3(scale, 1 / scale);
+            wobbleTransform.localScale = new Vector3(scale, 1 / scale);
             yield return null;
         }
     }

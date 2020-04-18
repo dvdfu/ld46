@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
     // Consts
-    const float MAX_SPEED = 3000;
+    const float MAX_SPEED = 800;
     const float WATER_SHOOT_INTERVAL = 0.05f;
     const int WATER_AMMO_MAX = 200;
     const int WATER_DEPLETION_IN_FIRE = 10;
@@ -65,6 +65,13 @@ public class Player : MonoBehaviour {
                 }
             }
             yield return new WaitForSeconds(WATER_SHOOT_INTERVAL);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision) {
+        SpriteSquish spriteSquish = collision.gameObject.GetComponent<SpriteSquish>();
+        if (spriteSquish) {
+            spriteSquish.SquishThin();
         }
     }
 }
