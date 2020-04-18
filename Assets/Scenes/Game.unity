@@ -272,6 +272,11 @@ PrefabInstance:
       propertyPath: waterFill
       value: 
       objectReference: {fileID: 927793346}
+    - target: {fileID: 4507226723611971271, guid: f6caa51fdc56bde4896df1eb4d320a97,
+        type: 3}
+      propertyPath: personCount
+      value: 
+      objectReference: {fileID: 1504327366}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6caa51fdc56bde4896df1eb4d320a97, type: 3}
 --- !u!1 &294873855
@@ -1032,7 +1037,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: x123
+  m_Text: x0
 --- !u!222 &1504327367
 CanvasRenderer:
   m_ObjectHideFlags: 0

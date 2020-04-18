@@ -14,6 +14,7 @@ public class Player : MonoBehaviour {
     Vector2 moveDirection = Vector2.zero;
     Vector2 speed = Vector2.zero;
     int waterAmmo = WATER_AMMO_MAX;
+    int people = 0;
 
     // Unity vars
     [SerializeField] Sprite8Directional sprite8Directional;
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour {
     [SerializeField] GameObject collisionPrefab;
     [SerializeField] Rigidbody2D body;
     [SerializeField] RectTransform waterFill;
+    [SerializeField] Text personCount;
 
     public void RefillWater() {
         if (waterAmmo + 3 < WATER_AMMO_MAX) {
@@ -73,6 +75,13 @@ public class Player : MonoBehaviour {
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
+        Person person = collision.gameObject.GetComponent<Person>();
+        if (person) {
+            person.Remove();
+            people++;
+            personCount.text = 'x' + people.ToString();
+            return;
+        }
         // Moving fast enough
         if (body.velocity.sqrMagnitude > 10000) {
             Instantiate(collisionPrefab, collision.GetContact(0).point, Quaternion.identity, transform.parent);
