@@ -7,9 +7,15 @@ public class Car : MonoBehaviour {
 
     [SerializeField] Transform target;
     [SerializeField] Rigidbody2D body;
+    [SerializeField] GameObject explosionPrefab;
 
     Vector2 moveDirection;
     bool shouldChase = true;
+
+    public void OnDie() {
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity, transform.parent);
+        Destroy(gameObject);
+    }
 
     void Start() {
         StartCoroutine(ChaseRoutine());
