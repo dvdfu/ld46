@@ -9,7 +9,6 @@ public class House : MonoBehaviour {
     [SerializeField] Sprite burnedHouse;
     [SerializeField] Sprite ashes;
     [SerializeField] Mortal mortal;
-    [SerializeField] Flammable flammable;
 
     int peopleInside;
 

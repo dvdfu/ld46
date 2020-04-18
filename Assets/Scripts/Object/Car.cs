@@ -43,7 +43,7 @@ public class Car : MonoBehaviour {
         if (spriteSquish) {
             spriteSquish.SquishThin();
         }
-        Flammable flammable = collision.gameObject.GetComponent<Flammable>();
+        Flammable flammable = collision.gameObject.GetComponentInChildren<Flammable>();
         if (flammable) {
             if (collision.gameObject.GetComponent<Car>() == null) {
                 this.flammable.SetOnFire();
