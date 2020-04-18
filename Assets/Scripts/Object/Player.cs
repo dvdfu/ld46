@@ -23,8 +23,10 @@ public class Player : MonoBehaviour {
     [SerializeField] RectTransform waterFill;
 
     public void RefillWater() {
-        if (waterAmmo < WATER_AMMO_MAX) {
-            waterAmmo++;
+        if (waterAmmo + 3 < WATER_AMMO_MAX) {
+            waterAmmo += 3;
+        } else {
+            waterAmmo = WATER_AMMO_MAX;
         }
     }
 
@@ -77,6 +79,9 @@ public class Player : MonoBehaviour {
             SpriteSquish spriteSquish = collision.gameObject.GetComponent<SpriteSquish>();
             if (spriteSquish) {
                 spriteSquish.SquishThin();
+            }
+            if (collision.gameObject.GetComponent<Car>()) {
+                collision.gameObject.GetComponent<Mortal>().Damage(gameObject.tag, 40);
             }
         }
     }
