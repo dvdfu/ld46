@@ -2,37 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Ensures multiple sources of fire only apply damage once
 public class Flammable : MonoBehaviour {
-    [SerializeField] bool onFire = false;
-    [SerializeField] float fireDamage = 1.0f;
-    // Number of times damage is applied per second
-    [SerializeField] float fireTickRate = 5.0f;
-
+    [SerializeField] float fireDamage = 30; // Damage per second
+    [SerializeField] ParticleSystem fire;
     [SerializeField] ParticleSystem smoke;
     [SerializeField] Mortal mortal;
 
-    private float lastDamageApplied = 0;
+    bool isOnFire;
 
-    void OnTriggerStay2D(Collider2D col) {
-        if (col.gameObject.CompareTag("Fire")) {
-            onFire = true;
+    public void SetOnFire() {
+        if (!isOnFire) {
+            isOnFire = true;
+            fire.Play();
+            smoke.Play();
+        }
+    }
+
+    public void Extinguish() {
+        if (isOnFire) {
+            isOnFire = false;
+            fire.Stop();
+            smoke.Stop();
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collider) {
+        if (collider.gameObject.CompareTag("Fire")) {
+            SetOnFire();
         }
     }
 
     void FixedUpdate() {
-        if (onFire) {
-            smoke.Play();
-            onFire = false;
-
-            float currentTime = Time.fixedTime;
-            float elapsedTime = currentTime - lastDamageApplied;
-            if (elapsedTime >= 1.0f / fireTickRate) {
-                mortal.Damage(gameObject.tag, fireDamage);
-                lastDamageApplied = currentTime;
-            }
-        } else {
-            smoke.Stop();
+        if (isOnFire) {
+            mortal.Damage(gameObject.tag, fireDamage * Time.deltaTime);
         }
     }
 }
