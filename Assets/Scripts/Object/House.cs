@@ -3,22 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class House : MonoBehaviour {
-    [SerializeField]
-    SpriteRenderer sprite;
-    [SerializeField]
-    Sprite normalHouse;
-    [SerializeField]
-    Sprite burnedHouse;
-    [SerializeField]
-    Sprite ashes;
+    [SerializeField] SpriteRenderer sprite;
+    [SerializeField] Sprite normalHouse;
+    [SerializeField] Sprite burnedHouse;
+    [SerializeField] Sprite ashes;
 
-    [SerializeField]
-    Mortal mortal;
+    [SerializeField] Mortal mortal;
 
-    [SerializeField]
-    GameObject fire;
-    [SerializeField]
-    bool setOnFire = false;
+    [SerializeField] GameObject fire;
+    [SerializeField] bool setOnFire = false;
 
     void Update() {
         if (setOnFire) {
@@ -36,7 +29,7 @@ public class House : MonoBehaviour {
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.tag == "Player") {
+        if (collision.gameObject.CompareTag("Player")) {
             setOnFire = true;
         }
     }

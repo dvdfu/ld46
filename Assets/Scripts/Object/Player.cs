@@ -45,7 +45,7 @@ public class Player : MonoBehaviour {
     }
 
     void OnCollisionStay2D(Collision2D collision) {
-        if (collision.gameObject.tag == "Fire") {
+        if (collision.gameObject.CompareTag("Fire")) {
             DepleteWater(WATER_DEPLETION_IN_FIRE);
         }
     }
