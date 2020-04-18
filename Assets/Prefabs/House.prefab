@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3723231306397001516}
   - component: {fileID: 3722681250277849362}
   - component: {fileID: 8182164582506621708}
+  - component: {fileID: 9137199130591475251}
   m_Layer: 0
   m_Name: House
   m_TagString: Untagged
@@ -129,3 +130,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &9137199130591475251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901345750730107060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb78f18ed7af49a38b698f3fbdc4c09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 3723231306397001516}
