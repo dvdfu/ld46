@@ -14,7 +14,8 @@ public class Mortal : MonoBehaviour {
     [SerializeField]
     public UnityEvent dieEvent;
 
-    public void Damage(float amount) {
+    // Returns whether the mortal object was killed or not
+    public bool Damage(float amount) {
         health -= amount;
         if (health <= 0.0f && alive) {
             alive = false;
@@ -23,6 +24,17 @@ public class Mortal : MonoBehaviour {
             if (coll != null) {
                 coll.enabled = false;
             }
+
+            return true;
         }
+        return false;
+    }
+
+    public bool GetAlive() {
+        return alive;
+    }
+
+    public float GetHealth() {
+        return health;
     }
 }

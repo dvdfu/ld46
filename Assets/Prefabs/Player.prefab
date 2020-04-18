@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 996195454246059851}
   - component: {fileID: 694193942}
   - component: {fileID: 8570948532413824447}
-  - component: {fileID: 913409135}
+  - component: {fileID: -813523458892034977}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -183,7 +183,7 @@ MonoBehaviour:
   spriteSE: {fileID: -8711581892612340360, guid: 873f77a89485541fda6331a7f725f7b3,
     type: 3}
   spriteS: {fileID: 938107197203304142, guid: 873f77a89485541fda6331a7f725f7b3, type: 3}
---- !u!114 &913409135
+--- !u!114 &-813523458892034977
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,3 +196,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 20
+  damageOverTime: 0
+  onKill:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
