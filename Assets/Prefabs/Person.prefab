@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 328462969791798128}
   - component: {fileID: -1407845979374823567}
   - component: {fileID: 6269266997115517316}
+  - component: {fileID: 7142279558764198614}
   m_Layer: 0
   m_Name: Person
   m_TagString: Untagged
@@ -172,6 +173,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wobbleTransform: {fileID: 2733590699111656251}
+--- !u!114 &7142279558764198614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2956700562057853038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b7c11109ceee47648422d07ab4ea5f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: {fileID: 290704002546281387}
+  sprite8Directional: {fileID: 7119478296476459921}
 --- !u!1 &2990857214289835956
 GameObject:
   m_ObjectHideFlags: 0
