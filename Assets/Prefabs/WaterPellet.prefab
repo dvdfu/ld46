@@ -17,7 +17,9 @@ GameObject:
   - component: {fileID: 4002114695973732638}
   - component: {fileID: 1530676493891385945}
   - component: {fileID: 4322704187253912067}
-  m_Layer: 0
+  - component: {fileID: 5312605824546927514}
+  - component: {fileID: 1587474826007841389}
+  m_Layer: 4
   m_Name: WaterPellet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,3 +299,45 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   duration: 0.4
+--- !u!114 &5312605824546927514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4002114695973732639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b080bbfc00489224390aba11ac6314a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1587474826007841389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4002114695973732639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88af9895dc4e52d4383647c33001dc1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 1
+  damageOverTime: 0
+  onKill:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5312605824546927514}
+        m_MethodName: DestroyGameObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

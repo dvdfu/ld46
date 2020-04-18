@@ -31,7 +31,7 @@ public class Player : MonoBehaviour {
 
     void Update() {
         Vector2 moveDirection = new Vector2(Input.GetAxisRaw("PlayerHorizontal"), Input.GetAxisRaw("PlayerVertical"));
-        body.AddForce(moveDirection * MAX_SPEED);
+        body.AddForce(moveDirection.normalized * MAX_SPEED);
     }
 
     void LateUpdate() {
