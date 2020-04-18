@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WaterPellet : MonoBehaviour {
     [SerializeField] GameObject waterSplashPrefab;
+    [SerializeField] GameObject puddlePrefab;
     [SerializeField] Rigidbody2D body;
 
     public void Shoot(float angle) {
@@ -14,6 +15,7 @@ public class WaterPellet : MonoBehaviour {
 
     public void OnExpire() {
         Instantiate(waterSplashPrefab, transform.position, Quaternion.identity, transform.parent);
+        Instantiate(puddlePrefab, transform.position, Quaternion.identity, transform.parent);
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
