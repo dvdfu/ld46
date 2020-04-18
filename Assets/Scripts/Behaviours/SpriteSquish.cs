@@ -23,7 +23,7 @@ public class SpriteSquish : MonoBehaviour {
             t += Time.deltaTime;
             progress = Easing.CubicIn(t / DURATION);
             scale = 1 + (1 - progress) / 2;
-            transform.localScale = new Vector3(scale, 1 / scale);
+            transform.localScale = new Vector3(1 / scale, scale);
             yield return null;
         }
         squishRoutine = null;

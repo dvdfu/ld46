@@ -235,7 +235,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 40
+  m_GravityScale: 80
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -297,7 +297,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  duration: 0.4
+  duration: 0.25
 --- !u!114 &5312605824546927514
 MonoBehaviour:
   m_ObjectHideFlags: 0
