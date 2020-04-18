@@ -30,7 +30,6 @@ public class House : MonoBehaviour {
             if (mortal.GetHealth() >= 50.0f) {
                 sprite.sprite = normalHouse;
             } else {
-                Debug.Log("burned");
                 sprite.sprite = burnedHouse;
             }
         }
