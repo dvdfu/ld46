@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4507226723611971271}
   - component: {fileID: 996195454246059851}
   - component: {fileID: 694193942}
-  - component: {fileID: 694193944}
+  - component: {fileID: 8570948532413824447}
   m_Layer: 0
   m_Name: Firetruck
   m_TagString: Untagged
@@ -74,7 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 873f77a89485541fda6331a7f725f7b3, type: 3}
+  m_Sprite: {fileID: -8711581892612340360, guid: 873f77a89485541fda6331a7f725f7b3,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -159,7 +160,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 16, y: 12}
   m_EdgeRadius: 0
---- !u!114 &694193944
+--- !u!114 &8570948532413824447
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,10 +169,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4411021793290921536}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fccf2aa8e0c87c04580ccf1de6928a95, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ffa4bdb5e6754f0a82883c8ad113316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  threshold: 10
-  flipOtherWay: 0
-  sprite: {fileID: 7385050824163654833}
   body: {fileID: 1168576685091943813}
+  spriteRenderer: {fileID: 7385050824163654833}
+  spriteN: {fileID: 236391641466758768, guid: 873f77a89485541fda6331a7f725f7b3, type: 3}
+  spriteNE: {fileID: -8916990370930867242, guid: 873f77a89485541fda6331a7f725f7b3,
+    type: 3}
+  spriteE: {fileID: 6742120657195123241, guid: 873f77a89485541fda6331a7f725f7b3, type: 3}
+  spriteSE: {fileID: -8711581892612340360, guid: 873f77a89485541fda6331a7f725f7b3,
+    type: 3}
+  spriteS: {fileID: 938107197203304142, guid: 873f77a89485541fda6331a7f725f7b3, type: 3}
