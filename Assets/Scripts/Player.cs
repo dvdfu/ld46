@@ -19,6 +19,12 @@ public class Player : MonoBehaviour {
     [SerializeField] RectTransform waterMeter;
     [SerializeField] RectTransform waterFill;
 
+    public void RefillWater() {
+        if (waterAmmo < WATER_AMMO_MAX) {
+            waterAmmo++;
+        }
+    }
+
     void Start() {
         StartCoroutine(ShootWaterRoutine());
     }
