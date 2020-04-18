@@ -15,4 +15,11 @@ public class WaterPellet : MonoBehaviour {
     public void OnExpire() {
         Instantiate(waterSplashPrefab, transform.position, Quaternion.identity, transform.parent);
     }
+
+    void OnTriggerEnter2D(Collider2D collider) {
+        if (collider.gameObject.GetComponent<Flammable>()) {
+            Instantiate(waterSplashPrefab, transform.position, Quaternion.identity, transform.parent);
+            Destroy(gameObject);
+        }
+    }
 }

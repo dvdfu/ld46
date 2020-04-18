@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Fire
   - Refill
+  - Water
   layers:
   - Default
   - TransparentFX

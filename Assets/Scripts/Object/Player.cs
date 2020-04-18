@@ -17,7 +17,6 @@ public class Player : MonoBehaviour {
     // Unity vars
     [SerializeField] GameObject waterPelletPrefab;
     [SerializeField] Rigidbody2D body;
-    [SerializeField] RectTransform waterMeter;
     [SerializeField] RectTransform waterFill;
 
     public void RefillWater() {
@@ -42,12 +41,11 @@ public class Player : MonoBehaviour {
     }
 
     void LateUpdate() {
-        waterMeter.anchoredPosition = body.position - (Vector2) Camera.main.transform.position + Vector2.up * 24;
-        waterFill.sizeDelta = new Vector2(20f * waterAmmo / WATER_AMMO_MAX, 4);
+        waterFill.sizeDelta = new Vector2(64f * waterAmmo / WATER_AMMO_MAX, 8);
     }
 
     void OnCollisionStay2D(Collision2D collision) {
-        if (collision.gameObject.tag == "Fire") {
+        if (collision.gameObject.CompareTag("Fire")) {
             DepleteWater(WATER_DEPLETION_IN_FIRE);
         }
     }
