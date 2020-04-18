@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
     // Consts
-    const float MAX_SPEED = 900;
+    const float MAX_SPEED = 1000;
     const float WATER_SHOOT_INTERVAL = 0.05f;
     const int WATER_AMMO_MAX = 200;
 
