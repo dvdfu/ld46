@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1867980032958964069}
   - component: {fileID: 7119478296476459921}
   - component: {fileID: 1594377049174300264}
-  - component: {fileID: 7486735083943100503}
   - component: {fileID: 328462969791798128}
   - component: {fileID: 4459714853976122455}
   - component: {fileID: -1407845979374823567}
@@ -39,6 +38,7 @@ Transform:
   - {fileID: 2367071060378948195}
   - {fileID: 5447059443886541314}
   - {fileID: 2733590699111656251}
+  - {fileID: 8633601509186331880}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -128,7 +128,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sessionData: {fileID: 11400000, guid: 4003d406c92dc4d399f5a227b80b003d, type: 2}
   sprite8Directional: {fileID: 7119478296476459921}
-  flammable: {fileID: 7486735083943100503}
+  spriteRenderer: {fileID: 947986557413147634}
+  flammable: {fileID: 326606381187368472}
   body: {fileID: 290704002546281387}
   explosionPrefab: {fileID: 3036107444730739010, guid: 115ddc7a0dcbd42109a497054a4ece9b,
     type: 3}
@@ -136,48 +137,7 @@ MonoBehaviour:
     type: 3}
   personPrefab: {fileID: 2956700562057853038, guid: 742fbc8f3fff24d8f887ccf884e7753e,
     type: 3}
---- !u!114 &7486735083943100503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2956700562057853038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2b080119e5e70b42a74e00e1c35e474, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  igniteEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1594377049174300264}
-        m_MethodName: OnIgnite
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  extinguishEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  steamPrefab: {fileID: 5949332143176750326, guid: 798195f9152604aa79655df45dd1ea6d,
-    type: 3}
-  debrisPrefab: {fileID: 7520732452010113133, guid: 297a2655ec41b4c9a8c407a32ff65176,
-    type: 3}
-  fire: {fileID: 5447059443886541313}
-  smoke: {fileID: 8146910044762943721}
-  mortal: {fileID: 328462969791798128}
-  flameSound: {fileID: 8300000, guid: 4aead3a41c5fe4067a90c064fbdae93c, type: 3}
-  extinguishSound: {fileID: 8300000, guid: 1b88a4a675fdb401e923caf8a61e54fd, type: 3}
+  ashSprite: {fileID: 21300000, guid: 32996896b8f004ba78a1b658c0edf2ca, type: 3}
 --- !u!114 &328462969791798128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,6 +280,106 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &4961078977563255037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8633601509186331880}
+  - component: {fileID: 7015617675264800964}
+  - component: {fileID: 326606381187368472}
+  m_Layer: 0
+  m_Name: FireCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8633601509186331880
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4961078977563255037}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5165320732618709684}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &7015617675264800964
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4961078977563255037}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 12}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 24, y: 24}
+  m_EdgeRadius: 0
+--- !u!114 &326606381187368472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4961078977563255037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b080119e5e70b42a74e00e1c35e474, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  igniteEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1594377049174300264}
+        m_MethodName: OnIgnite
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  extinguishEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  steamPrefab: {fileID: 5949332143176750326, guid: 798195f9152604aa79655df45dd1ea6d,
+    type: 3}
+  debrisPrefab: {fileID: 7520732452010113133, guid: 297a2655ec41b4c9a8c407a32ff65176,
+    type: 3}
+  fire: {fileID: 5447059443886541313}
+  smoke: {fileID: 8146910044762943721}
+  mortal: {fileID: 328462969791798128}
+  flameSound: {fileID: 8300000, guid: 4aead3a41c5fe4067a90c064fbdae93c, type: 3}
+  extinguishSound: {fileID: 8300000, guid: 1b88a4a675fdb401e923caf8a61e54fd, type: 3}
 --- !u!1001 &5276161834313444099
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -34,7 +34,7 @@ public class Mortal : MonoBehaviour {
         }
     }
 
-    public bool GetAlive() {
+    public bool IsAlive() {
         return alive;
     }
 

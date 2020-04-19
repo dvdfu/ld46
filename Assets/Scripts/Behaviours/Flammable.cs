@@ -18,7 +18,7 @@ public class Flammable : MonoBehaviour {
     int fireHealth = 0;
 
     public void SetOnFire() {
-        if (!IsOnFire()) {
+        if (!IsOnFire() && mortal.IsAlive()) {
             fireHealth = 10;
             fire.Play();
             smoke.Play();

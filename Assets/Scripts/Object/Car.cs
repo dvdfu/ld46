@@ -9,11 +9,13 @@ public class Car : MonoBehaviour {
 
     [SerializeField] SessionData sessionData;
     [SerializeField] Sprite8Directional sprite8Directional;
+    [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Flammable flammable;
     [SerializeField] Rigidbody2D body;
     [SerializeField] GameObject explosionPrefab;
     [SerializeField] GameObject tombstonePrefab;
     [SerializeField] GameObject personPrefab;
+    [SerializeField] Sprite ashSprite;
 
     Vector3 destination;
     Transform target;
@@ -25,6 +27,7 @@ public class Car : MonoBehaviour {
         Normal,
         Chase,
         Stop,
+        Dead,
     }
     State state;
 
@@ -48,7 +51,8 @@ public class Car : MonoBehaviour {
             Instantiate(tombstonePrefab, transform.position, Quaternion.identity, transform.parent);
         }
         Instantiate(explosionPrefab, transform.position, Quaternion.identity, transform.parent);
-        Destroy(gameObject);
+        state = State.Dead;
+        spriteRenderer.sprite = ashSprite;
     }
 
     void Start() {
@@ -63,7 +67,9 @@ public class Car : MonoBehaviour {
     }
 
     void LateUpdate() {
-        sprite8Directional.SetAngle(MathUtils.VectorToAngle(GetMoveDirection()));
+        if (state != State.Dead) {
+            sprite8Directional.SetAngle(MathUtils.VectorToAngle(GetMoveDirection()));
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
