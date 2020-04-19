@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour {
     const int EXPLOSION_DAMAGE = 5;
+    const float EXPLOSION_RADIUS = 40;
 
     [SerializeField] AudioClip explosionSound;
 
     void Start() {
-        RaycastHit2D[] results = Physics2D.CircleCastAll(transform.position, 64, Vector2.zero, 0);
+        RaycastHit2D[] results = Physics2D.CircleCastAll(transform.position, EXPLOSION_RADIUS, Vector2.zero, 0);
         foreach (RaycastHit2D result in results) {
             Flammable flammable = result.collider.gameObject.GetComponent<Flammable>();
             if (flammable) {
