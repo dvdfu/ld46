@@ -11,11 +11,20 @@ public class Car : MonoBehaviour {
     [SerializeField] Rigidbody2D body;
     [SerializeField] GameObject explosionPrefab;
 
+    Vector3 destination;
     Vector2 moveDirection;
-    bool shouldChase = true;
 
-    public void Chase(Transform target) {
+    bool canChase = false;
+
+    enum State {
+        Normal,
+        Chase
+    }
+    State state;
+
+    public void Init(Transform target, Vector2 destination) {
         this.target = target;
+        this.destination = new Vector3(destination.x, destination.y, 0f);
     }
 
     public void OnDie() {
@@ -24,18 +33,16 @@ public class Car : MonoBehaviour {
     }
 
     void Start() {
-        StartCoroutine(ChaseRoutine());
+        state = State.Normal;
+        canChase = Random.Range(0, 50) == 0;
     }
 
     void FixedUpdate() {
-        if (shouldChase) {
-            moveDirection = (target.position - transform.position).normalized;
-        }
-        body.AddForce(moveDirection.normalized * MAX_SPEED);
+        body.AddForce(getMoveDirection().normalized * MAX_SPEED);
     }
 
     void LateUpdate() {
-        sprite8Directional.SetAngle(MathUtils.VectorToAngle(moveDirection));
+        sprite8Directional.SetAngle(MathUtils.VectorToAngle(getMoveDirection()));
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
@@ -57,12 +64,25 @@ public class Car : MonoBehaviour {
         }
     }
 
-    IEnumerator ChaseRoutine() {
-        while (true) {
-            yield return new WaitForSeconds(4 + 2 * Random.value);
-            shouldChase = false;
-            yield return new WaitForSeconds(1 + Random.value);
-            shouldChase = true;
+    Vector2 getMoveDirection() {
+        switch(state) {
+            case State.Normal:
+                Vector2 dist = destination - transform.position;
+                if (dist.magnitude < 10f) {
+                    Destroy(gameObject);
+                }
+                
+                if ((target.position - transform.position).magnitude < 50f && canChase) {
+                    state = State.Chase;
+                }
+
+                return dist.normalized;
+            case State.Chase:
+                return (target.position - transform.position).normalized;
         }
+
+        // Switch should be exhaustive
+        Debug.Assert(false);
+        return Vector2.zero;
     }
 }
