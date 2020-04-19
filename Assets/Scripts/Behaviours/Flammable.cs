@@ -7,7 +7,6 @@ public class Flammable : MonoBehaviour {
     public UnityEvent igniteEvent = new UnityEvent();
     public UnityEvent extinguishEvent = new UnityEvent();
 
-    [SerializeField] float fireDamage = 30; // Damage per second
     [SerializeField] GameObject steamPrefab;
     [SerializeField] GameObject debrisPrefab;
     [SerializeField] ParticleSystem fire;
@@ -59,7 +58,7 @@ public class Flammable : MonoBehaviour {
 
     void FixedUpdate() {
         if (IsOnFire()) {
-            mortal.Damage(gameObject.tag, fireDamage * Time.deltaTime);
+            mortal.Damage(gameObject.tag, Time.deltaTime);
         }
     }
 

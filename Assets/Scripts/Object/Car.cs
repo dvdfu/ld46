@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Car : MonoBehaviour {
     const float MAX_SPEED = 500;
-    const int CAR_CRASH_DAMAGE = 20;
+    const int CAR_CRASH_DAMAGE = 3;
     const int CRASH_SPEED_THRESHOLD = 7000;
 
     [SerializeField] SessionData sessionData;
@@ -13,15 +13,18 @@ public class Car : MonoBehaviour {
     [SerializeField] Rigidbody2D body;
     [SerializeField] GameObject explosionPrefab;
     [SerializeField] GameObject tombstonePrefab;
+    [SerializeField] GameObject personPrefab;
 
     Vector3 destination;
     Transform target;
 
+    bool hasPerson = true;
     bool canChase = false;
 
     enum State {
         Normal,
-        Chase
+        Chase,
+        Stop,
     }
     State state;
 
@@ -30,10 +33,20 @@ public class Car : MonoBehaviour {
         this.destination = new Vector3(destination.x, destination.y, 0f);
     }
 
+    public void OnIgnite() {
+        if (hasPerson) {
+            hasPerson = false;
+            state = State.Stop;
+            Instantiate(personPrefab, transform.position, Quaternion.identity, transform.parent);
+        }
+    }
+
     public void OnDie() {
         sessionData.carsDestroyed++;
-        sessionData.peopleDied++;
-        Instantiate(tombstonePrefab, transform.position, Quaternion.identity, transform.parent);
+        if (hasPerson) {
+            sessionData.peopleDied++;
+            Instantiate(tombstonePrefab, transform.position, Quaternion.identity, transform.parent);
+        }
         Instantiate(explosionPrefab, transform.position, Quaternion.identity, transform.parent);
         Destroy(gameObject);
     }
@@ -44,7 +57,9 @@ public class Car : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        body.AddForce(GetMoveDirection().normalized * MAX_SPEED);
+        if (state != State.Stop) {
+            body.AddForce(GetMoveDirection().normalized * MAX_SPEED);
+        }
     }
 
     void LateUpdate() {
@@ -52,7 +67,7 @@ public class Car : MonoBehaviour {
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
-        if (body.velocity.sqrMagnitude > CRASH_SPEED_THRESHOLD) {
+        if (state != State.Stop && body.velocity.sqrMagnitude > CRASH_SPEED_THRESHOLD) {
             SpriteSquish spriteSquish = collision.gameObject.GetComponent<SpriteSquish>();
             if (spriteSquish) {
                 spriteSquish.SquishThin();

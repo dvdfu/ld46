@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f79778cf9afb3f429f077a34cd2114a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 1
   alive: 1
   coll: {fileID: 2021657032008242866}
   dieEvent:
@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c6bc337427f9446c9bcc05599491b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  period: 0.2
   wobbleTransform: {fileID: 2733590699111656251}
 --- !u!114 &7142279558764198614
 MonoBehaviour:
