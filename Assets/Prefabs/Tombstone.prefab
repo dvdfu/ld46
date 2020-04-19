@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6042307976879111693}
   - component: {fileID: 5290864570963565746}
+  - component: {fileID: -4837544862012612663}
   m_Layer: 0
   m_Name: Tombstone
   m_TagString: Untagged
@@ -45,6 +46,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 3735175528746622976}
+--- !u!114 &-4837544862012612663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109610533420614197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4159546b5b9f342a4ac1bf2663a0a57d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expireEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  duration: 10
 --- !u!1 &1003468465649065365
 GameObject:
   m_ObjectHideFlags: 0
