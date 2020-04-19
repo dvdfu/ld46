@@ -5,6 +5,7 @@ using UnityEngine;
 public class Car : MonoBehaviour {
     const float MAX_SPEED = 500;
 
+    [SerializeField] SessionData sessionData;
     [SerializeField] Sprite8Directional sprite8Directional;
     [SerializeField] Flammable flammable;
     [SerializeField] Transform target;
@@ -28,6 +29,7 @@ public class Car : MonoBehaviour {
     }
 
     public void OnDie() {
+        sessionData.carsDestroyed++;
         Instantiate(explosionPrefab, transform.position, Quaternion.identity, transform.parent);
         Destroy(gameObject);
     }
@@ -38,11 +40,11 @@ public class Car : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        body.AddForce(getMoveDirection().normalized * MAX_SPEED);
+        body.AddForce(GetMoveDirection().normalized * MAX_SPEED);
     }
 
     void LateUpdate() {
-        sprite8Directional.SetAngle(MathUtils.VectorToAngle(getMoveDirection()));
+        sprite8Directional.SetAngle(MathUtils.VectorToAngle(GetMoveDirection()));
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
@@ -64,7 +66,7 @@ public class Car : MonoBehaviour {
         }
     }
 
-    Vector2 getMoveDirection() {
+    Vector2 GetMoveDirection() {
         switch(state) {
             case State.Normal:
                 Vector2 dist = destination - transform.position;

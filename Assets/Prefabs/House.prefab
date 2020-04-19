@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f0fcaef6c211ee44b7045b8ee410e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sessionData: {fileID: 11400000, guid: 4003d406c92dc4d399f5a227b80b003d, type: 2}
   personPrefab: {fileID: 2956700562057853038, guid: 742fbc8f3fff24d8f887ccf884e7753e,
     type: 3}
   tombstonePrefab: {fileID: 109610533420614197, guid: 375cf25f4e6f54322bd3e8a6d8a02989,

@@ -17,6 +17,7 @@ public class Player : MonoBehaviour {
     int people = 0;
 
     // Unity vars
+    [SerializeField] SessionData sessionData;
     [SerializeField] Sprite8Directional sprite8Directional;
     [SerializeField] GameObject waterPelletPrefab;
     [SerializeField] GameObject collisionPrefab;
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour {
             go.AddComponent<Expirable>().SetDuration(1 + 1f * i / people);
         }
 
+        sessionData.peopleSaved += people;
         people = 0;
         peopleContainer.gameObject.SetActive(false);
     }
@@ -50,6 +52,7 @@ public class Player : MonoBehaviour {
     void DepleteWater(int amount = 1) {
         if (waterAmmo > 0) {
             waterAmmo -= amount;
+            sessionData.waterUsed += amount;
         }
     }
 

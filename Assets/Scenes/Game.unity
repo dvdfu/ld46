@@ -287,6 +287,11 @@ PrefabInstance:
       propertyPath: helicopterPos
       value: 
       objectReference: {fileID: 464411481}
+    - target: {fileID: 4507226723611971271, guid: f6caa51fdc56bde4896df1eb4d320a97,
+        type: 3}
+      propertyPath: helicopter
+      value: 
+      objectReference: {fileID: 464411481}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6caa51fdc56bde4896df1eb4d320a97, type: 3}
 --- !u!1 &294873855
@@ -984,6 +989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66391149e448343f58846907015dbeb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sessionData: {fileID: 11400000, guid: 4003d406c92dc4d399f5a227b80b003d, type: 2}
 --- !u!4 &1313818242
 Transform:
   m_ObjectHideFlags: 0
