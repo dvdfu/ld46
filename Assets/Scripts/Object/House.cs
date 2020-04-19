@@ -9,14 +9,19 @@ public class House : MonoBehaviour {
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Sprite burnedHouse;
     [SerializeField] Sprite ashes;
+    [SerializeField] ParticleSystem warn;
 
     int peopleInside = 3;
 
     public void OnIgnite() {
         spriteRenderer.sprite = burnedHouse;
+        if (peopleInside > 0) {
+            warn.Play();
+        }
     }
 
     public void OnExtinguish() {
+        warn.Stop();
         if (peopleInside > 0) {
             for (int i = 0; i < peopleInside; i++) {
                 Vector2 offset = MathUtils.PolarToCartesian(360f * i / peopleInside, 10);

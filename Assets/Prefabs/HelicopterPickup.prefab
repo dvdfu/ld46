@@ -64,8 +64,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 1539f56282a3a4afe9708dc71d2950e6, type: 2}
-  semiMajorAxis: 350
-  semiMinorAxis: 125
+  semiMajorAxis: 288
+  semiMinorAxis: 128
   speed: 0.2
   helicopter: {fileID: 7592637984322561217}
   spriteSquish: {fileID: 5933451834028692546}
