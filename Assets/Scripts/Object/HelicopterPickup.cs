@@ -6,16 +6,12 @@ public class HelicopterPickup : MonoBehaviour {
     const float RESCUE_FLY_DURATION = 2f;
     const float RESCUE_PICKUP_DURATION = 0.25f;
 
-    [SerializeField]
-    float semiMajorAxis = 200f;
-    [SerializeField]
-    float semiMinorAxis = 100f;
-    [SerializeField]
-    float speed = 0.2f;
-    [SerializeField]
-    Transform helicopter;
-    [SerializeField]
-    Transform helicopterBlades;
+    [SerializeField] float semiMajorAxis = 200f;
+    [SerializeField] float semiMinorAxis = 100f;
+    [SerializeField] float speed = 0.2f;
+    [SerializeField] Transform helicopter;
+    [SerializeField] Transform helicopterBlades;
+    [SerializeField] SpriteSquish spriteSquish;
 
     float angle = 0f;
 
@@ -67,6 +63,7 @@ public class HelicopterPickup : MonoBehaviour {
         float elapsed = 0f;
         Vector3 originalPos = helicopter.position;
         Vector3 originalBladesPos = helicopterBlades.position;
+        spriteSquish.SquishThin();
 
         while (elapsed <= RESCUE_FLY_DURATION) {
             elapsed += Time.deltaTime;
@@ -91,6 +88,7 @@ public class HelicopterPickup : MonoBehaviour {
             yield return null;
         }
 
+        spriteSquish.SquishThin();
         helicopter.position = originalPos;
         helicopterBlades.position = originalBladesPos;
         state = State.Patrolling;
