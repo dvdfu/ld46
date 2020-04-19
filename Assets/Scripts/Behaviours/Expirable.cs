@@ -20,6 +20,10 @@ public class Expirable : MonoBehaviour {
         Destroy(gameObject);
     }
 
+    public void SetDuration(float duration) {
+        this.duration = duration;
+    }
+
     public float GetElapsed() {
         return Mathf.Clamp((Time.time - startTime) / duration, 0f, 1f);
     }
