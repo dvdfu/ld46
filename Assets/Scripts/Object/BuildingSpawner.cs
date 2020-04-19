@@ -10,7 +10,7 @@ public class BuildingSpawner : MonoBehaviour {
     float lastSpawnedAt = 0;
 
     void Start() {
-        for (int i = 0; i < 32; i++) {
+        for (int i = 0; i < 48; i++) {
             SpawnBuilding();
         }
     }
