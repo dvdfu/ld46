@@ -27,9 +27,8 @@ public class Player : MonoBehaviour {
         for (int i = 0; i < playerData.people; i++) {
             float progress = 1f * i / playerData.people;
             Vector3 offset = MathUtils.PolarToCartesian(360 * progress, 16);
-            GameObject go = Instantiate(personPrefab, helicopter.position + offset, Quaternion.identity, transform.parent);
-            go.GetComponent<Person>().WaitForPickup();
-            go.AddComponent<Expirable>().SetDuration(1 + progress);
+            GameObject person = Instantiate(personPrefab, helicopter.position + offset, Quaternion.identity, transform.parent);
+            person.GetComponent<Person>().PickupAfter(1 + progress);
         }
 
         sessionData.peopleSaved += playerData.people;
