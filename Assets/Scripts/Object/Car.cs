@@ -12,6 +12,7 @@ public class Car : MonoBehaviour {
     [SerializeField] Flammable flammable;
     [SerializeField] Rigidbody2D body;
     [SerializeField] GameObject explosionPrefab;
+    [SerializeField] GameObject tombstonePrefab;
 
     Vector3 destination;
     Vector2 moveDirection;
@@ -32,6 +33,8 @@ public class Car : MonoBehaviour {
 
     public void OnDie() {
         sessionData.carsDestroyed++;
+        sessionData.peopleDied++;
+        Instantiate(tombstonePrefab, transform.position, Quaternion.identity, transform.parent);
         Instantiate(explosionPrefab, transform.position, Quaternion.identity, transform.parent);
         Destroy(gameObject);
     }

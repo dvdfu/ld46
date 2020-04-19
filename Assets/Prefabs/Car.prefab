@@ -132,6 +132,8 @@ MonoBehaviour:
   body: {fileID: 290704002546281387}
   explosionPrefab: {fileID: 3036107444730739010, guid: 115ddc7a0dcbd42109a497054a4ece9b,
     type: 3}
+  tombstonePrefab: {fileID: 109610533420614197, guid: 375cf25f4e6f54322bd3e8a6d8a02989,
+    type: 3}
 --- !u!114 &7486735083943100503
 MonoBehaviour:
   m_ObjectHideFlags: 0
