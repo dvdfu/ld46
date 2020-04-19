@@ -15,6 +15,7 @@ public class House : MonoBehaviour {
 
     public void OnIgnite() {
         spriteRenderer.sprite = burnedHouse;
+        spriteRenderer.color = Color.grey;
         if (peopleInside > 0) {
             warn.Play();
         }
