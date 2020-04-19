@@ -12,6 +12,8 @@ public class Flammable : MonoBehaviour {
     [SerializeField] ParticleSystem fire;
     [SerializeField] ParticleSystem smoke;
     [SerializeField] Mortal mortal;
+    [SerializeField] AudioClip flameSound;
+    [SerializeField] AudioClip extinguishSound;
 
     int fireHealth = 0;
 
@@ -21,6 +23,7 @@ public class Flammable : MonoBehaviour {
             fire.Play();
             smoke.Play();
             igniteEvent.Invoke();
+            SoundManager.Play(flameSound);
         }
     }
 
@@ -28,6 +31,7 @@ public class Flammable : MonoBehaviour {
         if (IsOnFire()) {
             fireHealth--;
             if (fireHealth == 0) {
+                SoundManager.Play(extinguishSound);
                 fire.Stop();
                 smoke.Stop();
                 extinguishEvent.Invoke();

@@ -271,6 +271,7 @@ MonoBehaviour:
   puddlePrefab: {fileID: 4239407308791358368, guid: a415d29f249b24242a3c1d06971161d9,
     type: 3}
   body: {fileID: 5492904990838659248}
+  waterHitSound: {fileID: 8300000, guid: c74cbb5cc0d7148139a73f526a7ad7b7, type: 3}
 --- !u!114 &4322704187253912067
 MonoBehaviour:
   m_ObjectHideFlags: 0

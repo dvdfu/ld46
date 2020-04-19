@@ -131,6 +131,8 @@ MonoBehaviour:
     type: 3}
   body: {fileID: 1168576685091943813}
   helicopter: {fileID: 0}
+  waterSound: {fileID: 8300000, guid: f658d7583104942cbb30e74a1cfc38f4, type: 3}
+  thudSound: {fileID: 8300000, guid: 5970047baba2948059fe6263a9719e47, type: 3}
 --- !u!58 &590263822564903068
 CircleCollider2D:
   m_ObjectHideFlags: 0

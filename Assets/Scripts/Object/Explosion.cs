@@ -5,6 +5,8 @@ using UnityEngine;
 public class Explosion : MonoBehaviour {
     const int EXPLOSION_DAMAGE = 50;
 
+    [SerializeField] AudioClip explosionSound;
+
     void Start() {
         RaycastHit2D[] results = Physics2D.CircleCastAll(transform.position, 32, Vector2.zero, 0);
         foreach (RaycastHit2D result in results) {
@@ -18,5 +20,6 @@ public class Explosion : MonoBehaviour {
             }
         }
         Camera.main.gameObject.GetComponent<CameraHelper>().Shake();
+        SoundManager.Play(explosionSound);
     }
 }

@@ -3,7 +3,13 @@ guid: e2b080119e5e70b42a74e00e1c35e474
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - steamPrefab: {instanceID: 0}
+  - fire: {instanceID: 0}
+  - smoke: {instanceID: 0}
+  - mortal: {instanceID: 0}
+  - flameSound: {fileID: 8300000, guid: 4aead3a41c5fe4067a90c064fbdae93c, type: 3}
+  - extinguishSound: {fileID: 8300000, guid: 1b88a4a675fdb401e923caf8a61e54fd, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

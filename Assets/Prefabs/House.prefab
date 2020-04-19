@@ -353,6 +353,8 @@ MonoBehaviour:
   fire: {fileID: 2597089009913971329}
   smoke: {fileID: 7450836005865662710}
   mortal: {fileID: 502343201625098340}
+  flameSound: {fileID: 8300000, guid: 4aead3a41c5fe4067a90c064fbdae93c, type: 3}
+  extinguishSound: {fileID: 8300000, guid: 1b88a4a675fdb401e923caf8a61e54fd, type: 3}
 --- !u!1001 &1027772853862564948
 PrefabInstance:
   m_ObjectHideFlags: 0
