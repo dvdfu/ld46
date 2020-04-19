@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 996195454246059851}
   - component: {fileID: 8570948532413824447}
   - component: {fileID: -3793561531415747304}
-  - component: {fileID: -3477367877989177237}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -121,9 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9edeac2070e8759478df184975a2fe8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashCooldown: 3
   dashSpeed: 500
   dashDuration: 0.1
+  dashCost: 20
   state: 0
   sessionData: {fileID: 11400000, guid: 4003d406c92dc4d399f5a227b80b003d, type: 2}
   playerData: {fileID: 11400000, guid: 1539f56282a3a4afe9708dc71d2950e6, type: 2}
@@ -138,6 +137,7 @@ MonoBehaviour:
   helicopter: {fileID: 0}
   waterSound: {fileID: 8300000, guid: f658d7583104942cbb30e74a1cfc38f4, type: 3}
   thudSound: {fileID: 8300000, guid: 5970047baba2948059fe6263a9719e47, type: 3}
+  pickupSound: {fileID: 8300000, guid: 113337ccd1e0c4adaaf1668a93c91644, type: 3}
 --- !u!58 &590263822564903068
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -203,99 +203,3 @@ MonoBehaviour:
     type: 3}
   scale: {x: 1.5, y: 1}
   offset: {x: 0, y: 6}
---- !u!96 &-3477367877989177237
-TrailRenderer:
-  serializedVersion: 2
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4411021793290921536}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Time: 5
-  m_Parameters:
-    serializedVersion: 3
-    widthMultiplier: 1
-    widthCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    colorGradient:
-      serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
-    numCornerVertices: 0
-    numCapVertices: 0
-    alignment: 0
-    textureMode: 0
-    shadowBias: 0.5
-    generateLightingData: 0
-  m_MinVertexDistance: 0.1
-  m_Autodestruct: 0
-  m_Emitting: 1

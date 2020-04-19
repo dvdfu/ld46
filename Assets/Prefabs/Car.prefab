@@ -129,6 +129,7 @@ MonoBehaviour:
   sessionData: {fileID: 11400000, guid: 4003d406c92dc4d399f5a227b80b003d, type: 2}
   sprite8Directional: {fileID: 7119478296476459921}
   spriteRenderer: {fileID: 947986557413147634}
+  castsShadow: {fileID: -1407845979374823567}
   flammable: {fileID: 326606381187368472}
   mortal: {fileID: 328462969791798128}
   body: {fileID: 290704002546281387}

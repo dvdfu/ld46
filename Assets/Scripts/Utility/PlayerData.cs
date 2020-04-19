@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "PlayerData", menuName = "Player Data")]
 public class PlayerData : ScriptableObject {
-    public const int WATER_MAX = 200;
+    public const int WATER_MAX = 150;
 
     public UnityEvent peopleChangeEvent = new UnityEvent();
 
@@ -17,7 +17,7 @@ public class PlayerData : ScriptableObject {
 
     public void Reset() {
         position = Vector2.zero;
-        water = 200;
+        water = WATER_MAX;
         people = 0;
     }
 

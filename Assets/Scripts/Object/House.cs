@@ -9,14 +9,20 @@ public class House : MonoBehaviour {
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Sprite burnedHouse;
     [SerializeField] Sprite ashes;
+    [SerializeField] ParticleSystem warn;
 
     int peopleInside = 3;
 
     public void OnIgnite() {
         spriteRenderer.sprite = burnedHouse;
+        spriteRenderer.color = Color.grey;
+        if (peopleInside > 0) {
+            warn.Play();
+        }
     }
 
     public void OnExtinguish() {
+        warn.Stop();
         if (peopleInside > 0) {
             for (int i = 0; i < peopleInside; i++) {
                 Vector2 offset = MathUtils.PolarToCartesian(360f * i / peopleInside, 10);
@@ -29,6 +35,7 @@ public class House : MonoBehaviour {
     public void Die() {
         sessionData.housesBurned++;
         spriteRenderer.sprite = ashes;
+        spriteRenderer.sortingLayerName = "Floor";
         if (peopleInside > 0) {
             sessionData.peopleDied += peopleInside;
             for (int i = 0; i < peopleInside; i++) {
@@ -37,5 +44,6 @@ public class House : MonoBehaviour {
             }
             peopleInside = 0;
         }
+        warn.Stop();
     }
 }

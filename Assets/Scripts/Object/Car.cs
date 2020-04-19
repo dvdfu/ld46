@@ -7,11 +7,13 @@ public class Car : MonoBehaviour {
     const int CAR_CRASH_DAMAGE = 3;
     const int CRASH_SPEED_THRESHOLD = 5000;
     const float CHASE_CHANCE = 0.15f;
+    const float CHASE_DISTANCE = 120;
     const float PROPANE_CHANCE = 0.1f;
 
     [SerializeField] SessionData sessionData;
     [SerializeField] Sprite8Directional sprite8Directional;
     [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] CastsShadow castsShadow;
     [SerializeField] Flammable flammable;
     [SerializeField] Mortal mortal;
     [SerializeField] Rigidbody2D body;
@@ -59,7 +61,9 @@ public class Car : MonoBehaviour {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity, transform.parent);
         }
         spriteRenderer.sprite = ashSprite;
+        spriteRenderer.sortingLayerName = "Floor";
         spriteRenderer.color = Color.white;
+        castsShadow.RemoveShadow();
         state = State.Dead;
     }
 
@@ -70,9 +74,6 @@ public class Car : MonoBehaviour {
     void Start() {
         state = State.Normal;
         canChase = Random.value < CHASE_CHANCE;
-        if (canChase) {
-            spriteRenderer.color = new Color(1, 0.8f, 0.8f);
-        }
         StartCoroutine(PropaneRoutine());
     }
 
@@ -115,14 +116,6 @@ public class Car : MonoBehaviour {
                 mortal.Damage(gameObject.tag, CAR_CRASH_DAMAGE);
             }
         }
-
-        Player player = collision.gameObject.GetComponent<Player>();
-        if (player && player.IsDashing()) {
-            Mortal mortal = GetComponent<Mortal>();
-            if (mortal) {
-                mortal.Die();
-            }
-        }
     }
 
     Vector2 GetMoveDirection() {
@@ -132,7 +125,7 @@ public class Car : MonoBehaviour {
             if (dist.magnitude < 10f) {
                 Destroy(gameObject);
             }
-            if ((target.position - transform.position).magnitude < 50f && canChase) {
+            if ((target.position - transform.position).magnitude < CHASE_DISTANCE && canChase) {
                 state = State.Chase;
             }
             return dist.normalized;
