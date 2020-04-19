@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 328462969791798128}
   - component: {fileID: 4459714853976122455}
   - component: {fileID: -1407845979374823567}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,6 +145,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b080119e5e70b42a74e00e1c35e474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  igniteEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   fireDamage: 30
   fire: {fileID: 5447059443886541313}
   smoke: {fileID: 8146910044762943721}

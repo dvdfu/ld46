@@ -637,7 +637,7 @@ GameObject:
   m_Component:
   - component: {fileID: 490658836}
   - component: {fileID: 490658835}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MapBounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1419,7 +1419,16 @@ MonoBehaviour:
   carPrefab: {fileID: 2956700562057853038, guid: 05a13e8c2c31b4399972320d432e7767,
     type: 3}
   player: {fileID: 318175373}
-  spawnInterval: 5
+  spawnInterval: 1
+  spawningPoints:
+  - pos: {x: 300, y: 15}
+    dest: {x: -300, y: 15}
+  - pos: {x: -300, y: -15}
+    dest: {x: 300, y: -15}
+  - pos: {x: 15, y: -200}
+    dest: {x: 15, y: 200}
+  - pos: {x: -15, y: 200}
+    dest: {x: -15, y: -200}
 --- !u!1 &2113502972
 GameObject:
   m_ObjectHideFlags: 0
