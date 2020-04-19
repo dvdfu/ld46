@@ -13,10 +13,17 @@ public class Player : MonoBehaviour {
     // Member vars
     Vector2 moveDirection = Vector2.zero;
     Vector2 speed = Vector2.zero;
-    float lastDashed = 0;
     Vector2 lastMoveDirection;
-    [SerializeField] float dashCooldown = 3f;
-    [SerializeField] float dashPower = 25f;
+    [SerializeField] float dashCooldown = 2f;
+    [SerializeField] float dashSpeed = 500f;
+    [SerializeField] float dashDuration = 0.1f;
+    float lastDashed = -1000f; // To allow dashing at the start
+    enum State {
+        Driving,
+        Dashing
+    }
+    [SerializeField]
+    State state;
 
     // Unity vars
     [SerializeField] SessionData sessionData;
@@ -41,6 +48,7 @@ public class Player : MonoBehaviour {
     }
 
     void Start() {
+        state = State.Driving;
         StartCoroutine(ShootWaterRoutine());
     }
 
@@ -54,12 +62,14 @@ public class Player : MonoBehaviour {
             lastMoveDirection = moveDirection;
         }
 
-        body.AddForce(moveDirection.normalized * GetSpeed());
+        if (state == State.Driving) {
+            body.AddForce(moveDirection.normalized * GetSpeed());
 
-        float currentTime = Time.time;
-        if (Input.GetAxisRaw("PlayerDash") > 0 && currentTime - lastDashed >= dashCooldown) {
-            lastDashed = currentTime;
-            body.AddForce(lastMoveDirection.normalized * MAX_SPEED * dashPower);
+            float currentTime = Time.time;
+            if (Input.GetAxisRaw("PlayerDash") > 0 && currentTime - lastDashed >= dashCooldown) {
+                state = State.Dashing;
+                StartCoroutine(DashRoutine());
+            }
         }
     }
 
@@ -91,6 +101,19 @@ public class Player : MonoBehaviour {
             }
             yield return new WaitForSeconds(WATER_SHOOT_INTERVAL);
         }
+    }
+
+    IEnumerator DashRoutine() {
+        float elapsed = 0f;
+        Vector2 dashVector = lastMoveDirection * dashSpeed;
+        while (elapsed <= dashDuration) {
+            elapsed += Time.deltaTime;
+            body.velocity = dashVector;
+            yield return null;
+        }
+
+        lastDashed = Time.time;
+        state = State.Driving;
     }
 
     void OnCollisionEnter2D(Collision2D collision) {

@@ -227,7 +227,8 @@ PrefabInstance:
       propertyPath: dashPower
       value: 25
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -3477367877989177237, guid: f6caa51fdc56bde4896df1eb4d320a97, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f6caa51fdc56bde4896df1eb4d320a97, type: 3}
 --- !u!224 &294873856 stripped
 RectTransform:

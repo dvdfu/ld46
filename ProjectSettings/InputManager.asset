@@ -147,5 +147,5 @@ InputManager:
     snap: 1
     invert: 0
     type: 0
-    axis: 0
+    axis: 4
     joyNum: 0
