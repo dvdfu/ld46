@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpriteWobble : MonoBehaviour {
-    const float PERIOD = 0.5f;
-
+    [SerializeField] float period = 0.5f;
     [SerializeField] Transform wobbleTransform;
 
     void Start() {
@@ -17,7 +16,7 @@ public class SpriteWobble : MonoBehaviour {
         while (true) {
             t += Time.deltaTime;
             phase = (t % 1) * Mathf.PI * 2;
-            scale = 1 + Mathf.Sin(phase / PERIOD) / 10;
+            scale = 1 + Mathf.Sin(phase / period) / 10;
             wobbleTransform.localScale = new Vector3(scale, 1 / scale);
             yield return null;
         }

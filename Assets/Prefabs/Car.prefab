@@ -134,6 +134,8 @@ MonoBehaviour:
     type: 3}
   tombstonePrefab: {fileID: 109610533420614197, guid: 375cf25f4e6f54322bd3e8a6d8a02989,
     type: 3}
+  personPrefab: {fileID: 2956700562057853038, guid: 742fbc8f3fff24d8f887ccf884e7753e,
+    type: 3}
 --- !u!114 &7486735083943100503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +150,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   igniteEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1594377049174300264}
+        m_MethodName: OnIgnite
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   extinguishEvent:
