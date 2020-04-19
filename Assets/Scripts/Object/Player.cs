@@ -136,8 +136,9 @@ public class Player : MonoBehaviour {
             if (spriteSquish) {
                 spriteSquish.SquishThin();
             }
-            if (other.GetComponent<Car>()) {
-                other.GetComponent<Mortal>().Damage(gameObject.tag, CAR_CRASH_DAMAGE);
+            Car car = other.GetComponent<Car>();
+            if (car && car.IsMoving()) {
+                other.GetComponentInChildren<Flammable>().SetOnFire();
             }
         }
     }

@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 7175798083375922668}
   - component: {fileID: 6717587928540579858}
   - component: {fileID: 5630040496366898728}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FireCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
