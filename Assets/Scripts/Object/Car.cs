@@ -116,14 +116,6 @@ public class Car : MonoBehaviour {
                 mortal.Damage(gameObject.tag, CAR_CRASH_DAMAGE);
             }
         }
-
-        Player player = collision.gameObject.GetComponent<Player>();
-        if (player && player.IsDashing()) {
-            Mortal mortal = GetComponent<Mortal>();
-            if (mortal) {
-                mortal.Die();
-            }
-        }
     }
 
     Vector2 GetMoveDirection() {
