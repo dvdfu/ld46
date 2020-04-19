@@ -4,19 +4,14 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class Mortal : MonoBehaviour {
-    [SerializeField]
-    float health = 100.0f;
-    [SerializeField]
-    bool alive = true;
+    [SerializeField] float health = 10;
+    [SerializeField] bool alive = true;
 
-    [SerializeField]
-    Collider2D coll;
-    [SerializeField]
-    public UnityEvent dieEvent;
+    [SerializeField] Collider2D coll;
+    [SerializeField] public UnityEvent dieEvent;
 
     // A list of tags this object is immune to damage from
-    [SerializeField]
-    List<string> immuneToTags = new List<string>();
+    [SerializeField] List<string> immuneToTags = new List<string>();
 
     // Returns whether the mortal object was killed or not
     public bool Damage(string tag, float amount) {

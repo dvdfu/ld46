@@ -8,7 +8,7 @@ public class Player : MonoBehaviour {
     const float WATER_SHOOT_INTERVAL = 0.05f;
     const int WATER_AMMO_MAX = 200;
     const int WATER_DEPLETION_IN_FIRE = 10;
-    const int CAR_CRASH_DAMAGE = 40;
+    const int CAR_CRASH_DAMAGE = 2;
 
     // Member vars
     Vector2 moveDirection = Vector2.zero;

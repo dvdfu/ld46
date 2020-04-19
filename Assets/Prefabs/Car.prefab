@@ -156,7 +156,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  fireDamage: 30
   steamPrefab: {fileID: 5949332143176750326, guid: 798195f9152604aa79655df45dd1ea6d,
     type: 3}
   debrisPrefab: {fileID: 7520732452010113133, guid: 297a2655ec41b4c9a8c407a32ff65176,
@@ -178,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f79778cf9afb3f429f077a34cd2114a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 5
   alive: 1
   coll: {fileID: 2021657032008242866}
   dieEvent:

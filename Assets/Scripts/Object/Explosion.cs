@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Explosion : MonoBehaviour {
-    const int EXPLOSION_DAMAGE = 50;
+    const int EXPLOSION_DAMAGE = 10;
 
     [SerializeField] AudioClip explosionSound;
 
