@@ -8,7 +8,7 @@ public class Explosion : MonoBehaviour {
     [SerializeField] AudioClip explosionSound;
 
     void Start() {
-        RaycastHit2D[] results = Physics2D.CircleCastAll(transform.position, 32, Vector2.zero, 0);
+        RaycastHit2D[] results = Physics2D.CircleCastAll(transform.position, 64, Vector2.zero, 0);
         foreach (RaycastHit2D result in results) {
             Flammable flammable = result.collider.gameObject.GetComponent<Flammable>();
             if (flammable) {
