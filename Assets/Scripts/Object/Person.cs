@@ -34,19 +34,13 @@ public class Person : MonoBehaviour {
         StartCoroutine(RunRoutine());
     }
 
-    public void WaitForPickup() {
-        state = State.WaitingForPickup;
-        collider.enabled = false;
+    public void PickupAfter(float delay) {
+        StartCoroutine(PickupRoutine(delay));
     }
 
     void FixedUpdate() {
-        switch(state) {
-            case State.Running:
-                body.AddForce(MathUtils.PolarToCartesian(angle, 40));
-                break;
-            case State.WaitingForPickup:
-                body.AddForce(MathUtils.PolarToCartesian(angle, 5));
-                break;
+        if (state == State.Running) {
+            body.AddForce(MathUtils.PolarToCartesian(angle, 40));
         }
     }
 
@@ -60,16 +54,19 @@ public class Person : MonoBehaviour {
 
     IEnumerator RunRoutine() {
         while (true) {
-            switch(state) {
-                case State.Running:
-                    yield return new WaitForSeconds(1 + Random.value);
-                    angle = angle + Random.Range(-45, 45);
-                    break;
-                case State.WaitingForPickup:
-                    yield return null;
-                    angle = angle + 1f;
-                    break;
+            if (state == State.Running) {
+                angle = angle + Random.Range(-45, 45);
+                yield return new WaitForSeconds(1 + Random.value);
+            } else {
+                yield return null;
             }
         }
+    }
+
+    IEnumerator PickupRoutine(float delay) {
+        state = State.WaitingForPickup;
+        collider.enabled = false;
+        yield return new WaitForSeconds(delay);
+        Remove();
     }
 }
