@@ -40,6 +40,7 @@ public class Car : MonoBehaviour {
         if (hasPerson) {
             hasPerson = false;
             state = State.Stop;
+            spriteRenderer.color = Color.grey;
             Instantiate(personPrefab, transform.position, Quaternion.identity, transform.parent);
         }
     }
@@ -53,6 +54,7 @@ public class Car : MonoBehaviour {
         Instantiate(explosionPrefab, transform.position, Quaternion.identity, transform.parent);
         state = State.Dead;
         spriteRenderer.sprite = ashSprite;
+        spriteRenderer.color = Color.white;
     }
 
     public bool IsMoving() {
