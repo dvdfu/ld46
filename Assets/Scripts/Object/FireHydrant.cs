@@ -5,6 +5,8 @@ using UnityEngine;
 public class FireHydrant : MonoBehaviour {
     [SerializeField] PlayerData playerData;
     [SerializeField] LineRenderer hose;
+    [SerializeField] AudioClip startSound;
+    [SerializeField] AudioClip endSound;
 
     Player player = null;
 
@@ -29,12 +31,14 @@ public class FireHydrant : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D collider) {
         if (collider.GetComponent<Player>()) {
             player = collider.GetComponent<Player>();
+            SoundManager.Play(startSound);
         }
     }
 
     void OnTriggerExit2D(Collider2D collider) {
         if (collider.GetComponent<Player>()) {
             player = null;
+            SoundManager.Play(endSound);
         }
     }
 }

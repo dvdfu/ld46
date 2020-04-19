@@ -192,6 +192,7 @@ MonoBehaviour:
   body: {fileID: 290704002546281387}
   sprite8Directional: {fileID: 7119478296476459921}
   collider: {fileID: 2021657032008242866}
+  rescueSound: {fileID: 8300000, guid: cf8deb3fd1c5941948f9628fda93b214, type: 3}
 --- !u!1 &2990857214289835956
 GameObject:
   m_ObjectHideFlags: 0

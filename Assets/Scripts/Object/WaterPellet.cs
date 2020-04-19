@@ -6,6 +6,7 @@ public class WaterPellet : MonoBehaviour {
     [SerializeField] GameObject waterSplashPrefab;
     [SerializeField] GameObject puddlePrefab;
     [SerializeField] Rigidbody2D body;
+    [SerializeField] AudioClip waterHitSound;
 
     public void Shoot(float angle) {
         angle += (Random.value - 0.5f) / 3;
@@ -24,6 +25,7 @@ public class WaterPellet : MonoBehaviour {
         }
         if (collider.gameObject.GetComponent<Flammable>()) {
             Instantiate(waterSplashPrefab, transform.position, Quaternion.identity, transform.parent);
+            SoundManager.Play(waterHitSound);
             Destroy(gameObject);
         }
     }

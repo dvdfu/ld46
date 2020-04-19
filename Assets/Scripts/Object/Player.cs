@@ -23,6 +23,8 @@ public class Player : MonoBehaviour {
     [SerializeField] GameObject personPrefab;
     [SerializeField] Rigidbody2D body;
     [SerializeField] Transform helicopter;
+    [SerializeField] AudioClip waterSound;
+    [SerializeField] AudioClip thudSound;
 
     public void RescuePeople() {
         for (int i = 0; i < playerData.people; i++) {
@@ -73,6 +75,7 @@ public class Player : MonoBehaviour {
                     WaterPellet waterPellet = Instantiate(waterPelletPrefab, transform.position + Vector3.up * 20, Quaternion.identity, transform.parent).GetComponent<WaterPellet>();
                     waterPellet.Shoot(angle);
                     playerData.DepleteWater();
+                    SoundManager.Play(waterSound);
                 }
             }
             yield return new WaitForSeconds(WATER_SHOOT_INTERVAL);
@@ -89,6 +92,7 @@ public class Player : MonoBehaviour {
         }
         // Moving fast enough
         if (body.velocity.sqrMagnitude > 3000) {
+            SoundManager.Play(thudSound);
             Instantiate(collisionPrefab, collision.GetContact(0).point, Quaternion.identity, transform.parent);
             SpriteSquish spriteSquish = other.GetComponent<SpriteSquish>();
             if (spriteSquish) {

@@ -239,6 +239,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 1539f56282a3a4afe9708dc71d2950e6, type: 2}
   hose: {fileID: 2045842110657857399}
+  startSound: {fileID: 8300000, guid: 85a7628cede4648e7936f10c91948353, type: 3}
+  endSound: {fileID: 8300000, guid: bb88965781ae1411ab7af89fb864582c, type: 3}
 --- !u!114 &8071172796912632212
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -160,10 +160,18 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  extinguishEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   fireDamage: 2
+  steamPrefab: {fileID: 0}
   fire: {fileID: 1353034537160954296}
   smoke: {fileID: 5884771846938573775}
   mortal: {fileID: 3473657901759617885}
+  flameSound: {fileID: 8300000, guid: 4aead3a41c5fe4067a90c064fbdae93c, type: 3}
+  extinguishSound: {fileID: 8300000, guid: 1b88a4a675fdb401e923caf8a61e54fd, type: 3}
 --- !u!114 &813441153562910009
 MonoBehaviour:
   m_ObjectHideFlags: 0

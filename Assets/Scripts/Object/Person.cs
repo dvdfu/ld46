@@ -9,6 +9,7 @@ public class Person : MonoBehaviour {
     [SerializeField] Rigidbody2D body;
     [SerializeField] Sprite8Directional sprite8Directional;
     [SerializeField] CircleCollider2D collider;
+    [SerializeField] AudioClip rescueSound;
 
     float angle;
 
@@ -67,6 +68,7 @@ public class Person : MonoBehaviour {
         state = State.WaitingForPickup;
         collider.enabled = false;
         yield return new WaitForSeconds(delay);
+        SoundManager.Play(rescueSound);
         Remove();
     }
 }
