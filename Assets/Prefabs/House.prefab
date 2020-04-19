@@ -347,6 +347,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   fireDamage: 2
+  steamPrefab: {fileID: 5949332143176750326, guid: 798195f9152604aa79655df45dd1ea6d,
+    type: 3}
   fire: {fileID: 2597089009913971329}
   smoke: {fileID: 7450836005865662710}
   mortal: {fileID: 502343201625098340}

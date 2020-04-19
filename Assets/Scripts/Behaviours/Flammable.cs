@@ -8,6 +8,7 @@ public class Flammable : MonoBehaviour {
     public UnityEvent extinguishEvent = new UnityEvent();
 
     [SerializeField] float fireDamage = 30; // Damage per second
+    [SerializeField] GameObject steamPrefab;
     [SerializeField] ParticleSystem fire;
     [SerializeField] ParticleSystem smoke;
     [SerializeField] Mortal mortal;
@@ -30,6 +31,7 @@ public class Flammable : MonoBehaviour {
                 fire.Stop();
                 smoke.Stop();
                 extinguishEvent.Invoke();
+                Instantiate(steamPrefab, transform.position + Vector3.up * 8, Quaternion.identity, transform.parent);
             }
         }
     }
