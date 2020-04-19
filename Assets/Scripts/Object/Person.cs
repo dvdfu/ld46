@@ -7,8 +7,15 @@ public class Person : MonoBehaviour {
     [SerializeField] GameObject poofPrefab;
     [SerializeField] Rigidbody2D body;
     [SerializeField] Sprite8Directional sprite8Directional;
+    [SerializeField] CircleCollider2D collider;
 
     float angle;
+
+    enum State {
+        Running,
+        WaitingForPickup
+    }
+    State state = State.Running;
 
     public void OnDie() {
         Instantiate(tombstonePrefab, transform.position, Quaternion.identity, transform.parent);
@@ -25,8 +32,20 @@ public class Person : MonoBehaviour {
         StartCoroutine(RunRoutine());
     }
 
+    public void WaitForPickup() {
+        state = State.WaitingForPickup;
+        collider.enabled = false;
+    }
+
     void FixedUpdate() {
-        body.AddForce(MathUtils.PolarToCartesian(angle, 40));
+        switch(state) {
+            case State.Running:
+                body.AddForce(MathUtils.PolarToCartesian(angle, 40));
+                break;
+            case State.WaitingForPickup:
+                body.AddForce(MathUtils.PolarToCartesian(angle, 20));
+                break;
+        }
     }
 
     void LateUpdate() {
@@ -39,8 +58,16 @@ public class Person : MonoBehaviour {
 
     IEnumerator RunRoutine() {
         while (true) {
-            yield return new WaitForSeconds(1 + Random.value);
-            angle = angle + Random.Range(-45, 45);
+            switch(state) {
+                case State.Running:
+                    yield return new WaitForSeconds(1 + Random.value);
+                    angle = angle + Random.Range(-45, 45);
+                    break;
+                case State.WaitingForPickup:
+                    yield return null;
+                    angle = angle + 1f;
+                    break;
+            }
         }
     }
 }

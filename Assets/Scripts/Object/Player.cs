@@ -24,6 +24,8 @@ public class Player : MonoBehaviour {
     [SerializeField] RectTransform waterFill;
     [SerializeField] RectTransform peopleContainer;
     [SerializeField] Text personCount;
+    [SerializeField] GameObject personPrefab;
+    [SerializeField] Transform helicopterPos;
 
     public void RefillWater(int amount = 1) {
         if (waterAmmo + amount < WATER_AMMO_MAX) {
@@ -34,6 +36,16 @@ public class Player : MonoBehaviour {
     }
 
     public void RescuePeople() {
+        for (int i = 0; i < people; i++) {
+            GameObject go = Instantiate(personPrefab, new Vector3(helicopterPos.position.x, helicopterPos.position.y), Quaternion.identity);
+            Rigidbody2D body = go.GetComponent<Rigidbody2D>();
+            body.velocity = new Vector2(Random.Range(0, 50f), Random.Range(0, 50f));
+            Person p = go.GetComponent<Person>();
+            p.WaitForPickup();
+            Expirable e = go.AddComponent<Expirable>();
+            e.SetDuration(Random.Range(1f, 2f));
+        }
+
         people = 0;
         peopleContainer.gameObject.SetActive(false);
     }
@@ -63,6 +75,10 @@ public class Player : MonoBehaviour {
         if (collision.gameObject.CompareTag("Fire")) {
             DepleteWater(WATER_DEPLETION_IN_FIRE);
         }
+    }
+
+    public int GetPeople() {
+        return people;
     }
 
     float GetSpeed() {
