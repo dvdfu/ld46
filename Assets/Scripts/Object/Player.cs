@@ -33,6 +33,7 @@ public class Player : MonoBehaviour {
     [SerializeField] Transform helicopter;
     [SerializeField] AudioClip waterSound;
     [SerializeField] AudioClip thudSound;
+    [SerializeField] AudioClip pickupSound;
 
     public void RescuePeople() {
         for (int i = 0; i < playerData.people; i++) {
@@ -126,6 +127,7 @@ public class Player : MonoBehaviour {
         if (person) {
             playerData.AddPerson();
             person.Remove();
+            SoundManager.Play(pickupSound);
             return;
         }
         // Moving fast enough

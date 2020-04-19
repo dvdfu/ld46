@@ -28,17 +28,18 @@ public class FireHydrant : MonoBehaviour {
         hose.SetPosition(1, target);
     }
 
-    void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.GetComponent<Player>()) {
-            player = collider.GetComponent<Player>();
-            SoundManager.Play(startSound);
+    void OnTriggerStay2D(Collider2D collider) {
+        if (player == null && collider.GetComponent<Player>()) {
+            if (playerData.water < PlayerData.WATER_MAX) {
+                player = collider.GetComponent<Player>();
+                SoundManager.Play(startSound);
+            }
         }
     }
 
     void OnTriggerExit2D(Collider2D collider) {
         if (collider.GetComponent<Player>()) {
             player = null;
-            SoundManager.Play(endSound);
         }
     }
 }
