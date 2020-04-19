@@ -14,7 +14,6 @@ public class Car : MonoBehaviour {
     [SerializeField] GameObject explosionPrefab;
 
     Vector3 destination;
-    Vector2 moveDirection;
     Transform target;
 
     bool canChase = false;
@@ -63,6 +62,15 @@ public class Car : MonoBehaviour {
             Mortal mortal = collision.gameObject.GetComponent<Mortal>();
             if (mortal) {
                 mortal.Damage(gameObject.tag, CAR_CRASH_DAMAGE);
+            }
+        }
+
+        Player player = collision.gameObject.GetComponent<Player>();
+        if (player) Debug.Log("player is " + player.IsDashing());
+        if (player && player.IsDashing()) {
+            Mortal mortal = GetComponent<Mortal>();
+            if (mortal) {
+                mortal.Die();
             }
         }
     }
