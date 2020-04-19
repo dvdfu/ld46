@@ -96,22 +96,20 @@ public class Car : MonoBehaviour {
     Vector2 GetMoveDirection() {
         switch(state) {
             case State.Normal:
-                Vector2 dist = destination - transform.position;
-                if (dist.magnitude < 10f) {
-                    Destroy(gameObject);
-                }
-                
-                if ((target.position - transform.position).magnitude < 50f && canChase) {
-                    state = State.Chase;
-                }
+            Vector2 dist = destination - transform.position;
+            if (dist.magnitude < 10f) {
+                Destroy(gameObject);
+            }
+            if ((target.position - transform.position).magnitude < 50f && canChase) {
+                state = State.Chase;
+            }
+            return dist.normalized;
 
-                return dist.normalized;
             case State.Chase:
-                return (target.position - transform.position).normalized;
-        }
+            return (target.position - transform.position).normalized;
 
-        // Switch should be exhaustive
-        Debug.Assert(false);
-        return Vector2.zero;
+            default:
+            return Vector2.zero;
+        }
     }
 }
