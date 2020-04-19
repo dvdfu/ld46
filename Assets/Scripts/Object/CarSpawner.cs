@@ -15,7 +15,7 @@ public class CarSpawner : MonoBehaviour {
     }
 
     float GetSpawnDelay() {
-        return Mathf.Lerp(2.5f, 1, carsSpawned / 70f);
+        return Mathf.Lerp(2, 0.8f, carsSpawned / 120f);
     }
 
     IEnumerator SpawnRoutine() {

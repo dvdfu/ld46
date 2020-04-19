@@ -6,6 +6,7 @@ public class Car : MonoBehaviour {
     const float MAX_SPEED = 500;
     const int CAR_CRASH_DAMAGE = 3;
     const int CRASH_SPEED_THRESHOLD = 7000;
+    const float CHASE_CHANGE = 0.12f;
 
     [SerializeField] SessionData sessionData;
     [SerializeField] Sprite8Directional sprite8Directional;
@@ -66,7 +67,7 @@ public class Car : MonoBehaviour {
 
     void Start() {
         state = State.Normal;
-        canChase = Random.Range(0, 50) == 0;
+        canChase = Random.value < CHASE_CHANGE;
     }
 
     void FixedUpdate() {
