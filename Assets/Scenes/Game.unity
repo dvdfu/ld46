@@ -709,34 +709,34 @@ MonoBehaviour:
   spawningAreas:
   - serializedVersion: 2
     x: -360
-    y: -165
+    y: -176
     width: 152
-    height: 105
+    height: 128
   - serializedVersion: 2
     x: -112
-    y: -165
+    y: -176
     width: 224
-    height: 105
+    height: 128
   - serializedVersion: 2
     x: -360
-    y: 60
+    y: 48
     width: 152
-    height: 105
+    height: 128
   - serializedVersion: 2
     x: -112
-    y: 60
+    y: 48
     width: 224
-    height: 105
+    height: 128
   - serializedVersion: 2
     x: 208
-    y: 60
+    y: 48
     width: 152
-    height: 105
+    height: 128
   - serializedVersion: 2
     x: 208
-    y: -165
+    y: -176
     width: 152
-    height: 105
+    height: 128
   spawningRate: 5
   buildings:
   - {fileID: 502343201625098342, guid: 76fcf7d6c118046539c80a42008f11c6, type: 3}
