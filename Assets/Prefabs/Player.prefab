@@ -120,6 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9edeac2070e8759478df184975a2fe8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dashCooldown: 3
+  dashPower: 25
   sessionData: {fileID: 11400000, guid: 4003d406c92dc4d399f5a227b80b003d, type: 2}
   playerData: {fileID: 11400000, guid: 1539f56282a3a4afe9708dc71d2950e6, type: 2}
   sprite8Directional: {fileID: 8570948532413824447}

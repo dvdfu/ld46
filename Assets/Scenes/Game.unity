@@ -217,6 +217,16 @@ PrefabInstance:
       propertyPath: helicopter
       value: 
       objectReference: {fileID: 464411481}
+    - target: {fileID: 4507226723611971271, guid: f6caa51fdc56bde4896df1eb4d320a97,
+        type: 3}
+      propertyPath: dashCooldown
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4507226723611971271, guid: f6caa51fdc56bde4896df1eb4d320a97,
+        type: 3}
+      propertyPath: dashPower
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6caa51fdc56bde4896df1eb4d320a97, type: 3}
 --- !u!224 &294873856 stripped

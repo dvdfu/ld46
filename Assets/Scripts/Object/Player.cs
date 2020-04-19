@@ -13,6 +13,10 @@ public class Player : MonoBehaviour {
     // Member vars
     Vector2 moveDirection = Vector2.zero;
     Vector2 speed = Vector2.zero;
+    float lastDashed = 0;
+    Vector2 lastMoveDirection;
+    [SerializeField] float dashCooldown = 3f;
+    [SerializeField] float dashPower = 25f;
 
     // Unity vars
     [SerializeField] SessionData sessionData;
@@ -46,7 +50,17 @@ public class Player : MonoBehaviour {
 
     void FixedUpdate() {
         moveDirection = new Vector2(Input.GetAxisRaw("PlayerHorizontal"), Input.GetAxisRaw("PlayerVertical"));
+        if (moveDirection != Vector2.zero) {
+            lastMoveDirection = moveDirection;
+        }
+
         body.AddForce(moveDirection.normalized * GetSpeed());
+
+        float currentTime = Time.time;
+        if (Input.GetAxisRaw("PlayerDash") > 0 && currentTime - lastDashed >= dashCooldown) {
+            lastDashed = currentTime;
+            body.AddForce(lastMoveDirection.normalized * MAX_SPEED * dashPower);
+        }
     }
 
     void LateUpdate() {
