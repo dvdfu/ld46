@@ -27,6 +27,10 @@ public class Flammable : MonoBehaviour {
         }
     }
 
+    public bool IsOnFire() {
+        return fireHealth > 0;
+    }
+
     public void Extinguish() {
         if (IsOnFire()) {
             fireHealth--;
@@ -42,10 +46,6 @@ public class Flammable : MonoBehaviour {
 
     void Start() {
         StartCoroutine(SpawnDebrisRoutine());
-    }
-
-    bool IsOnFire() {
-        return fireHealth > 0;
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
