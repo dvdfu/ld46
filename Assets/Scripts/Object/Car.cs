@@ -11,6 +11,7 @@ public class Car : MonoBehaviour {
     [SerializeField] Sprite8Directional sprite8Directional;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Flammable flammable;
+    [SerializeField] Mortal mortal;
     [SerializeField] Rigidbody2D body;
     [SerializeField] GameObject explosionPrefab;
     [SerializeField] GameObject tombstonePrefab;
@@ -51,10 +52,12 @@ public class Car : MonoBehaviour {
             sessionData.peopleDied++;
             Instantiate(tombstonePrefab, transform.position, Quaternion.identity, transform.parent);
         }
-        Instantiate(explosionPrefab, transform.position, Quaternion.identity, transform.parent);
-        state = State.Dead;
+        if (flammable.IsOnFire()) {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity, transform.parent);
+        }
         spriteRenderer.sprite = ashSprite;
         spriteRenderer.color = Color.white;
+        state = State.Dead;
     }
 
     public bool IsMoving() {
@@ -67,8 +70,19 @@ public class Car : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if (state != State.Stop) {
+        switch (state) {
+            case State.Dead:
+            break;
+
+            case State.Stop:
+            if (!flammable.IsOnFire()) {
+                mortal.Damage(gameObject.tag, 5);
+            }
+            break;
+
+            default:
             body.AddForce(GetMoveDirection().normalized * MAX_SPEED);
+            break;
         }
     }
 

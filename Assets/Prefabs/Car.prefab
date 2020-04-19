@@ -130,6 +130,7 @@ MonoBehaviour:
   sprite8Directional: {fileID: 7119478296476459921}
   spriteRenderer: {fileID: 947986557413147634}
   flammable: {fileID: 326606381187368472}
+  mortal: {fileID: 328462969791798128}
   body: {fileID: 290704002546281387}
   explosionPrefab: {fileID: 3036107444730739010, guid: 115ddc7a0dcbd42109a497054a4ece9b,
     type: 3}
