@@ -3,15 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildingSpawner : MonoBehaviour {
-    [SerializeField]
-    List<Rect> spawningAreas;
-    // Seconds between spawning buildings
-    [SerializeField]
-    float spawningRate = 5;
-    [SerializeField]
-    int initialBuildings = 10;
-    [SerializeField]
-    List<GameObject> buildings;
+    [SerializeField] List<Rect> spawningAreas;
+    [SerializeField] float spawningRate = 5; // Seconds between spawning buildings
+    [SerializeField] List<GameObject> buildings;
+    [SerializeField] int initialBuildings = 10;
 
     float lastSpawnedAt = 0;
 
@@ -31,9 +26,10 @@ public class BuildingSpawner : MonoBehaviour {
     void SpawnBuilding() {
         Rect spawningArea = spawningAreas[Random.Range(0, spawningAreas.Count)];
         Vector2 spawnPoint = new Vector2(Random.Range(spawningArea.xMin, spawningArea.xMax), Random.Range(spawningArea.yMin, spawningArea.yMax));
-
+        spawnPoint.x = Mathf.Floor(spawnPoint.x / 16) * 16 + 8;
+        spawnPoint.y = Mathf.Floor(spawnPoint.y / 16) * 16;
         int buildingType = Random.Range(0, buildings.Count);
-        Instantiate(buildings[buildingType], spawnPoint, Quaternion.identity);
+        Instantiate(buildings[buildingType], spawnPoint, Quaternion.identity, transform);
     }
 
     void OnDrawGizmos() {
@@ -44,6 +40,5 @@ public class BuildingSpawner : MonoBehaviour {
             Gizmos.DrawLine(new Vector3(area.xMax, area.yMin), new Vector3(area.xMax, area.yMax));
             Gizmos.DrawLine(new Vector3(area.xMin, area.yMax), new Vector3(area.xMax, area.yMax));
         }
-        
     }
 }

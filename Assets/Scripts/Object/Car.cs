@@ -5,7 +5,9 @@ using UnityEngine;
 public class Car : MonoBehaviour {
     const float MAX_SPEED = 500;
     const int CAR_CRASH_DAMAGE = 3;
-    const int CRASH_SPEED_THRESHOLD = 7000;
+    const int CRASH_SPEED_THRESHOLD = 5000;
+    const float CHASE_CHANCE = 0.15f;
+    const float PROPANE_CHANCE = 0.1f;
 
     [SerializeField] SessionData sessionData;
     [SerializeField] Sprite8Directional sprite8Directional;
@@ -16,6 +18,7 @@ public class Car : MonoBehaviour {
     [SerializeField] GameObject explosionPrefab;
     [SerializeField] GameObject tombstonePrefab;
     [SerializeField] GameObject personPrefab;
+    [SerializeField] GameObject propanePrefab;
     [SerializeField] Sprite ashSprite;
 
     Vector3 destination;
@@ -66,7 +69,11 @@ public class Car : MonoBehaviour {
 
     void Start() {
         state = State.Normal;
-        canChase = Random.Range(0, 50) == 0;
+        canChase = Random.value < CHASE_CHANCE;
+        if (canChase) {
+            spriteRenderer.color = new Color(1, 0.8f, 0.8f);
+        }
+        StartCoroutine(PropaneRoutine());
     }
 
     void FixedUpdate() {
@@ -138,6 +145,14 @@ public class Car : MonoBehaviour {
 
             default:
             return Vector2.zero;
+        }
+    }
+
+    IEnumerator PropaneRoutine() {
+        bool hasPropane = Random.value < PROPANE_CHANCE;
+        yield return new WaitForSeconds(3);
+        if (hasPropane) {
+            Instantiate(propanePrefab, transform.position, Quaternion.identity, transform.parent);
         }
     }
 }

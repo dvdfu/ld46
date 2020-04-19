@@ -25,7 +25,7 @@ public class WaterPellet : MonoBehaviour {
             Instantiate(waterSplashPrefab, transform.position, Quaternion.identity, transform.parent);
             SoundManager.Play(waterHitSound);
             Destroy(gameObject);
-        } else if (collider.gameObject.GetComponent<Car>()) {
+        } else if (collider.gameObject.GetComponent<Car>() || collider.gameObject.GetComponent<Propane>()) {
             collider.gameObject.GetComponent<Rigidbody2D>().velocity = body.velocity / 2;
         }
     }

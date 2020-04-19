@@ -138,6 +138,8 @@ MonoBehaviour:
     type: 3}
   personPrefab: {fileID: 2956700562057853038, guid: 742fbc8f3fff24d8f887ccf884e7753e,
     type: 3}
+  propanePrefab: {fileID: 2217677653605185411, guid: ca1daf16642a742c29f16804a360de87,
+    type: 3}
   ashSprite: {fileID: 21300000, guid: 32996896b8f004ba78a1b658c0edf2ca, type: 3}
 --- !u!114 &328462969791798128
 MonoBehaviour:
