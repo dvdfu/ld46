@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
     const float WATER_SHOOT_INTERVAL = 0.05f;
     const int WATER_AMMO_MAX = 200;
     const int WATER_DEPLETION_IN_FIRE = 10;
+    const int CAR_CRASH_DAMAGE = 40;
 
     // Member vars
     Vector2 moveDirection = Vector2.zero;
@@ -87,14 +88,14 @@ public class Player : MonoBehaviour {
             return;
         }
         // Moving fast enough
-        if (body.velocity.sqrMagnitude > 10000) {
+        if (body.velocity.sqrMagnitude > 3000) {
             Instantiate(collisionPrefab, collision.GetContact(0).point, Quaternion.identity, transform.parent);
             SpriteSquish spriteSquish = other.GetComponent<SpriteSquish>();
             if (spriteSquish) {
                 spriteSquish.SquishThin();
             }
             if (other.GetComponent<Car>()) {
-                other.GetComponent<Mortal>().Damage(gameObject.tag, 40);
+                other.GetComponent<Mortal>().Damage(gameObject.tag, CAR_CRASH_DAMAGE);
             }
         }
     }

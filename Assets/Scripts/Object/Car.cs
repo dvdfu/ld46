@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Car : MonoBehaviour {
     const float MAX_SPEED = 500;
+    const int CAR_CRASH_DAMAGE = 20;
 
     [SerializeField] SessionData sessionData;
     [SerializeField] Sprite8Directional sprite8Directional;
@@ -58,11 +59,10 @@ public class Car : MonoBehaviour {
                 this.flammable.SetOnFire();
                 flammable.SetOnFire();
             }
-            
         }
         Mortal mortal = collision.gameObject.GetComponent<Mortal>();
         if (mortal) {
-            mortal.Damage(gameObject.tag, 10);
+            mortal.Damage(gameObject.tag, CAR_CRASH_DAMAGE);
         }
     }
 

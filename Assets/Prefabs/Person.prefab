@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f79778cf9afb3f429f077a34cd2114a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 20
   alive: 1
   coll: {fileID: 2021657032008242866}
   dieEvent:
