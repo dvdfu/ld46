@@ -8,12 +8,12 @@ public class Car : MonoBehaviour {
     [SerializeField] SessionData sessionData;
     [SerializeField] Sprite8Directional sprite8Directional;
     [SerializeField] Flammable flammable;
-    [SerializeField] Transform target;
     [SerializeField] Rigidbody2D body;
     [SerializeField] GameObject explosionPrefab;
 
     Vector3 destination;
     Vector2 moveDirection;
+    Transform target;
 
     bool canChase = false;
 
