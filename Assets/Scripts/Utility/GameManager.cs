@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     [SerializeField] SessionData sessionData;
+    [SerializeField] PlayerData playerData;
 
     void Start() {
         Application.targetFrameRate = 60;
         sessionData.Reset();
+        playerData.Reset();
     }
 
     void Update() {

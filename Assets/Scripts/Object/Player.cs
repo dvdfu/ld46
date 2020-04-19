@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
     // Consts
@@ -13,51 +12,36 @@ public class Player : MonoBehaviour {
     // Member vars
     Vector2 moveDirection = Vector2.zero;
     Vector2 speed = Vector2.zero;
-    int waterAmmo = WATER_AMMO_MAX;
-    int people = 0;
 
     // Unity vars
     [SerializeField] SessionData sessionData;
+    [SerializeField] PlayerData playerData;
     [SerializeField] Sprite8Directional sprite8Directional;
     [SerializeField] GameObject waterPelletPrefab;
     [SerializeField] GameObject collisionPrefab;
-    [SerializeField] Rigidbody2D body;
-    [SerializeField] RectTransform waterFill;
-    [SerializeField] RectTransform peopleContainer;
-    [SerializeField] Text personCount;
     [SerializeField] GameObject personPrefab;
+    [SerializeField] Rigidbody2D body;
     [SerializeField] Transform helicopter;
 
-    public void RefillWater(int amount = 1) {
-        if (waterAmmo + amount < WATER_AMMO_MAX) {
-            waterAmmo += amount;
-        } else {
-            waterAmmo = WATER_AMMO_MAX;
-        }
-    }
-
     public void RescuePeople() {
-        for (int i = 0; i < people; i++) {
-            Vector3 offset = MathUtils.PolarToCartesian(360f * i / people, 16);
+        for (int i = 0; i < playerData.people; i++) {
+            float progress = 1f * i / playerData.people;
+            Vector3 offset = MathUtils.PolarToCartesian(360 * progress, 16);
             GameObject go = Instantiate(personPrefab, helicopter.position + offset, Quaternion.identity, transform.parent);
             go.GetComponent<Person>().WaitForPickup();
-            go.AddComponent<Expirable>().SetDuration(1 + 1f * i / people);
+            go.AddComponent<Expirable>().SetDuration(1 + progress);
         }
 
-        sessionData.peopleSaved += people;
-        people = 0;
-        peopleContainer.gameObject.SetActive(false);
-    }
-
-    void DepleteWater(int amount = 1) {
-        if (waterAmmo > 0) {
-            waterAmmo -= amount;
-            sessionData.waterUsed += amount;
-        }
+        sessionData.peopleSaved += playerData.people;
+        playerData.UnloadPeople();
     }
 
     void Start() {
         StartCoroutine(ShootWaterRoutine());
+    }
+
+    void Update() {
+        playerData.position = body.position;
     }
 
     void FixedUpdate() {
@@ -66,36 +50,29 @@ public class Player : MonoBehaviour {
     }
 
     void LateUpdate() {
-        waterFill.sizeDelta = new Vector2(64f * waterAmmo / WATER_AMMO_MAX, 8);
         sprite8Directional.SetAngle(MathUtils.VectorToAngle(body.velocity));
-        peopleContainer.anchoredPosition = transform.position - Camera.main.transform.position + new Vector3(24, 40);
     }
 
     void OnCollisionStay2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Fire")) {
-            DepleteWater(WATER_DEPLETION_IN_FIRE);
+            playerData.DepleteWater(WATER_DEPLETION_IN_FIRE);
         }
     }
 
-    public int GetPeople() {
-        return people;
-    }
-
     float GetSpeed() {
-        // 5 people = slow down in half
-        return (5f / (5 + people)) * MAX_SPEED;
+        return (5f / (5 + playerData.people)) * MAX_SPEED;
     }
 
     IEnumerator ShootWaterRoutine() {
         while (true) {
-            if (waterAmmo > 0) {
+            if (playerData.water > 0) {
                 float x = Input.GetAxisRaw("WaterHorizontal");
                 float y = Input.GetAxisRaw("WaterVertical");
                 if (x != 0 || y != 0) {
                     float angle = Mathf.Atan2(y, x);
                     WaterPellet waterPellet = Instantiate(waterPelletPrefab, transform.position + Vector3.up * 20, Quaternion.identity, transform.parent).GetComponent<WaterPellet>();
                     waterPellet.Shoot(angle);
-                    DepleteWater();
+                    playerData.DepleteWater();
                 }
             }
             yield return new WaitForSeconds(WATER_SHOOT_INTERVAL);
@@ -106,11 +83,8 @@ public class Player : MonoBehaviour {
         GameObject other = collision.gameObject;
         Person person = other.GetComponent<Person>();
         if (person) {
+            playerData.AddPerson();
             person.Remove();
-            people++;
-            peopleContainer.gameObject.SetActive(true);
-            peopleContainer.GetComponent<SpriteSquish>().SquishThin();
-            personCount.text = people.ToString();
             return;
         }
         // Moving fast enough
