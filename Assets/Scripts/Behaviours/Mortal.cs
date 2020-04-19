@@ -24,16 +24,19 @@ public class Mortal : MonoBehaviour {
 
         health -= amount;
         if (health <= 0.0f && alive) {
-            alive = false;
-            dieEvent.Invoke();
-
-            if (coll != null) {
-                coll.enabled = false;
-            }
-
+            Die();
             return true;
         }
         return false;
+    }
+
+    public void Die() {
+        alive = false;
+        dieEvent.Invoke();
+
+        if (coll != null) {
+            coll.enabled = false;
+        }
     }
 
     public bool GetAlive() {
