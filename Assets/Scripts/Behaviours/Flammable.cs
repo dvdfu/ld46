@@ -68,7 +68,9 @@ public class Flammable : MonoBehaviour {
                 yield return null;
             }
             yield return new WaitForSeconds(Random.Range(2, 5));
-            Instantiate(debrisPrefab, transform.position + Vector3.up * 20, Quaternion.identity, transform.parent);
+            if (IsOnFire()) {
+                Instantiate(debrisPrefab, transform.position + Vector3.up * 20, Quaternion.identity, transform.parent);
+            }
         }
     }
 }
