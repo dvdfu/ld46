@@ -127,6 +127,11 @@ MonoBehaviour:
     type: 3}
   body: {fileID: 1168576685091943813}
   waterFill: {fileID: 0}
+  peopleContainer: {fileID: 0}
+  personCount: {fileID: 0}
+  personPrefab: {fileID: 2956700562057853038, guid: 742fbc8f3fff24d8f887ccf884e7753e,
+    type: 3}
+  helicopterPos: {fileID: 0}
 --- !u!58 &590263822564903068
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -158,6 +158,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 689a400d1c26c45cfa0c69a44261255b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  semiMajorAxis: 200
+  semiMinorAxis: 100
+  speed: 0.2
+  helicopter: {fileID: 7592637984322561217}
+  helicopterBlades: {fileID: 2671614822023974333}
 --- !u!1 &3854751185262394218
 GameObject:
   m_ObjectHideFlags: 0
