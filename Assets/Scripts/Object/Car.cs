@@ -16,11 +16,13 @@ public class Car : MonoBehaviour {
     [SerializeField] CastsShadow castsShadow;
     [SerializeField] Flammable flammable;
     [SerializeField] Mortal mortal;
+    [SerializeField] Collider2D collider;
     [SerializeField] Rigidbody2D body;
     [SerializeField] GameObject explosionPrefab;
     [SerializeField] GameObject tombstonePrefab;
     [SerializeField] GameObject personPrefab;
     [SerializeField] GameObject propanePrefab;
+    [SerializeField] GameObject bulletPrefab;
     [SerializeField] Sprite ashSprite;
 
     Vector3 destination;
@@ -28,6 +30,7 @@ public class Car : MonoBehaviour {
 
     bool hasPerson = true;
     bool canChase = false;
+    bool canShoot = true;
 
     enum State {
         Normal,
@@ -92,6 +95,10 @@ public class Car : MonoBehaviour {
             body.AddForce(GetMoveDirection().normalized * MAX_SPEED);
             break;
         }
+
+        if (canShoot && (target.position - transform.position).magnitude < CHASE_DISTANCE) {
+            StartCoroutine(ShootRoutine(target));
+        }
     }
 
     void LateUpdate() {
@@ -154,6 +161,21 @@ public class Car : MonoBehaviour {
         yield return new WaitForSeconds(3);
         if (hasPropane) {
             Instantiate(propanePrefab, transform.position, Quaternion.identity, transform.parent);
+        }
+    }
+
+    IEnumerator ShootRoutine(Transform shotTarget) {
+        canShoot = false;
+        int shots = 8;
+        float shotDelay = 0.1f;
+        float spread = 10;
+        for (int i = 0; i < shots; i++) {
+            Vector2 delta = shotTarget.position - transform.position;
+            float angle = MathUtils.VectorToAngle(delta);
+            angle += Random.Range(-spread / 2, spread / 2);
+            Bullet bullet = Instantiate(bulletPrefab, transform.position + Vector3.up * 10, Quaternion.identity, transform.parent).GetComponent<Bullet>();
+            bullet.Init(collider, angle);
+            yield return new WaitForSeconds(shotDelay);
         }
     }
 }

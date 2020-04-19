@@ -132,6 +132,7 @@ MonoBehaviour:
   castsShadow: {fileID: -1407845979374823567}
   flammable: {fileID: 326606381187368472}
   mortal: {fileID: 328462969791798128}
+  collider: {fileID: 2021657032008242866}
   body: {fileID: 290704002546281387}
   explosionPrefab: {fileID: 3036107444730739010, guid: 115ddc7a0dcbd42109a497054a4ece9b,
     type: 3}
@@ -140,6 +141,8 @@ MonoBehaviour:
   personPrefab: {fileID: 2956700562057853038, guid: 742fbc8f3fff24d8f887ccf884e7753e,
     type: 3}
   propanePrefab: {fileID: 2217677653605185411, guid: ca1daf16642a742c29f16804a360de87,
+    type: 3}
+  bulletPrefab: {fileID: 4002114695973732639, guid: 4bffccd8ef9b144c28d7d68a67518566,
     type: 3}
   ashSprite: {fileID: 21300000, guid: 32996896b8f004ba78a1b658c0edf2ca, type: 3}
 --- !u!114 &328462969791798128
