@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildingSpawner : MonoBehaviour {
+    const int BUILDING_COUNT = 40;
+
     [SerializeField] List<Rect> spawningAreas;
     [SerializeField] float spawningRate = 5; // Seconds between spawning buildings
     [SerializeField] List<GameObject> buildings;
-    [SerializeField] int initialBuildings = 10;
 
     float lastSpawnedAt = 0;
 
     void Start() {
-        for (int i = 0; i < initialBuildings; i++) {
+        for (int i = 0; i < BUILDING_COUNT; i++) {
             SpawnBuilding();
         }
     }

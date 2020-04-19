@@ -7,6 +7,7 @@ public class Car : MonoBehaviour {
     const int CAR_CRASH_DAMAGE = 3;
     const int CRASH_SPEED_THRESHOLD = 5000;
     const float CHASE_CHANCE = 0.15f;
+    const float CHASE_DISTANCE = 150;
     const float PROPANE_CHANCE = 0.1f;
 
     [SerializeField] SessionData sessionData;
@@ -132,7 +133,7 @@ public class Car : MonoBehaviour {
             if (dist.magnitude < 10f) {
                 Destroy(gameObject);
             }
-            if ((target.position - transform.position).magnitude < 50f && canChase) {
+            if ((target.position - transform.position).magnitude < CHASE_DISTANCE && canChase) {
                 state = State.Chase;
             }
             return dist.normalized;
