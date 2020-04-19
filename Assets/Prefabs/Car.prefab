@@ -381,6 +381,7 @@ MonoBehaviour:
   mortal: {fileID: 328462969791798128}
   flameSound: {fileID: 8300000, guid: 4aead3a41c5fe4067a90c064fbdae93c, type: 3}
   extinguishSound: {fileID: 8300000, guid: 1b88a4a675fdb401e923caf8a61e54fd, type: 3}
+  fireHealthMax: 5
 --- !u!1001 &5276161834313444099
 PrefabInstance:
   m_ObjectHideFlags: 0

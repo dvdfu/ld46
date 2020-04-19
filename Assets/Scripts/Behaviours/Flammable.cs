@@ -14,12 +14,13 @@ public class Flammable : MonoBehaviour {
     [SerializeField] Mortal mortal;
     [SerializeField] AudioClip flameSound;
     [SerializeField] AudioClip extinguishSound;
+    [SerializeField] int fireHealthMax = 10;
 
     int fireHealth = 0;
 
     public void SetOnFire() {
         if (!IsOnFire() && mortal.IsAlive()) {
-            fireHealth = 10;
+            fireHealth = fireHealthMax;
             fire.Play();
             smoke.Play();
             igniteEvent.Invoke();
