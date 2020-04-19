@@ -237,6 +237,7 @@ MonoBehaviour:
     type: 3}
   poofPrefab: {fileID: 5949332143176750326, guid: 7b570883015c1466f95d21357f016f4c,
     type: 3}
+  collider: {fileID: 1966671736931575333}
 --- !u!114 &2437633809348235257
 MonoBehaviour:
   m_ObjectHideFlags: 0
