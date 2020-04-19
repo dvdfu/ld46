@@ -15,17 +15,23 @@ public class Flammable : MonoBehaviour {
     int fireHealth = 0;
 
     public void SetOnFire() {
-        fireHealth = 10;
-        fire.Play();
-        smoke.Play();
-        igniteEvent.Invoke();
+        if (!IsOnFire()) {
+            fireHealth = 10;
+            fire.Play();
+            smoke.Play();
+            igniteEvent.Invoke();
+        }
     }
 
     public void Extinguish() {
-        fireHealth = 0;
-        fire.Stop();
-        smoke.Stop();
-        extinguishEvent.Invoke();
+        if (IsOnFire()) {
+            fireHealth--;
+            if (fireHealth == 0) {
+                fire.Stop();
+                smoke.Stop();
+                extinguishEvent.Invoke();
+            }
+        }
     }
 
     bool IsOnFire() {
@@ -36,11 +42,7 @@ public class Flammable : MonoBehaviour {
         if (collider.gameObject.CompareTag("Fire")) {
             SetOnFire();
         } else if (collider.gameObject.CompareTag("Water")) {
-            if (IsOnFire()) {
-                fireHealth--;
-            } else {
-                Extinguish();
-            }
+            Extinguish();
         }
     }
 
