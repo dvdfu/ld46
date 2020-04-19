@@ -740,7 +740,7 @@ MonoBehaviour:
   carPrefab: {fileID: 2956700562057853038, guid: 05a13e8c2c31b4399972320d432e7767,
     type: 3}
   player: {fileID: 318175373}
-  spawnInterval: 1
+  spawnInterval: 1.5
   spawningPoints:
   - pos: {x: 300, y: 15}
     dest: {x: -300, y: 15}

@@ -14,12 +14,13 @@ public class Flammable : MonoBehaviour {
     [SerializeField] Mortal mortal;
     [SerializeField] AudioClip flameSound;
     [SerializeField] AudioClip extinguishSound;
+    [SerializeField] int fireHealthMax = 10;
 
     int fireHealth = 0;
 
     public void SetOnFire() {
-        if (!IsOnFire()) {
-            fireHealth = 10;
+        if (!IsOnFire() && mortal.IsAlive()) {
+            fireHealth = fireHealthMax;
             fire.Play();
             smoke.Play();
             igniteEvent.Invoke();
@@ -44,15 +45,18 @@ public class Flammable : MonoBehaviour {
         }
     }
 
-    void Start() {
-        StartCoroutine(SpawnDebrisRoutine());
+    void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.CompareTag("Fire")) {
+            SetOnFire();
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.gameObject.CompareTag("Fire")) {
-            SetOnFire();
-        } else if (collider.gameObject.CompareTag("Water")) {
+        if (collider.gameObject.CompareTag("Water")) {
             Extinguish();
+        }
+        if (collider.GetComponent<Flammable>() && IsOnFire()) {
+            collider.GetComponent<Flammable>().SetOnFire();
         }
     }
 
