@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
     // Consts
-    const float MAX_SPEED = 800;
+    const float MAX_SPEED = 1000;
     const float WATER_SHOOT_INTERVAL = 0.05f;
     const int WATER_AMMO_MAX = 200;
     const int WATER_DEPLETION_IN_FIRE = 10;
@@ -22,6 +22,7 @@ public class Player : MonoBehaviour {
     [SerializeField] GameObject collisionPrefab;
     [SerializeField] Rigidbody2D body;
     [SerializeField] RectTransform waterFill;
+    [SerializeField] RectTransform peopleContainer;
     [SerializeField] Text personCount;
 
     public void RefillWater(int amount = 1) {
@@ -44,18 +45,23 @@ public class Player : MonoBehaviour {
 
     void FixedUpdate() {
         moveDirection = new Vector2(Input.GetAxisRaw("PlayerHorizontal"), Input.GetAxisRaw("PlayerVertical"));
-        body.AddForce(moveDirection.normalized * MAX_SPEED);
+        body.AddForce(moveDirection.normalized * GetSpeed());
     }
 
     void LateUpdate() {
         waterFill.sizeDelta = new Vector2(64f * waterAmmo / WATER_AMMO_MAX, 8);
         sprite8Directional.SetAngle(MathUtils.VectorToAngle(body.velocity));
+        peopleContainer.anchoredPosition = transform.position - Camera.main.transform.position + new Vector3(24, 40);
     }
 
     void OnCollisionStay2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Fire")) {
             DepleteWater(WATER_DEPLETION_IN_FIRE);
         }
+    }
+
+    float GetSpeed() {
+        return (8f / (8 + people)) * MAX_SPEED;
     }
 
     IEnumerator ShootWaterRoutine() {
@@ -79,7 +85,9 @@ public class Player : MonoBehaviour {
         if (person) {
             person.Remove();
             people++;
-            personCount.text = 'x' + people.ToString();
+            peopleContainer.gameObject.SetActive(true);
+            peopleContainer.GetComponent<SpriteSquish>().SquishThin();
+            personCount.text = people.ToString();
             return;
         }
         // Moving fast enough
