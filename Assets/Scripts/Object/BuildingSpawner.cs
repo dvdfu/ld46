@@ -9,20 +9,31 @@ public class BuildingSpawner : MonoBehaviour {
     [SerializeField]
     float spawningRate = 5;
     [SerializeField]
+    int initialBuildings = 10;
+    [SerializeField]
     List<GameObject> buildings;
 
     float lastSpawnedAt = 0;
 
+    void Start() {
+        for (int i = 0; i < initialBuildings; i++) {
+            SpawnBuilding();
+        }
+    }
+
     void Update() {
         if (Time.time - lastSpawnedAt >= spawningRate) {
             lastSpawnedAt = Time.time;
-
-            Rect spawningArea = spawningAreas[Random.Range(0, spawningAreas.Count)];
-            Vector2 spawnPoint = new Vector2(Random.Range(spawningArea.xMin, spawningArea.xMax), Random.Range(spawningArea.yMin, spawningArea.yMax));
-            
-            int buildingType = Random.Range(0, buildings.Count);
-            Instantiate(buildings[buildingType], spawnPoint, Quaternion.identity);
+            SpawnBuilding();
         }
+    }
+
+    void SpawnBuilding() {
+        Rect spawningArea = spawningAreas[Random.Range(0, spawningAreas.Count)];
+        Vector2 spawnPoint = new Vector2(Random.Range(spawningArea.xMin, spawningArea.xMax), Random.Range(spawningArea.yMin, spawningArea.yMax));
+
+        int buildingType = Random.Range(0, buildings.Count);
+        Instantiate(buildings[buildingType], spawnPoint, Quaternion.identity);
     }
 
     void OnDrawGizmos() {

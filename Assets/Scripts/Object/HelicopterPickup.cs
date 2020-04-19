@@ -96,4 +96,10 @@ public class HelicopterPickup : MonoBehaviour {
         helicopter.position = originalPos;
         state = State.Patrolling;
     }
+
+    void OnDrawGizmos() {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawLine(new Vector3(-semiMajorAxis, 0f), new Vector3(semiMajorAxis, 0f));
+        Gizmos.DrawLine(new Vector3(0f, semiMinorAxis), new Vector3(0f, -semiMinorAxis));
+    }
 }
