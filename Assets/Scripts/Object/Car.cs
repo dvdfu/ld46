@@ -13,6 +13,7 @@ public class Car : MonoBehaviour {
     [SerializeField] SessionData sessionData;
     [SerializeField] Sprite8Directional sprite8Directional;
     [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] CastsShadow castsShadow;
     [SerializeField] Flammable flammable;
     [SerializeField] Mortal mortal;
     [SerializeField] Rigidbody2D body;
@@ -60,7 +61,9 @@ public class Car : MonoBehaviour {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity, transform.parent);
         }
         spriteRenderer.sprite = ashSprite;
+        spriteRenderer.sortingLayerName = "Floor";
         spriteRenderer.color = Color.white;
+        castsShadow.RemoveShadow();
         state = State.Dead;
     }
 
