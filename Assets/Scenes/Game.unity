@@ -263,12 +263,12 @@ PrefabInstance:
     - target: {fileID: 502343201625098351, guid: 76fcf7d6c118046539c80a42008f11c6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 89.3
+      value: 128.8
       objectReference: {fileID: 0}
     - target: {fileID: 502343201625098351, guid: 76fcf7d6c118046539c80a42008f11c6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 55.9
+      value: 18.5
       objectReference: {fileID: 0}
     - target: {fileID: 502343201625098351, guid: 76fcf7d6c118046539c80a42008f11c6,
         type: 3}
@@ -332,12 +332,12 @@ PrefabInstance:
     - target: {fileID: 502343201625098351, guid: a3a550fb0f89a49478d9250626890023,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -92
+      value: -148.6
       objectReference: {fileID: 0}
     - target: {fileID: 502343201625098351, guid: a3a550fb0f89a49478d9250626890023,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 61.2
+      value: 15.5
       objectReference: {fileID: 0}
     - target: {fileID: 502343201625098351, guid: a3a550fb0f89a49478d9250626890023,
         type: 3}
@@ -580,12 +580,12 @@ PrefabInstance:
     - target: {fileID: 502343201625098351, guid: 76fcf7d6c118046539c80a42008f11c6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 89.3
+      value: 86.2
       objectReference: {fileID: 0}
     - target: {fileID: 502343201625098351, guid: 76fcf7d6c118046539c80a42008f11c6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -74.9
+      value: -31.8
       objectReference: {fileID: 0}
     - target: {fileID: 502343201625098351, guid: 76fcf7d6c118046539c80a42008f11c6,
         type: 3}
@@ -721,7 +721,7 @@ MonoBehaviour:
     y: 65
     width: 165
     height: 75
-  spawningRate: 5
+  spawningRate: 100
   buildings:
   - {fileID: 502343201625098342, guid: 76fcf7d6c118046539c80a42008f11c6, type: 3}
   - {fileID: 502343201625098342, guid: a3a550fb0f89a49478d9250626890023, type: 3}
@@ -740,7 +740,7 @@ MonoBehaviour:
   carPrefab: {fileID: 2956700562057853038, guid: 05a13e8c2c31b4399972320d432e7767,
     type: 3}
   player: {fileID: 318175373}
-  spawnInterval: 1
+  spawnInterval: 100
   spawningPoints:
   - pos: {x: 300, y: 15}
     dest: {x: -300, y: 15}
@@ -800,7 +800,7 @@ PrefabInstance:
     - target: {fileID: 2510498566900832228, guid: 6690d8891c9a746c587c2c58011e2b31,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 54
+      value: 65.9
       objectReference: {fileID: 0}
     - target: {fileID: 2510498566900832228, guid: 6690d8891c9a746c587c2c58011e2b31,
         type: 3}
@@ -869,7 +869,7 @@ PrefabInstance:
     - target: {fileID: 502343201625098351, guid: 76fcf7d6c118046539c80a42008f11c6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -75.4
+      value: -43.2
       objectReference: {fileID: 0}
     - target: {fileID: 502343201625098351, guid: 76fcf7d6c118046539c80a42008f11c6,
         type: 3}
