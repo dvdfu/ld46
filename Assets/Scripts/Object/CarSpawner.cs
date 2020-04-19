@@ -6,11 +6,16 @@ using UnityEngine;
 public class CarSpawner : MonoBehaviour {
     [SerializeField] GameObject carPrefab;
     [SerializeField] Player player;
-    [SerializeField] float spawnInterval = 5;
     [SerializeField] List<SpawningPoint> spawningPoints;
+
+    int carsSpawned = 0;
 
     void Start() {
         StartCoroutine(SpawnRoutine());
+    }
+
+    float GetSpawnDelay() {
+        return Mathf.Lerp(2.5f, 1, carsSpawned / 70f);
     }
 
     IEnumerator SpawnRoutine() {
@@ -18,7 +23,8 @@ public class CarSpawner : MonoBehaviour {
             SpawningPoint spawningPoint = spawningPoints[UnityEngine.Random.Range(0, spawningPoints.Count)];
             Car car = Instantiate(carPrefab, spawningPoint.pos, Quaternion.identity, transform.parent).GetComponent<Car>();
             car.Init(player.transform, spawningPoint.dest);
-            yield return new WaitForSeconds(spawnInterval);
+            carsSpawned++;
+            yield return new WaitForSeconds(GetSpawnDelay());
         }
     }
 
