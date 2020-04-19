@@ -6,6 +6,7 @@ public class HelicopterPickup : MonoBehaviour {
     const float RESCUE_FLY_DURATION = 2f;
     const float RESCUE_PICKUP_DURATION = 0.25f;
 
+    [SerializeField] PlayerData playerData;
     [SerializeField] float semiMajorAxis = 200f;
     [SerializeField] float semiMinorAxis = 100f;
     [SerializeField] float speed = 0.2f;
@@ -58,7 +59,7 @@ public class HelicopterPickup : MonoBehaviour {
     }
 
     void RescuePeople(Player player) {
-        if (player.GetPeople() > 0 && state == State.Patrolling) {
+        if (playerData.people > 0 && state == State.Patrolling) {
             state = State.Rescuing;
             StartCoroutine(RescuePeopleRoutine());
             player.RescuePeople();

@@ -101,7 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ffa4bdb5e6754f0a82883c8ad113316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 290704002546281387}
   spriteRenderer: {fileID: 947986557413147634}
   spriteN: {fileID: -2634799857069279492, guid: 580c534435d7648bc89964c4d19e198d,
     type: 3}
@@ -185,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b7c11109ceee47648422d07ab4ea5f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sessionData: {fileID: 11400000, guid: 4003d406c92dc4d399f5a227b80b003d, type: 2}
   tombstonePrefab: {fileID: 109610533420614197, guid: 375cf25f4e6f54322bd3e8a6d8a02989,
     type: 3}
   poofPrefab: {fileID: 5949332143176750326, guid: 7b570883015c1466f95d21357f016f4c,

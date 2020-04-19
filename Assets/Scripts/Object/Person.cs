@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Person : MonoBehaviour {
+    [SerializeField] SessionData sessionData;
     [SerializeField] GameObject tombstonePrefab;
     [SerializeField] GameObject poofPrefab;
     [SerializeField] Rigidbody2D body;
@@ -18,6 +19,7 @@ public class Person : MonoBehaviour {
     State state = State.Running;
 
     public void OnDie() {
+        sessionData.peopleDied++;
         Instantiate(tombstonePrefab, transform.position, Quaternion.identity, transform.parent);
         Remove();
     }

@@ -104,7 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ffa4bdb5e6754f0a82883c8ad113316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 290704002546281387}
   spriteRenderer: {fileID: 947986557413147634}
   spriteN: {fileID: -7921649188387484213, guid: fceab6fb625964cce808a663e4bea4f3,
     type: 3}
@@ -127,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b192b518a3c545edb6288e56a88c34b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sessionData: {fileID: 11400000, guid: 4003d406c92dc4d399f5a227b80b003d, type: 2}
   sprite8Directional: {fileID: 7119478296476459921}
   flammable: {fileID: 7486735083943100503}
   target: {fileID: 0}

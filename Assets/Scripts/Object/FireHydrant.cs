@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FireHydrant : MonoBehaviour {
+    [SerializeField] PlayerData playerData;
     [SerializeField] LineRenderer hose;
 
     Player player = null;
@@ -14,7 +15,7 @@ public class FireHydrant : MonoBehaviour {
 
     void FixedUpdate() {
         if (player) {
-            player.RefillWater(2);
+            playerData.RefillWater(2);
         }
     }
     
