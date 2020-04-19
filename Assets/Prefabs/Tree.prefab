@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3473657901759617875}
   - component: {fileID: 3473657901759617874}
   - component: {fileID: 3473657901759617885}
-  - component: {fileID: 3473657901759617879}
   - component: {fileID: 813441153562910009}
   - component: {fileID: 2593727788829981289}
   m_Layer: 9
@@ -37,6 +36,7 @@ Transform:
   - {fileID: 6405451889789202380}
   - {fileID: 1353034537160954299}
   - {fileID: 35129138476521797}
+  - {fileID: 8043529015551857943}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -117,28 +117,102 @@ MonoBehaviour:
   coll: {fileID: 3473657901759617872}
   dieEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Die
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   immuneToTags: []
---- !u!114 &3473657901759617879
+--- !u!114 &813441153562910009
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3473657901759617887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5903376b8b80c4fdc8c174ea23a84739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 6405451889789202380}
+--- !u!114 &2593727788829981289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3473657901759617887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2391c0c1e1d442699b717edb90a50d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 5526462854192789526}
+  burnedSprite: {fileID: 21300000, guid: 3cc7324c55caa4d2590de64bcdb0f5d4, type: 3}
+--- !u!1 &6108694832675526076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8043529015551857943}
+  - component: {fileID: 1669032588259205479}
+  - component: {fileID: 2353328332731590153}
+  m_Layer: 0
+  m_Name: FireCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8043529015551857943
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6108694832675526076}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3473657901759617878}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1669032588259205479
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6108694832675526076}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 12}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 24, y: 24}
+  m_EdgeRadius: 0
+--- !u!114 &2353328332731590153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6108694832675526076}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2b080119e5e70b42a74e00e1c35e474, type: 3}
@@ -174,33 +248,7 @@ MonoBehaviour:
   mortal: {fileID: 3473657901759617885}
   flameSound: {fileID: 8300000, guid: 4aead3a41c5fe4067a90c064fbdae93c, type: 3}
   extinguishSound: {fileID: 8300000, guid: 1b88a4a675fdb401e923caf8a61e54fd, type: 3}
---- !u!114 &813441153562910009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3473657901759617887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5903376b8b80c4fdc8c174ea23a84739, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 6405451889789202380}
---- !u!114 &2593727788829981289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3473657901759617887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d2391c0c1e1d442699b717edb90a50d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 5526462854192789526}
-  burnedSprite: {fileID: 21300000, guid: 3cc7324c55caa4d2590de64bcdb0f5d4, type: 3}
+  fireHealthMax: 10
 --- !u!1 &6153700863558764623
 GameObject:
   m_ObjectHideFlags: 0

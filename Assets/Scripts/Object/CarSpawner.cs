@@ -15,13 +15,13 @@ public class CarSpawner : MonoBehaviour {
     }
 
     float GetSpawnDelay() {
-        return Mathf.Lerp(2.5f, 1, carsSpawned / 70f);
+        return Mathf.Lerp(2, 0.8f, carsSpawned / 120f);
     }
 
     IEnumerator SpawnRoutine() {
         while (true) {
             SpawningPoint spawningPoint = spawningPoints[UnityEngine.Random.Range(0, spawningPoints.Count)];
-            Car car = Instantiate(carPrefab, spawningPoint.pos, Quaternion.identity, transform.parent).GetComponent<Car>();
+            Car car = Instantiate(carPrefab, spawningPoint.pos, Quaternion.identity, transform).GetComponent<Car>();
             car.Init(player.transform, spawningPoint.dest);
             carsSpawned++;
             yield return new WaitForSeconds(GetSpawnDelay());
