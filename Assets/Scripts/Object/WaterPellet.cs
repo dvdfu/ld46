@@ -20,13 +20,13 @@ public class WaterPellet : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
-        Flammable flammable = collider.gameObject.GetComponent<Flammable>();
+        Flammable flammable = collider.gameObject.GetComponentInChildren<Flammable>();
         if (flammable && flammable.IsOnFire()) {
             Instantiate(waterSplashPrefab, transform.position, Quaternion.identity, transform.parent);
             SoundManager.Play(waterHitSound);
             Destroy(gameObject);
         } else if (collider.gameObject.GetComponent<Car>()) {
-            collider.gameObject.GetComponent<Rigidbody2D>().velocity = body.velocity;
+            collider.gameObject.GetComponent<Rigidbody2D>().velocity = body.velocity / 2;
         }
     }
 }

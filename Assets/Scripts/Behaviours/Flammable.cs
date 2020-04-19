@@ -44,15 +44,18 @@ public class Flammable : MonoBehaviour {
         }
     }
 
-    void Start() {
-        StartCoroutine(SpawnDebrisRoutine());
+    void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.CompareTag("Fire")) {
+            SetOnFire();
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.gameObject.CompareTag("Fire")) {
-            SetOnFire();
-        } else if (collider.gameObject.CompareTag("Water")) {
+        if (collider.gameObject.CompareTag("Water")) {
             Extinguish();
+        }
+        if (collider.GetComponent<Flammable>() && IsOnFire()) {
+            collider.GetComponent<Flammable>().SetOnFire();
         }
     }
 

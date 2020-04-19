@@ -55,6 +55,10 @@ public class Car : MonoBehaviour {
         spriteRenderer.sprite = ashSprite;
     }
 
+    public bool IsMoving() {
+        return state == State.Normal || state == State.Chase;
+    }
+
     void Start() {
         state = State.Normal;
         canChase = Random.Range(0, 50) == 0;
@@ -73,7 +77,7 @@ public class Car : MonoBehaviour {
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
-        if (state != State.Stop && body.velocity.sqrMagnitude > CRASH_SPEED_THRESHOLD) {
+        if (IsMoving() && body.velocity.sqrMagnitude > CRASH_SPEED_THRESHOLD) {
             SpriteSquish spriteSquish = collision.gameObject.GetComponent<SpriteSquish>();
             if (spriteSquish) {
                 spriteSquish.SquishThin();
@@ -112,6 +116,9 @@ public class Car : MonoBehaviour {
 
             case State.Chase:
             return (target.position - transform.position).normalized;
+
+            case State.Stop:
+            return body.velocity;
 
             default:
             return Vector2.zero;
