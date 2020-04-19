@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class Flammable : MonoBehaviour {
     public UnityEvent igniteEvent = new UnityEvent();
+    public UnityEvent extinguishEvent = new UnityEvent();
 
     [SerializeField] float fireDamage = 30; // Damage per second
     [SerializeField] ParticleSystem fire;
@@ -24,6 +25,7 @@ public class Flammable : MonoBehaviour {
         fireHealth = 0;
         fire.Stop();
         smoke.Stop();
+        extinguishEvent.Invoke();
     }
 
     bool IsOnFire() {

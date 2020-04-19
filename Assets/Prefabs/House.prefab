@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f79778cf9afb3f429f077a34cd2114a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 60
   alive: 1
   coll: {fileID: 502343201625098345}
   dieEvent:
@@ -146,11 +146,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   personPrefab: {fileID: 2956700562057853038, guid: 742fbc8f3fff24d8f887ccf884e7753e,
     type: 3}
+  tombstonePrefab: {fileID: 109610533420614197, guid: 375cf25f4e6f54322bd3e8a6d8a02989,
+    type: 3}
   spriteRenderer: {fileID: 8826412745107925807}
-  normalHouse: {fileID: 21300000, guid: d936ba2d47f114c5883775cb4686f3db, type: 3}
   burnedHouse: {fileID: 21300000, guid: 748c76d45f75b4375b0a6776b5f75e86, type: 3}
   ashes: {fileID: 21300000, guid: 32996896b8f004ba78a1b658c0edf2ca, type: 3}
-  mortal: {fileID: 502343201625098340}
 --- !u!114 &4433137857328254464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,6 +319,22 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 502343201625098341}
         m_MethodName: OnIgnite
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  extinguishEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 502343201625098341}
+        m_MethodName: OnExtinguish
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
