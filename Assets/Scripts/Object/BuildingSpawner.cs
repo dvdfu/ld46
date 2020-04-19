@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildingSpawner : MonoBehaviour {
-    [SerializeField]
-    List<Rect> spawningAreas;
-    // Seconds between spawning buildings
-    [SerializeField]
-    float spawningRate = 5;
-    [SerializeField]
-    List<GameObject> buildings;
+    [SerializeField] List<Rect> spawningAreas;
+    [SerializeField] float spawningRate = 5; // Seconds between spawning buildings
+    [SerializeField] List<GameObject> buildings;
 
     float lastSpawnedAt = 0;
 
