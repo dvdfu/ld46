@@ -5,6 +5,7 @@ using UnityEngine;
 public class Car : MonoBehaviour {
     const float MAX_SPEED = 500;
     const int CAR_CRASH_DAMAGE = 20;
+    const int CRASH_SPEED_THRESHOLD = 7000;
 
     [SerializeField] SessionData sessionData;
     [SerializeField] Sprite8Directional sprite8Directional;
@@ -49,20 +50,20 @@ public class Car : MonoBehaviour {
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
-        SpriteSquish spriteSquish = collision.gameObject.GetComponent<SpriteSquish>();
-        if (spriteSquish) {
-            spriteSquish.SquishThin();
-        }
-        Flammable flammable = collision.gameObject.GetComponentInChildren<Flammable>();
-        if (flammable) {
-            if (collision.gameObject.GetComponent<Car>() == null) {
+        if (body.velocity.sqrMagnitude > CRASH_SPEED_THRESHOLD) {
+            SpriteSquish spriteSquish = collision.gameObject.GetComponent<SpriteSquish>();
+            if (spriteSquish) {
+                spriteSquish.SquishThin();
+            }
+            Flammable flammable = collision.gameObject.GetComponentInChildren<Flammable>();
+            if (flammable) {
                 this.flammable.SetOnFire();
                 flammable.SetOnFire();
             }
-        }
-        Mortal mortal = collision.gameObject.GetComponent<Mortal>();
-        if (mortal) {
-            mortal.Damage(gameObject.tag, CAR_CRASH_DAMAGE);
+            Mortal mortal = collision.gameObject.GetComponent<Mortal>();
+            if (mortal) {
+                mortal.Damage(gameObject.tag, CAR_CRASH_DAMAGE);
+            }
         }
     }
 
