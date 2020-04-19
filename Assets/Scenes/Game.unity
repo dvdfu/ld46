@@ -535,7 +535,6 @@ MonoBehaviour:
   - {fileID: 502343201625098342, guid: 76fcf7d6c118046539c80a42008f11c6, type: 3}
   - {fileID: 502343201625098342, guid: a3a550fb0f89a49478d9250626890023, type: 3}
   - {fileID: 3473657901759617887, guid: d4af51297420d409a826260eb6401f1c, type: 3}
-  initialBuildings: 10
 --- !u!114 &1313818244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -552,18 +551,18 @@ MonoBehaviour:
     type: 3}
   player: {fileID: 318175373}
   spawningPoints:
-  - pos: {x: 410, y: 15}
-    dest: {x: -410, y: 15}
-  - pos: {x: -410, y: -15}
-    dest: {x: 410, y: -15}
-  - pos: {x: 166, y: -185}
-    dest: {x: 166, y: 185}
-  - pos: {x: -166, y: 185}
-    dest: {x: -166, y: -185}
-  - pos: {x: -132, y: -185}
-    dest: {x: -132, y: 185}
-  - pos: {x: 132, y: 185}
-    dest: {x: 132, y: -185}
+  - pos: {x: 500, y: 16}
+    dest: {x: -500, y: 16}
+  - pos: {x: -500, y: -16}
+    dest: {x: 500, y: -16}
+  - pos: {x: 166, y: -256}
+    dest: {x: 166, y: 256}
+  - pos: {x: -166, y: 256}
+    dest: {x: -166, y: -256}
+  - pos: {x: -132, y: -256}
+    dest: {x: -132, y: 256}
+  - pos: {x: 132, y: 256}
+    dest: {x: 132, y: -256}
 --- !u!114 &1313818245
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ public class Car : MonoBehaviour {
     const int CAR_CRASH_DAMAGE = 3;
     const int CRASH_SPEED_THRESHOLD = 5000;
     const float CHASE_CHANCE = 0.15f;
-    const float CHASE_DISTANCE = 150;
+    const float CHASE_DISTANCE = 120;
     const float PROPANE_CHANCE = 0.1f;
 
     [SerializeField] SessionData sessionData;
@@ -71,9 +71,6 @@ public class Car : MonoBehaviour {
     void Start() {
         state = State.Normal;
         canChase = Random.value < CHASE_CHANCE;
-        if (canChase) {
-            spriteRenderer.color = new Color(1, 0.8f, 0.8f);
-        }
         StartCoroutine(PropaneRoutine());
     }
 
