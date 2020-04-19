@@ -5,7 +5,7 @@ using UnityEngine;
 public class Car : MonoBehaviour {
     const float MAX_SPEED = 500;
     const int CAR_CRASH_DAMAGE = 3;
-    const int CRASH_SPEED_THRESHOLD = 7000;
+    const int CRASH_SPEED_THRESHOLD = 5000;
 
     [SerializeField] SessionData sessionData;
     [SerializeField] Sprite8Directional sprite8Directional;
