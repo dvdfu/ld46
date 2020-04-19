@@ -43,7 +43,7 @@ public class Person : MonoBehaviour {
                 body.AddForce(MathUtils.PolarToCartesian(angle, 40));
                 break;
             case State.WaitingForPickup:
-                body.AddForce(MathUtils.PolarToCartesian(angle, 20));
+                body.AddForce(MathUtils.PolarToCartesian(angle, 5));
                 break;
         }
     }

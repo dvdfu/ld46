@@ -25,7 +25,7 @@ public class Player : MonoBehaviour {
     [SerializeField] RectTransform peopleContainer;
     [SerializeField] Text personCount;
     [SerializeField] GameObject personPrefab;
-    [SerializeField] Transform helicopterPos;
+    [SerializeField] Transform helicopter;
 
     public void RefillWater(int amount = 1) {
         if (waterAmmo + amount < WATER_AMMO_MAX) {
@@ -37,13 +37,10 @@ public class Player : MonoBehaviour {
 
     public void RescuePeople() {
         for (int i = 0; i < people; i++) {
-            GameObject go = Instantiate(personPrefab, new Vector3(helicopterPos.position.x, helicopterPos.position.y), Quaternion.identity);
-            Rigidbody2D body = go.GetComponent<Rigidbody2D>();
-            body.velocity = new Vector2(Random.Range(0, 50f), Random.Range(0, 50f));
-            Person p = go.GetComponent<Person>();
-            p.WaitForPickup();
-            Expirable e = go.AddComponent<Expirable>();
-            e.SetDuration(Random.Range(1f, 2f));
+            Vector3 offset = MathUtils.PolarToCartesian(360f * i / people, 16);
+            GameObject go = Instantiate(personPrefab, helicopter.position + offset, Quaternion.identity, transform.parent);
+            go.GetComponent<Person>().WaitForPickup();
+            go.AddComponent<Expirable>().SetDuration(1 + 1f * i / people);
         }
 
         people = 0;

@@ -282,6 +282,11 @@ PrefabInstance:
       propertyPath: peopleContainer
       value: 
       objectReference: {fileID: 1853908279}
+    - target: {fileID: 4507226723611971271, guid: f6caa51fdc56bde4896df1eb4d320a97,
+        type: 3}
+      propertyPath: helicopterPos
+      value: 
+      objectReference: {fileID: 464411481}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6caa51fdc56bde4896df1eb4d320a97, type: 3}
 --- !u!1 &294873855
@@ -627,6 +632,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3a550fb0f89a49478d9250626890023, type: 3}
+--- !u!4 &464411481 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2504424702618538255, guid: 1bd4feec6cfd949879450f278f03ebef,
+    type: 3}
+  m_PrefabInstance: {fileID: 667652723}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
