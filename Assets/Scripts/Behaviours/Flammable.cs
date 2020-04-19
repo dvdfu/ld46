@@ -9,6 +9,7 @@ public class Flammable : MonoBehaviour {
 
     [SerializeField] float fireDamage = 30; // Damage per second
     [SerializeField] GameObject steamPrefab;
+    [SerializeField] GameObject debrisPrefab;
     [SerializeField] ParticleSystem fire;
     [SerializeField] ParticleSystem smoke;
     [SerializeField] Mortal mortal;
@@ -40,6 +41,10 @@ public class Flammable : MonoBehaviour {
         }
     }
 
+    void Start() {
+        StartCoroutine(SpawnDebrisRoutine());
+    }
+
     bool IsOnFire() {
         return fireHealth > 0;
     }
@@ -55,6 +60,16 @@ public class Flammable : MonoBehaviour {
     void FixedUpdate() {
         if (IsOnFire()) {
             mortal.Damage(gameObject.tag, fireDamage * Time.deltaTime);
+        }
+    }
+
+    IEnumerator SpawnDebrisRoutine() {
+        while (true) {
+            while (!IsOnFire()) {
+                yield return null;
+            }
+            yield return new WaitForSeconds(Random.Range(2, 5));
+            Instantiate(debrisPrefab, transform.position + Vector3.up * 20, Quaternion.identity, transform.parent);
         }
     }
 }
