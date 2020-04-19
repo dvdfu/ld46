@@ -5,8 +5,8 @@ using UnityEngine;
 public class Car : MonoBehaviour {
     const float MAX_SPEED = 500;
     const int CAR_CRASH_DAMAGE = 3;
-    const int CRASH_SPEED_THRESHOLD = 7000;
-    const float CHASE_CHANGE = 0.12f;
+    const int CRASH_SPEED_THRESHOLD = 5000;
+    const float CHASE_CHANCE = 0.12f;
 
     [SerializeField] SessionData sessionData;
     [SerializeField] Sprite8Directional sprite8Directional;
@@ -67,7 +67,7 @@ public class Car : MonoBehaviour {
 
     void Start() {
         state = State.Normal;
-        canChase = Random.value < CHASE_CHANGE;
+        canChase = Random.value < CHASE_CHANCE;
         if (canChase) {
             spriteRenderer.color = new Color(1, 0.8f, 0.8f);
         }
