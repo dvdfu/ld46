@@ -84,7 +84,6 @@ public class Car : MonoBehaviour {
         }
 
         Player player = collision.gameObject.GetComponent<Player>();
-        if (player) Debug.Log("player is " + player.IsDashing());
         if (player && player.IsDashing()) {
             Mortal mortal = GetComponent<Mortal>();
             if (mortal) {
