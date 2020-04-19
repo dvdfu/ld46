@@ -6,23 +6,22 @@ public class BuildingSpawner : MonoBehaviour {
     [SerializeField] List<Rect> spawningAreas;
     [SerializeField] float spawningRate = 5; // Seconds between spawning buildings
     [SerializeField] List<GameObject> buildings;
+    [SerializeField] int initialBuildings = 10;
 
     float lastSpawnedAt = 0;
 
     void Start() {
-        for (int i = 0; i < 48; i++) {
+        for (int i = 0; i < initialBuildings; i++) {
             SpawnBuilding();
         }
     }
 
-    /*
     void Update() {
         if (Time.time - lastSpawnedAt >= spawningRate) {
             lastSpawnedAt = Time.time;
             SpawnBuilding();
         }
     }
-    */
 
     void SpawnBuilding() {
         Rect spawningArea = spawningAreas[Random.Range(0, spawningAreas.Count)];

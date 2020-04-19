@@ -10,7 +10,7 @@ OcclusionCullingSettings:
     backfaceThreshold: 100
   m_SceneGUID: 00000000000000000000000000000000
   m_OcclusionCullingData: {fileID: 0}
---- !u!104 &2
+--- !u!104 &
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
@@ -367,12 +367,12 @@ PrefabInstance:
     - target: {fileID: 2504424702618538255, guid: 1bd4feec6cfd949879450f278f03ebef,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 158.27493
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2504424702618538255, guid: 1bd4feec6cfd949879450f278f03ebef,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 86.86256
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2504424702618538255, guid: 1bd4feec6cfd949879450f278f03ebef,
         type: 3}
@@ -495,36 +495,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawningAreas:
   - serializedVersion: 2
-    x: -360
-    y: -200
-    width: 168
-    height: 152
+    x: -390
+    y: -165
+    width: 180
+    height: 105
   - serializedVersion: 2
-    x: -96
-    y: -200
-    width: 192
-    height: 152
+    x: -90
+    y: -165
+    width: 180
+    height: 105
   - serializedVersion: 2
-    x: 192
-    y: -200
-    width: 168
-    height: 152
+    x: -390
+    y: 60
+    width: 180
+    height: 105
   - serializedVersion: 2
-    x: -360
-    y: 48
-    width: 168
-    height: 152
+    x: -90
+    y: 60
+    width: 180
+    height: 105
   - serializedVersion: 2
-    x: -96
-    y: 48
-    width: 192
-    height: 152
+    x: 208
+    y: 60
+    width: 180
+    height: 105
   - serializedVersion: 2
-    x: 192
-    y: 48
-    width: 168
-    height: 152
+    x: 208
+    y: -165
+    width: 180
+    height: 105
   spawningRate: 5
+  initialBuildings: 10
   buildings:
   - {fileID: 502343201625098342, guid: 76fcf7d6c118046539c80a42008f11c6, type: 3}
   - {fileID: 502343201625098342, guid: a3a550fb0f89a49478d9250626890023, type: 3}
@@ -545,14 +546,18 @@ MonoBehaviour:
     type: 3}
   player: {fileID: 318175373}
   spawningPoints:
-  - pos: {x: 415.7, y: 15}
-    dest: {x: -426.1, y: 15}
-  - pos: {x: -429.7, y: -15}
-    dest: {x: 417, y: -15}
-  - pos: {x: 165.9, y: -200.3}
-    dest: {x: 165.8, y: 200}
-  - pos: {x: -165.4, y: 200}
-    dest: {x: -167.5, y: -200}
+  - pos: {x: 410, y: 15}
+    dest: {x: -410, y: 15}
+  - pos: {x: -410, y: -15}
+    dest: {x: 410, y: -15}
+  - pos: {x: 166, y: -185}
+    dest: {x: 166, y: 185}
+  - pos: {x: -166, y: 185}
+    dest: {x: -166, y: -185}
+  - pos: {x: -132, y: -185}
+    dest: {x: -132, y: 185}
+  - pos: {x: 132, y: 185}
+    dest: {x: 132, y: -185}
 --- !u!114 &1313818245
 MonoBehaviour:
   m_ObjectHideFlags: 0
