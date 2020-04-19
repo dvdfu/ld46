@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HelicopterPickup : MonoBehaviour {
-    const float RESCUE_FLY_DURATION = 2f;
+    const float RESCUE_FLY_DURATION = 1f;
     const float RESCUE_PICKUP_DURATION = 0.25f;
 
     [SerializeField] PlayerData playerData;
@@ -74,7 +74,7 @@ public class HelicopterPickup : MonoBehaviour {
         while (elapsed <= RESCUE_FLY_DURATION) {
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / RESCUE_FLY_DURATION);
-            helicopter.position = originalPos + Vector3.down * Easing.EaseInOutElastic(t) * 45f;
+            helicopter.position = originalPos + Vector3.down * Easing.CubicInOut(t) * 45f;
             yield return null;
         }
 
@@ -89,7 +89,7 @@ public class HelicopterPickup : MonoBehaviour {
         while (elapsed <= RESCUE_FLY_DURATION) {
             elapsed += Time.deltaTime;
             float t = 1 - Mathf.Clamp01(elapsed / RESCUE_FLY_DURATION);
-            helicopter.position = originalPos + Vector3.down * Easing.EaseInOutElastic(t) * 45f;
+            helicopter.position = originalPos + Vector3.down * Easing.CubicInOut(t) * 45f;
             yield return null;
         }
 
