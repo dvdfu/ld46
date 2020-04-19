@@ -14,7 +14,7 @@ public class Player : MonoBehaviour {
     Vector2 lastMoveDirection;
     [SerializeField] float dashSpeed = 500f;
     [SerializeField] float dashDuration = 0.1f;
-    [SerializeField] int dashCost = 40; // Water ammo cost per dash
+    [SerializeField] int dashCost = 20; // Water ammo cost per dash
     enum State {
         Driving,
         Dashing
