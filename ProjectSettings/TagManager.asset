@@ -7,6 +7,7 @@ TagManager:
   - Fire
   - Refill
   - Water
+  - Helicopter
   layers:
   - Default
   - TransparentFX

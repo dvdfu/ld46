@@ -33,6 +33,11 @@ public class Player : MonoBehaviour {
         }
     }
 
+    public void RescuePeople() {
+        people = 0;
+        peopleContainer.gameObject.SetActive(false);
+    }
+
     void DepleteWater(int amount = 1) {
         if (waterAmmo > 0) {
             waterAmmo -= amount;
@@ -61,7 +66,8 @@ public class Player : MonoBehaviour {
     }
 
     float GetSpeed() {
-        return (8f / (8 + people)) * MAX_SPEED;
+        // 5 people = slow down in half
+        return (5f / (5 + people)) * MAX_SPEED;
     }
 
     IEnumerator ShootWaterRoutine() {
@@ -81,7 +87,8 @@ public class Player : MonoBehaviour {
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
-        Person person = collision.gameObject.GetComponent<Person>();
+        GameObject other = collision.gameObject;
+        Person person = other.GetComponent<Person>();
         if (person) {
             person.Remove();
             people++;
@@ -93,12 +100,12 @@ public class Player : MonoBehaviour {
         // Moving fast enough
         if (body.velocity.sqrMagnitude > 10000) {
             Instantiate(collisionPrefab, collision.GetContact(0).point, Quaternion.identity, transform.parent);
-            SpriteSquish spriteSquish = collision.gameObject.GetComponent<SpriteSquish>();
+            SpriteSquish spriteSquish = other.GetComponent<SpriteSquish>();
             if (spriteSquish) {
                 spriteSquish.SquishThin();
             }
-            if (collision.gameObject.GetComponent<Car>()) {
-                collision.gameObject.GetComponent<Mortal>().Damage(gameObject.tag, 40);
+            if (other.GetComponent<Car>()) {
+                other.GetComponent<Mortal>().Damage(gameObject.tag, 40);
             }
         }
     }
