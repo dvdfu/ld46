@@ -125,7 +125,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7592637984322561217}
-  - {fileID: 2671614822023974333}
   - {fileID: 6720630096998045099}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -164,6 +163,7 @@ MonoBehaviour:
   helicopter: {fileID: 7592637984322561217}
   helicopterBlades: {fileID: 2671614822023974333}
   spriteSquish: {fileID: 5933451834028692546}
+  sprite8Directional: {fileID: 327769995661306650}
 --- !u!1 &3854751185262394218
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +193,7 @@ Transform:
   m_Children:
   - {fileID: 2504424701550584548}
   m_Father: {fileID: 2504424702618538255}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6746264672605348067
 GameObject:
@@ -219,12 +219,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6746264672605348067}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 70, z: 0}
+  m_LocalPosition: {x: 0, y: 6, z: 0}
   m_LocalScale: {x: 1, y: 0.72, z: 1}
   m_Children:
   - {fileID: 6766963126414605771}
-  m_Father: {fileID: 2504424702618538255}
-  m_RootOrder: 1
+  m_Father: {fileID: 7592637984322561217}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7447672597146071861
 GameObject:
@@ -332,6 +332,7 @@ GameObject:
   - component: {fileID: 7592637984322561217}
   - component: {fileID: 5187806894978924816}
   - component: {fileID: 5933451834028692546}
+  - component: {fileID: 327769995661306650}
   m_Layer: 0
   m_Name: Helicopter
   m_TagString: Untagged
@@ -349,7 +350,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2671614822023974333}
   m_Father: {fileID: 2504424702618538255}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -391,12 +393,13 @@ SpriteRenderer:
   m_SortingLayerID: -662486785
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e4a901456ef884f6681ae653a44b82c5, type: 3}
+  m_Sprite: {fileID: 3816083186313768791, guid: e4a901456ef884f6681ae653a44b82c5,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 48, y: 32}
+  m_Size: {x: 48, y: 48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -415,3 +418,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 7592637984322561217}
+--- !u!114 &327769995661306650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8505979012280097391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ffa4bdb5e6754f0a82883c8ad113316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 5187806894978924816}
+  spriteN: {fileID: -555744780623910725, guid: e4a901456ef884f6681ae653a44b82c5, type: 3}
+  spriteNE: {fileID: 7543519401415538986, guid: e4a901456ef884f6681ae653a44b82c5,
+    type: 3}
+  spriteE: {fileID: -5586788436734496544, guid: e4a901456ef884f6681ae653a44b82c5,
+    type: 3}
+  spriteSE: {fileID: 3816083186313768791, guid: e4a901456ef884f6681ae653a44b82c5,
+    type: 3}
+  spriteS: {fileID: 2849954378201654220, guid: e4a901456ef884f6681ae653a44b82c5, type: 3}

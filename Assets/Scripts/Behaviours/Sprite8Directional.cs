@@ -3,11 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Sprite8Directional : MonoBehaviour {
-    const float MOVE_THRESHOLD = 30;
-
-    [SerializeField] Rigidbody2D body;
     [SerializeField] SpriteRenderer spriteRenderer;
-
     [SerializeField] Sprite spriteN;
     [SerializeField] Sprite spriteNE;
     [SerializeField] Sprite spriteE;

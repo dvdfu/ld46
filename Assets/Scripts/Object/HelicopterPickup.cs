@@ -10,8 +10,8 @@ public class HelicopterPickup : MonoBehaviour {
     [SerializeField] float semiMinorAxis = 100f;
     [SerializeField] float speed = 0.2f;
     [SerializeField] Transform helicopter;
-    [SerializeField] Transform helicopterBlades;
     [SerializeField] SpriteSquish spriteSquish;
+    [SerializeField] Sprite8Directional sprite8Directional;
 
     float angle = 0f;
 
@@ -29,12 +29,18 @@ public class HelicopterPickup : MonoBehaviour {
         switch(state) {
             case State.Patrolling:
                 angle += speed * Time.deltaTime;
-                if (angle >= 2 * Mathf.PI) angle -= 2 * Mathf.PI;
+                if (angle >= 2 * Mathf.PI) {
+                    angle -= 2 * Mathf.PI;
+                }
                 transform.position = new Vector3(semiMajorAxis * Mathf.Cos(angle), semiMinorAxis * Mathf.Sin(angle));
                 break;
             case State.Rescuing:
                 break;
         }
+    }
+
+    void LateUpdate() {
+        sprite8Directional.SetAngle(angle * Mathf.Rad2Deg + 90);
     }
 
     void OnTriggerEnter2D(Collider2D collision) {
@@ -62,14 +68,12 @@ public class HelicopterPickup : MonoBehaviour {
     IEnumerator RescuePeopleRoutine() {
         float elapsed = 0f;
         Vector3 originalPos = helicopter.position;
-        Vector3 originalBladesPos = helicopterBlades.position;
         spriteSquish.SquishThin();
 
         while (elapsed <= RESCUE_FLY_DURATION) {
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / RESCUE_FLY_DURATION);
             helicopter.position = originalPos + Vector3.down * Easing.EaseInOutElastic(t) * 45f;
-            helicopterBlades.position = originalPos + Vector3.down * Easing.EaseInOutElastic(t) * 45f;
             yield return null;
         }
 
@@ -79,18 +83,16 @@ public class HelicopterPickup : MonoBehaviour {
             yield return null;
         }
 
+        spriteSquish.SquishThin();
         elapsed = 0f;
         while (elapsed <= RESCUE_FLY_DURATION) {
             elapsed += Time.deltaTime;
             float t = 1 - Mathf.Clamp01(elapsed / RESCUE_FLY_DURATION);
             helicopter.position = originalPos + Vector3.down * Easing.EaseInOutElastic(t) * 45f;
-            helicopterBlades.position = originalPos + Vector3.down * Easing.EaseInOutElastic(t) * 45f;
             yield return null;
         }
 
-        spriteSquish.SquishThin();
         helicopter.position = originalPos;
-        helicopterBlades.position = originalBladesPos;
         state = State.Patrolling;
     }
 }
