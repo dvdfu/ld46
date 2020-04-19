@@ -150,7 +150,14 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  extinguishEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   fireDamage: 30
+  steamPrefab: {fileID: 5949332143176750326, guid: 798195f9152604aa79655df45dd1ea6d,
+    type: 3}
   fire: {fileID: 5447059443886541313}
   smoke: {fileID: 8146910044762943721}
   mortal: {fileID: 328462969791798128}
