@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class House : MonoBehaviour {
     [SerializeField] GameObject personPrefab;
+    [SerializeField] GameObject tombstonePrefab;
     [SerializeField] SpriteRenderer spriteRenderer;
-    [SerializeField] Sprite normalHouse;
     [SerializeField] Sprite burnedHouse;
     [SerializeField] Sprite ashes;
-    [SerializeField] Mortal mortal;
 
-    int peopleInside;
+    int peopleInside = 3;
 
     public void OnIgnite() {
+        spriteRenderer.sprite = burnedHouse;
+    }
+
+    public void OnExtinguish() {
         if (peopleInside > 0) {
             for (int i = 0; i < peopleInside; i++) {
                 Vector2 offset = MathUtils.PolarToCartesian(360f * i / peopleInside, 10);
@@ -22,21 +25,14 @@ public class House : MonoBehaviour {
         }
     }
 
-    void Start() {
-        peopleInside = Random.Range(1, 4);
-    }
-
-    void Update() {
-        if (mortal.GetAlive()) {
-            if (mortal.GetHealth() >= 50.0f) {
-                spriteRenderer.sprite = normalHouse;
-            } else {
-                spriteRenderer.sprite = burnedHouse;
+    public void Die() {
+        spriteRenderer.sprite = ashes;
+        if (peopleInside > 0) {
+            for (int i = 0; i < peopleInside; i++) {
+                Vector2 offset = MathUtils.PolarToCartesian(360f * i / peopleInside, 20);
+                Instantiate(tombstonePrefab, transform.position + (Vector3) offset, Quaternion.identity, transform.parent);
             }
-        } else {
-            spriteRenderer.sprite = ashes;
+            peopleInside = 0;
         }
     }
-
-    public void Die() {}
 }
