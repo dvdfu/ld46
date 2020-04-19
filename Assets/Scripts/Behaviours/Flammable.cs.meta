@@ -4,7 +4,10 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - steamPrefab: {instanceID: 0}
+  - steamPrefab: {fileID: 5949332143176750326, guid: 798195f9152604aa79655df45dd1ea6d,
+      type: 3}
+  - debrisPrefab: {fileID: 7520732452010113133, guid: 297a2655ec41b4c9a8c407a32ff65176,
+      type: 3}
   - fire: {instanceID: 0}
   - smoke: {instanceID: 0}
   - mortal: {instanceID: 0}
