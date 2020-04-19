@@ -735,6 +735,7 @@ MonoBehaviour:
   buildings:
   - {fileID: 502343201625098342, guid: 76fcf7d6c118046539c80a42008f11c6, type: 3}
   - {fileID: 502343201625098342, guid: a3a550fb0f89a49478d9250626890023, type: 3}
+  - {fileID: 3473657901759617887, guid: d4af51297420d409a826260eb6401f1c, type: 3}
 --- !u!114 &1313818244
 MonoBehaviour:
   m_ObjectHideFlags: 0

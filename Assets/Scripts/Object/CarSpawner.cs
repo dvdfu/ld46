@@ -21,7 +21,7 @@ public class CarSpawner : MonoBehaviour {
     IEnumerator SpawnRoutine() {
         while (true) {
             SpawningPoint spawningPoint = spawningPoints[UnityEngine.Random.Range(0, spawningPoints.Count)];
-            Car car = Instantiate(carPrefab, spawningPoint.pos, Quaternion.identity, transform.parent).GetComponent<Car>();
+            Car car = Instantiate(carPrefab, spawningPoint.pos, Quaternion.identity, transform).GetComponent<Car>();
             car.Init(player.transform, spawningPoint.dest);
             carsSpawned++;
             yield return new WaitForSeconds(GetSpawnDelay());

@@ -68,6 +68,9 @@ public class Car : MonoBehaviour {
     void Start() {
         state = State.Normal;
         canChase = Random.value < CHASE_CHANGE;
+        if (canChase) {
+            spriteRenderer.color = new Color(1, 0.8f, 0.8f);
+        }
     }
 
     void FixedUpdate() {
