@@ -42,5 +42,6 @@ public class House : MonoBehaviour {
             }
             peopleInside = 0;
         }
+        warn.Stop();
     }
 }
