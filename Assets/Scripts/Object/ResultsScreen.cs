@@ -27,46 +27,46 @@ public class ResultsScreen : MonoBehaviour {
 
         switch (r.finalRating) {
             case SessionData.Rating.Bad:
-                summary.text += ", only to further worsen the situation. ";
+                summary.text += ", only to <color=#DF3E23>further worsen the situation.</color> ";
                 break;
             case SessionData.Rating.Average:
                 summary.text += ". ";
                 break;
             case SessionData.Rating.Good:
-                summary.text += ", and handled the situation to the best of their ability. ";
+                summary.text += ", and <color=#DF3E23>handled the situation to the best of their ability.</color> ";
                 break;
             case SessionData.Rating.Perfect:
-                summary.text += ", and valiantly handled the situation. ";
+                summary.text += ", and <color=#DF3E23>valiantly handled the situation.</color> ";
                 break;
         }
 
         switch (r.peopleRating) {
             case SessionData.Rating.Bad:
-                summary.text += "There were mass casualties";
+                summary.text += "Unfortunately, there were <color=#DF3E23>unprecendented casualties</color>";
                 break;
             case SessionData.Rating.Average:
-                summary.text += "There were some casualties";
+                summary.text += "Unfortunately, there were <color=#DF3E23>many casualties</color>";
                 break;
             case SessionData.Rating.Good:
-                summary.text += "There were a few casualties";
+                summary.text += "Unfortunately, There were <color=#DF3E23>a few casualties</color>";
                 break;
             case SessionData.Rating.Perfect:
-                summary.text += "There were very few casualties";
+                summary.text += "There were <color=#DF3E23>very few casualties</color>";
                 break;
         }
 
         switch (r.unitRating) {
             case SessionData.Rating.Bad:
-                summary.text += " and damaged buildings everywhere.";
+                summary.text += " and <color=#DF3E23>countless damaged buildings.</color>";
                 break;
             case SessionData.Rating.Average:
-                summary.text += " and they did their best to extinguish buildings, although some did burn down.";
+                summary.text += " and they did their best to extinguish buildings, <color=#DF3E23>although some did burn down.</color>";
                 break;
             case SessionData.Rating.Good:
-                summary.text += " and most buildings were extinguished.";
+                summary.text += " and <color=#DF3E23>most buildings</color> were put out within time.";
                 break;
             case SessionData.Rating.Perfect:
-                summary.text += " and almost no building went unrescued.";
+                summary.text += " and <color=#DF3E23>almost no building</color> went unrescued.";
                 break;
         }
 
@@ -74,13 +74,13 @@ public class ResultsScreen : MonoBehaviour {
             case SessionData.Title.None:
                 break;
             case SessionData.Title.GrimReaper:
-                summary.text += " Your <color=#DF3E23>negligence for civilian life</color> has been noted.";
+                summary.text += " Your negligence for civilian life has been noted.";
                 break;
             case SessionData.Title.Arsonist:
-                summary.text += " Witnesses state hardly any attempt to <color=#DF3E23>extinguish buildings</color> were made.";
+                summary.text += " Witnesses state hardly any attempt to extinguish buildings were made.";
                 break;
             case SessionData.Title.HydroHomie:
-                summary.text += " Environmentalists are concerned about the <color=#DF3E23>excessive use of water</color>.";
+                summary.text += " Environmentalists are concerned about the excessive use of water.";
                 break;
         }
     }

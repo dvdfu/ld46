@@ -29,8 +29,8 @@ public class SessionData : ScriptableObject {
     public enum Title {
         None,
         GrimReaper, // > 50 kills
-        Arsonist, // < 5 extinguished
-        HydroHomie, // > 2000L
+        Arsonist, // < 10 extinguished
+        HydroHomie, // > 1400L
     }
 
     public void Reset() {
@@ -66,7 +66,7 @@ public class SessionData : ScriptableObject {
             ratings.unitRating = Rating.Bad;
         }
 
-        int totalRating = (int)ratings.peopleRating + (int)ratings.unitRating;
+        int totalRating = (int) ratings.peopleRating + (int) ratings.unitRating;
         if (totalRating == 6) {
             ratings.finalRating = Rating.Perfect;
         } else if (totalRating > 3) {
@@ -83,9 +83,9 @@ public class SessionData : ScriptableObject {
     public Title GetTitle() {
         if (peopleDied > 50) {
             return Title.GrimReaper;
-        } else if (unitsExtinguished < 5) {
+        } else if (unitsExtinguished < 10) {
             return Title.Arsonist;
-        } else if (waterUsed > 2000) {
+        } else if (waterUsed > 1400) {
             return Title.HydroHomie;
         } else {
             return Title.None;

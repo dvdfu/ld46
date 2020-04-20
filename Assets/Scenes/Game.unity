@@ -520,7 +520,6 @@ GameObject:
   - component: {fileID: 1313818244}
   - component: {fileID: 1313818243}
   - component: {fileID: 1313818245}
-  - component: {fileID: 1313818247}
   - component: {fileID: 1313818246}
   m_Layer: 0
   m_Name: Managers
@@ -757,19 +756,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1313818247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1313818240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a85c93f60caf44aaa97f517ada6ff4c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: 1313818246}
 --- !u!114 &1504327366 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4829460573563626384, guid: 2ca32e305761f44feb712649b489281a,
