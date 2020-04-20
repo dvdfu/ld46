@@ -42,22 +42,22 @@ public class ResultsScreen : MonoBehaviour {
 
         switch (r.peopleRating) {
             case SessionData.Rating.Bad:
-                summary.text += "There were mass casualties ";
+                summary.text += "There were mass casualties";
                 break;
             case SessionData.Rating.Average:
-                summary.text += "There were a number of casualties";
+                summary.text += "There were some casualties";
                 break;
             case SessionData.Rating.Good:
-                summary.text += "There were a few casualties ";
+                summary.text += "There were a few casualties";
                 break;
             case SessionData.Rating.Perfect:
-                summary.text += "There were very few casualties ";
+                summary.text += "There were very few casualties";
                 break;
         }
 
         switch (r.unitRating) {
             case SessionData.Rating.Bad:
-                summary.text += " and charred buildings everywhere.";
+                summary.text += " and damaged buildings everywhere.";
                 break;
             case SessionData.Rating.Average:
                 summary.text += " and they did their best to extinguish buildings, although some did burn down.";
@@ -66,7 +66,7 @@ public class ResultsScreen : MonoBehaviour {
                 summary.text += " and most buildings were extinguished.";
                 break;
             case SessionData.Rating.Perfect:
-                summary.text += " and almost no building was left unextinguished.";
+                summary.text += " and almost no building was left standing.";
                 break;
         }
 
@@ -74,13 +74,13 @@ public class ResultsScreen : MonoBehaviour {
             case SessionData.Title.None:
                 break;
             case SessionData.Title.GrimReaper:
-                summary.text += " You have been awarded the <color=#DF3E23>Grim Reaper</color> distinction.";
+                summary.text += " Your <color=#DF3E23>negligence for civilian life</color> has been noted.";
                 break;
             case SessionData.Title.Arsonist:
-                summary.text += " You have been awarded the <color=#DD6000>Arsonist</color> distinction.";
+                summary.text += " Witnesses state hardly any attempt to <color=#DF3E23>extinguish buildings</color> were made.";
                 break;
             case SessionData.Title.HydroHomie:
-                summary.text += " You have been awarded the <color=#249FDE>HydroHomie</color> distinction.";
+                summary.text += " Environmentalists are concerned about the <color=#DF3E23>excessive use of water</color>.";
                 break;
         }
     }
