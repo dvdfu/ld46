@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ResultsScreen : MonoBehaviour {
@@ -16,6 +17,12 @@ public class ResultsScreen : MonoBehaviour {
         peopleSave.text = sessionData.peopleSaved.ToString();
         thingsIgnited.text = sessionData.unitsBurned.ToString();
         thingsExtinguished.text = sessionData.unitsExtinguished.ToString();
-        waterUsed.text = (sessionData.waterUsed * 4).ToString() + " L";
+        waterUsed.text = sessionData.waterUsed.ToString() + " L";
+    }
+
+    void Update() {
+        if (Input.anyKey) {
+            SceneManager.LoadScene("Title");
+        }
     }
 }
