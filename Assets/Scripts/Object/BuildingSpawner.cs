@@ -3,30 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildingSpawner : MonoBehaviour {
-    const int BUILDING_COUNT = 50;
-
     [SerializeField] List<Rect> spawningAreas;
-    [SerializeField] float spawningRate = 5; // Seconds between spawning buildings
-    [SerializeField] List<GameObject> buildings;
+    [SerializeField] GameObject treePrefab;
+    [SerializeField] GameObject housePrefab;
+    [SerializeField] GameObject apartmentPrefab;
 
     float lastSpawnedAt = 0;
 
     void Start() {
-        for (int i = 0; i < BUILDING_COUNT; i++) {
-            SpawnBuilding();
-        }
+        for (int i = 0; i < 20; i++) SpawnBuilding(treePrefab);
+        for (int i = 0; i < 25; i++) SpawnBuilding(housePrefab);
+        for (int i = 0; i < 10; i++) SpawnBuilding(apartmentPrefab);
     }
 
-    /*
-    void Update() {
-        if (Time.time - lastSpawnedAt >= spawningRate) {
-            lastSpawnedAt = Time.time;
-            SpawnBuilding();
-        }
-    }
-    */
-
-    void SpawnBuilding() {
+    void SpawnBuilding(GameObject prefab) {
         Rect spawningArea = spawningAreas[Random.Range(0, spawningAreas.Count)];
         Vector2 spawnPoint = new Vector2(
             Random.Range(spawningArea.xMin + 16, spawningArea.xMax - 16),
@@ -34,8 +24,7 @@ public class BuildingSpawner : MonoBehaviour {
         );
         spawnPoint.x = Mathf.Floor(spawnPoint.x / 32) * 32 + 16;
         spawnPoint.y = Mathf.Floor(spawnPoint.y / 32) * 32 + 16;
-        int buildingType = Random.Range(0, buildings.Count);
-        Instantiate(buildings[buildingType], spawnPoint, Quaternion.identity, transform);
+        Instantiate(prefab, spawnPoint, Quaternion.identity, transform);
     }
 
     void OnDrawGizmos() {
