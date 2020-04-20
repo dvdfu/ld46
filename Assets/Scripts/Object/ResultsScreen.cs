@@ -27,46 +27,46 @@ public class ResultsScreen : MonoBehaviour {
 
         switch (r.finalRating) {
             case SessionData.Rating.Bad:
-                summary.text += ", only to <color=#DF3E23>further worsen the situation.</color> ";
+                summary.text += ", only to <color=#DF3E23>further worsen the situation.</color>";
                 break;
             case SessionData.Rating.Average:
-                summary.text += ". ";
+                summary.text += ".";
                 break;
             case SessionData.Rating.Good:
-                summary.text += ", and <color=#DF3E23>handled the situation to the best of their ability.</color> ";
+                summary.text += ", and <color=#DF3E23>handled the situation to the best of their ability.</color>";
                 break;
             case SessionData.Rating.Perfect:
-                summary.text += ", and <color=#DF3E23>valiantly handled the situation.</color> ";
+                summary.text += ", and <color=#DF3E23>valiantly handled the situation.</color>";
                 break;
         }
 
         switch (r.peopleRating) {
             case SessionData.Rating.Bad:
-                summary.text += "Unfortunately, there were <color=#DF3E23>unprecendented casualties</color>";
+                summary.text += " Tragically, there was <color=#DF3E23>an unprecendented amount of lives lost</color>.";
                 break;
             case SessionData.Rating.Average:
-                summary.text += "Unfortunately, there were <color=#DF3E23>many casualties</color>";
+                summary.text += " Unfortunately, <color=#DF3E23>many peoplelost their lives</color>.";
                 break;
             case SessionData.Rating.Good:
-                summary.text += "Unfortunately, There were <color=#DF3E23>a few casualties</color>";
+                summary.text += " Unfortunately, there were <color=#DF3E23>a few casualties</color>.";
                 break;
             case SessionData.Rating.Perfect:
-                summary.text += "There were <color=#DF3E23>very few casualties</color>";
+                summary.text += " There were <color=#DF3E23>very few casualties</color>.";
                 break;
         }
 
         switch (r.unitRating) {
             case SessionData.Rating.Bad:
-                summary.text += " and <color=#DF3E23>countless damaged property.</color>";
+                summary.text += " <color=#DF3E23>Countless property damage</color> was caused.";
                 break;
             case SessionData.Rating.Average:
-                summary.text += " and they did their best to put out fires, although <color=#DF3E23>many things did burn down.</color>";
+                summary.text += " They did their best to put out fires, although <color=#DF3E23>many things burned down</color>.";
                 break;
             case SessionData.Rating.Good:
-                summary.text += " and <color=#DF3E23>most property fires were put</color> out within time.";
+                summary.text += " <color=#DF3E23>Most property fires were put out</color> within time.";
                 break;
             case SessionData.Rating.Perfect:
-                summary.text += " and <color=#DF3E23>almost nothing was left on fire</color>.";
+                summary.text += " <color=#DF3E23>Almost nothing was left on fire</color>.";
                 break;
         }
 

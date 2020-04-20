@@ -29,8 +29,8 @@ public class SessionData : ScriptableObject {
     public enum Title {
         None,
         GrimReaper, // > 50 kills
-        Arsonist, // < 10 extinguished
-        HydroHomie, // > 1400L
+        Arsonist, // < 20 extinguished
+        HydroHomie, // > 1100 L water
     }
 
     public void Reset() {
@@ -83,9 +83,9 @@ public class SessionData : ScriptableObject {
     public Title GetTitle() {
         if (peopleDied > 50) {
             return Title.GrimReaper;
-        } else if (unitsExtinguished < 10) {
+        } else if (unitsExtinguished < 20) {
             return Title.Arsonist;
-        } else if (waterUsed > 1400) {
+        } else if (waterUsed > 1100) {
             return Title.HydroHomie;
         } else {
             return Title.None;
