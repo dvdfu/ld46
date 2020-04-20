@@ -58,5 +58,19 @@ public class TitleScreen : MonoBehaviour {
             yield return null;
         }
         worldTransform.anchoredPosition = Vector2.zero;
+
+        while (Input.GetAxisRaw("PlayerHorizontal") == 0 && Input.GetAxisRaw("PlayerVertical") == 0) {
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.3f);
+        prompt.text = "Water - <color=\"#1E8AD4\">Arrow Keys</color>";
+        while (Input.GetAxisRaw("WaterHorizontal") == 0 && Input.GetAxisRaw("WaterVertical") == 0) {
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.3f);
+        prompt.text = "Starting mission!";
+        yield return new WaitForSeconds(2);
+
+        SceneManager.LoadScene("Instructions");
     }
 }
