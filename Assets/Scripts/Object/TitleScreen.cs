@@ -5,14 +5,16 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TitleScreen : MonoBehaviour {
+    [SerializeField] PlayerData playerData;
     [SerializeField] RectTransform titleWhatThe;
     [SerializeField] RectTransform titleFiretruck;
+    [SerializeField] GameObject worldUI;
     [SerializeField] Text prompt;
-    [SerializeField] Text subtitle;
     [SerializeField] AudioClip thudSound;
     [SerializeField] AudioClip startSound;
 
     void Start() {
+        playerData.Reset();
         StartCoroutine(IntroRoutine());
     }
 
@@ -21,10 +23,7 @@ public class TitleScreen : MonoBehaviour {
         float scale = 0;
         titleWhatThe.localScale = Vector2.zero;
         titleFiretruck.localScale = Vector2.zero;
-        Color promptColor = prompt.color;
-        Color subtitleColor = subtitle.color;
-        prompt.color = Color.clear;
-        subtitle.color = Color.clear;
+        worldUI.SetActive(false);
 
         yield return new WaitForSeconds(0.3f);
 
@@ -47,24 +46,17 @@ public class TitleScreen : MonoBehaviour {
         }
         titleFiretruck.localScale = new Vector2(1, 1);
 
+        RectTransform worldTransform = worldUI.GetComponent<RectTransform>();
+        worldTransform.anchoredPosition = Vector2.down * 100;
+        worldUI.SetActive(true);
+
         t = 0;
-        while (t < 0.3f) {
-            float alpha = t / 0.3f;
-            prompt.color = new Color(promptColor.r, promptColor.g, promptColor.b, alpha);
-            subtitle.color = new Color(subtitleColor.r, subtitleColor.g, subtitleColor.b, alpha);
+        while (t < 0.5f) {
+            float y = (1 - Easing.CubicIn(t * 2)) * 100;
+            worldTransform.anchoredPosition = Vector2.down * y;
             t += Time.deltaTime;
             yield return null;
         }
-        prompt.color = promptColor;
-        subtitle.color = subtitleColor;
-
-        while (true) {
-            if (Input.anyKey) {
-                SoundManager.Play(startSound);
-                yield return new WaitForSeconds(0.5f);
-                SceneManager.LoadScene("Instructions");
-            }
-            yield return null;
-        }
+        worldTransform.anchoredPosition = Vector2.zero;
     }
 }
