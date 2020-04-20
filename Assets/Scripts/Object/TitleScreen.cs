@@ -21,6 +21,8 @@ public class TitleScreen : MonoBehaviour {
         float scale = 0;
         titleWhatThe.localScale = Vector2.zero;
         titleFiretruck.localScale = Vector2.zero;
+        Color promptColor = prompt.color;
+        Color subtitleColor = subtitle.color;
         prompt.color = Color.clear;
         subtitle.color = Color.clear;
 
@@ -48,13 +50,13 @@ public class TitleScreen : MonoBehaviour {
         t = 0;
         while (t < 0.3f) {
             float alpha = t / 0.3f;
-            prompt.color = new Color(1, 1, 1, alpha);
-            subtitle.color = new Color(0, 0, 0, alpha);
+            prompt.color = new Color(promptColor.r, promptColor.g, promptColor.b, alpha);
+            subtitle.color = new Color(subtitleColor.r, subtitleColor.g, subtitleColor.b, alpha);
             t += Time.deltaTime;
             yield return null;
         }
-        prompt.color = Color.white;
-        subtitle.color = Color.black;
+        prompt.color = promptColor;
+        subtitle.color = subtitleColor;
 
         while (true) {
             if (Input.anyKey) {
