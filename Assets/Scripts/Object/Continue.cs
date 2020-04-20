@@ -24,6 +24,7 @@ public class Continue : MonoBehaviour {
 
         text.enabled = true;
         canPress = true;
+        StartCoroutine(Bulge(text.GetComponent<RectTransform>()));
 
         while (canPress) {
             if (Input.anyKey) {
@@ -36,7 +37,19 @@ public class Continue : MonoBehaviour {
         canPress = false;
         seal.enabled = true;
         text.enabled = false;
+        yield return Bulge(seal.GetComponent<RectTransform>());
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(nextScene);
+    }
+
+    IEnumerator Bulge(RectTransform rectTransform) {
+        float t = 0;
+        while (t < 0.3f) {
+            float progress = Easing.ElasticOut(t / 0.3f);
+            rectTransform.localScale = new Vector3(progress, progress);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        rectTransform.localScale = new Vector3(1, 1);
     }
 }
