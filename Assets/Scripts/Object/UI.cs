@@ -11,6 +11,7 @@ public class UI : MonoBehaviour {
     [SerializeField] Text timer;
     [SerializeField] Text deathCount;
     [SerializeField] RectTransform waterFill;
+    [SerializeField] RectTransform timerFill;
 
     public void OnPeopleChange() {
         peopleCount.text = playerData.people.ToString();
@@ -34,6 +35,7 @@ public class UI : MonoBehaviour {
         peopleContainer.GetComponent<RectTransform>().anchoredPosition = playerData.position - camPosition + new Vector2(20, 40);
 
         timer.text = Formatter.TimeToString(sessionData.time);
+        timerFill.sizeDelta = new Vector2(64 * sessionData.time / SessionData.GAME_DURATION, 24);
         deathCount.text = sessionData.peopleDied.ToString();
     }
 }
