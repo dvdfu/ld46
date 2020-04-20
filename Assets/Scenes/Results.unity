@@ -462,6 +462,7 @@ MonoBehaviour:
   thingsIgnited: {fileID: 1109932972}
   thingsExtinguished: {fileID: 1471546836}
   waterUsed: {fileID: 1583425532}
+  summary: {fileID: 1642299586}
 --- !u!114 &383513520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1981,7 +1982,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 320, y: 36}
+  m_SizeDelta: {x: 320, y: 48}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1642299586
 MonoBehaviour:
