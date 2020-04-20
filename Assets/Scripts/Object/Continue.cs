@@ -27,7 +27,7 @@ public class Continue : MonoBehaviour {
         StartCoroutine(Bulge(text.GetComponent<RectTransform>()));
 
         while (canPress) {
-            if (Input.anyKey) {
+            if (Input.GetKeyDown(KeyCode.Return)) {
                 SoundManager.Play(pressSound);
                 break;
             } else {
