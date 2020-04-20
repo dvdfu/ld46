@@ -5,7 +5,7 @@ using UnityEngine;
 public class BuildingSpawner : MonoBehaviour {
     const float BUILDING_PADDING = 16;
     const float BUILDING_SPAWN_WIDTH = 32;
-    const int INITIAL_FIRE_HOUSES = 2;
+    const int INITIAL_FIRE_HOUSES = 1;
 
     [System.Serializable]
     public struct SpawningArea {
