@@ -19,10 +19,4 @@ public class ResultsScreen : MonoBehaviour {
         thingsExtinguished.text = sessionData.unitsExtinguished.ToString();
         waterUsed.text = sessionData.waterUsed.ToString() + " L";
     }
-
-    void Update() {
-        if (Input.anyKey) {
-            SceneManager.LoadScene("Title");
-        }
-    }
 }

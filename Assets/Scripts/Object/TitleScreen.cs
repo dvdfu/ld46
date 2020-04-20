@@ -24,7 +24,7 @@ public class TitleScreen : MonoBehaviour {
         prompt.color = Color.clear;
         subtitle.color = Color.clear;
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.3f);
 
         SoundManager.Play(thudSound);
         while (t < 0.5f) {
@@ -60,7 +60,7 @@ public class TitleScreen : MonoBehaviour {
             if (Input.anyKey) {
                 SoundManager.Play(startSound);
                 yield return new WaitForSeconds(0.5f);
-                SceneManager.LoadScene("Game");
+                SceneManager.LoadScene("Instructions");
             }
             yield return null;
         }
