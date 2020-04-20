@@ -21,4 +21,8 @@ public class SessionData : ScriptableObject {
         waterUsed = 0;
         time = GAME_DURATION;
     }
+
+    public float GetGameProgress() {
+        return (GAME_DURATION - time) / GAME_DURATION;
+    }
 }
