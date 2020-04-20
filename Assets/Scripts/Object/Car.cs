@@ -6,14 +6,11 @@ public class Car : MonoBehaviour {
     const float MAX_SPEED = 500;
     const int CAR_CRASH_DAMAGE = 3;
     const int CRASH_SPEED_THRESHOLD = 5000;
-    const float CHASE_CHANCE = 0f;
-    const float CAN_SWERVE_CHANCE = 1f;
     const float SWERVE_CHANCE = 0.01f;
     const float NEAR_PLAYER_SWERVE_DISTANCE = 80;
     const float NEAR_PLAYER_DISTANCE = 100;
     const float FAR_PLAYER_DISTANCE = 130;
     const float NEAR_BUILDING_DISTANCE = 100;
-    const float PROPANE_CHANCE = 0.1f;
 
     [SerializeField] PlayerData playerData;
     [SerializeField] SessionData sessionData;
@@ -92,11 +89,11 @@ public class Car : MonoBehaviour {
             hasPropane = false;
         } else {
             peopleInside = 1;
-            canChase = Random.value < CHASE_CHANCE;
-            hasPropane = Random.value < PROPANE_CHANCE;
+            canChase = Random.value < GetChaseChance();
+            hasPropane = Random.value < GetPropaneChance();
         }
         
-        if (Random.value < CAN_SWERVE_CHANCE) {
+        if (Random.value < GetChaseChance()) {
             StartCoroutine(CheckForSwerveTargets());
         }
     }
@@ -163,6 +160,28 @@ public class Car : MonoBehaviour {
         }
     }
 
+    float GetChaseChance() {
+        float progress = sessionData.GetGameProgress();
+        if (progress < 0.2f) {
+            return 0;
+        }
+        if (progress < 0.6f) {
+            return 0.1f;
+        }
+        return 0.2f;
+    }
+
+    float GetPropaneChance() {
+        float progress = sessionData.GetGameProgress();
+        if (progress < 0.2f) {
+            return 0;
+        }
+        if (progress < 0.5f) {
+            return 0.05f;
+        }
+        return 0.1f;
+    }
+
     Vector2 GetMoveDirection() {
         switch(state) {
             case State.Normal: return (destination - transform.position).normalized;
@@ -184,7 +203,7 @@ public class Car : MonoBehaviour {
                     && result.collider.gameObject.transform.parent != null
                     && result.collider.gameObject.transform.parent.tag == "Building"
                     && state == State.Normal
-                    && Random.Range(0f, 1f) < SWERVE_CHANCE
+                    && Random.value < SWERVE_CHANCE
                     && playerDelta.sqrMagnitude < NEAR_PLAYER_SWERVE_DISTANCE * NEAR_PLAYER_SWERVE_DISTANCE) {
 
                     state = State.Swerve;

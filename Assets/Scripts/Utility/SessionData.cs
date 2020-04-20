@@ -91,4 +91,8 @@ public class SessionData : ScriptableObject {
             return Title.None;
         }
     }
+
+    public float GetGameProgress() {
+        return (GAME_DURATION - time) / GAME_DURATION;
+    }
 }

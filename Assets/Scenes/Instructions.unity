@@ -638,26 +638,17 @@ MonoBehaviour:
 
     Do your best to keep everyone alive!
 
-    You have <color="#1E8AD4">2 minutes</color>.
+    You have <color="#DF3E23">2 minutes</color>.
 
 
-    Use <color="#DF3E23">WASD</color> to <color="#1E8AD4">drive</color> the vehicle
-    and
-
-    the <color="#DF3E23">ARROW KEYS</color> to operate the <color="#1E8AD4">water
-    cannon</color>
-
-    in order to put out fires.
-
-
-    You''ll need to stop near <color="#1E8AD4">fire hydrants</color>
+    You''ll need to stop near <color="#DF3E23">fire hydrants</color>
 
     to refill the water cannon.
 
 
-    Please pickup <color="#1E8AD4">civilians</color> and deliver them to
+    Please pickup <color="#DF3E23">civilians</color> and deliver them to
 
-    the <color="#1E8AD4">rescue helicopter</color> to keep the streets safe.'
+    the <color="#DF3E23">rescue helicopter</color> to keep the streets safe.'
 --- !u!222 &1642299587
 CanvasRenderer:
   m_ObjectHideFlags: 0

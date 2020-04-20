@@ -4,30 +4,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CarSpawner : MonoBehaviour {
-    const float BUS_CHANCE = 0.1f;
-
+    [SerializeField] SessionData sessionData;
     [SerializeField] GameObject carPrefab;
     [SerializeField] GameObject busPrefab;
     [SerializeField] Player player;
     [SerializeField] List<SpawningPoint> spawningPoints;
 
-    int carsSpawned = 0;
 
     void Start() {
         StartCoroutine(SpawnRoutine());
     }
 
     float GetSpawnDelay() {
-        return Mathf.Lerp(1.5f, 0.75f, carsSpawned / 100f);
+        return Mathf.Lerp(1.5f, 0.75f, sessionData.GetGameProgress());
     }
 
     IEnumerator SpawnRoutine() {
         while (true) {
             SpawningPoint spawningPoint = spawningPoints[UnityEngine.Random.Range(0, spawningPoints.Count)];
-            GameObject prefab = UnityEngine.Random.value < BUS_CHANCE ? busPrefab : carPrefab;
+            GameObject prefab = UnityEngine.Random.value < GetBusChance() ? busPrefab : carPrefab;
             Car car = Instantiate(prefab, spawningPoint.pos, Quaternion.identity, transform).GetComponent<Car>();
             car.Init(player.transform, spawningPoint.dest);
-            carsSpawned++;
             yield return new WaitForSeconds(GetSpawnDelay());
         }
     }
@@ -40,7 +37,18 @@ public class CarSpawner : MonoBehaviour {
         public Vector2 dest;
     }
 
-    private void OnDrawGizmos() {
+    float GetBusChance() {
+        float progress = sessionData.GetGameProgress();
+        if (progress < 0.2f) {
+            return 0;
+        }
+        if (progress < 0.6f) {
+            return 0.1f;
+        }
+        return 0.2f;
+    }
+
+    void OnDrawGizmos() {
         foreach (var spawningPoint in spawningPoints) {
             Vector3 spawnPointLoc = new Vector3(spawningPoint.pos.x, spawningPoint.pos.y, 0f);
             Vector3 destinationLoc = new Vector3(spawningPoint.dest.x, spawningPoint.dest.y, 0f);
