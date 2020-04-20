@@ -30,9 +30,11 @@ public class PlayerData : ScriptableObject {
     }
 
     public void DepleteWater(int amount = 1) {
-        if (water > 0) {
+        if (water > amount) {
             water -= amount;
             sessionData.waterUsed += amount;
+        } else {
+            water = 0;
         }
     }
 

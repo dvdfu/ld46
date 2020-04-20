@@ -5,6 +5,7 @@ using UnityEngine;
 public class FireHydrant : MonoBehaviour {
     [SerializeField] PlayerData playerData;
     [SerializeField] LineRenderer hose;
+    [SerializeField] ParticleSystem refuel;
     [SerializeField] AudioClip startSound;
     [SerializeField] AudioClip endSound;
 
@@ -15,8 +16,20 @@ public class FireHydrant : MonoBehaviour {
         hose.SetPosition(1, transform.position + new Vector3(0, 6));
     }
 
+    void Update() {
+        if (refuel.isPlaying) {
+            if (playerData.water > 0) {
+                refuel.Stop();
+            }
+        } else {
+            if (playerData.water == 0) {
+                refuel.Play();
+            }
+        }
+    }
+
     void FixedUpdate() {
-        if (player) {
+        if (player != null) {
             playerData.RefillWater(2);
         }
     }
