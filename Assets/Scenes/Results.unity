@@ -1422,7 +1422,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -64, y: -64}
+  m_SizeDelta: {x: -64, y: -40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1182605933
 MonoBehaviour:
@@ -1982,7 +1982,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 320, y: 48}
+  m_SizeDelta: {x: 320, y: 54}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1642299586
 MonoBehaviour:
@@ -2015,7 +2015,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1.25
   m_Text: Fire truck unit LDXLVI was immediately dispatched to the scene of the fire,
     only to further worsen the situation by causing vehicular collision and excessive
@@ -2375,12 +2375,12 @@ PrefabInstance:
     - target: {fileID: 7163540239346781900, guid: 814172a4252a54a9c8950e4d29938bb6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 140
+      value: -60
       objectReference: {fileID: 0}
     - target: {fileID: 7163540239346781900, guid: 814172a4252a54a9c8950e4d29938bb6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -60
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 7163540239346781900, guid: 814172a4252a54a9c8950e4d29938bb6,
         type: 3}
@@ -2395,22 +2395,22 @@ PrefabInstance:
     - target: {fileID: 7163540239346781900, guid: 814172a4252a54a9c8950e4d29938bb6,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7163540239346781900, guid: 814172a4252a54a9c8950e4d29938bb6,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7163540239346781900, guid: 814172a4252a54a9c8950e4d29938bb6,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7163540239346781900, guid: 814172a4252a54a9c8950e4d29938bb6,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7163540239346781900, guid: 814172a4252a54a9c8950e4d29938bb6,
         type: 3}
