@@ -17,6 +17,7 @@ public class UI : MonoBehaviour {
     [SerializeField] Image ready;
     [SerializeField] Image go;
     [SerializeField] Image finish;
+    [SerializeField] AudioSource music;
 
     public void OnPeopleChange() {
         peopleCount.text = playerData.people.ToString();
@@ -63,6 +64,7 @@ public class UI : MonoBehaviour {
         go.enabled = true;
         overlay.enabled = false;
         Time.timeScale = 1;
+        music.Play();
         yield return new WaitForSecondsRealtime(1);
 
         go.enabled = false;
@@ -72,7 +74,8 @@ public class UI : MonoBehaviour {
         Time.timeScale = 0;
         overlay.enabled = true;
         finish.enabled = true;
-        yield return new WaitForSecondsRealtime(2);
+        music.Stop();
+        yield return new WaitForSecondsRealtime(3);
 
         Time.timeScale = 1;
         SceneManager.LoadScene("Results");

@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "SessionData", menuName = "Session Data")]
 public class SessionData : ScriptableObject {
-    public const float GAME_DURATION = 120;
+    public const float GAME_DURATION = 8;
 
     public int peopleSaved;
     public int peopleDied;
@@ -28,9 +28,9 @@ public class SessionData : ScriptableObject {
 
     public enum Title {
         None,
-        GrimReaper, // >50 kills
-        Arsonist, // 0 extinguished/no water used
-        HydroHomie, // >2000L
+        GrimReaper, // > 50 kills
+        Arsonist, // < 5 extinguished
+        HydroHomie, // > 2000L
     }
 
     public void Reset() {
@@ -55,12 +55,12 @@ public class SessionData : ScriptableObject {
             ratings.peopleRating = Rating.Bad;
         }
 
-        int burnedDown = unitsBurned - unitsExtinguished;
-        if (burnedDown < 3) {
+        float burnRate = (unitsExtinguished + 1) / (unitsBurned + 1);
+        if (burnRate > 0.85f) {
             ratings.unitRating = Rating.Perfect;
-        } else if (burnedDown < 10) {
+        } else if (burnRate > 0.7f) {
             ratings.unitRating = Rating.Good;
-        } else if (burnedDown < 20) {
+        } else if (burnRate > 0.5f) {
             ratings.unitRating = Rating.Average;
         } else {
             ratings.unitRating = Rating.Bad;
@@ -83,7 +83,7 @@ public class SessionData : ScriptableObject {
     public Title GetTitle() {
         if (peopleDied > 50) {
             return Title.GrimReaper;
-        } else if (unitsExtinguished == 0) {
+        } else if (unitsExtinguished < 5) {
             return Title.Arsonist;
         } else if (waterUsed > 2000) {
             return Title.HydroHomie;
