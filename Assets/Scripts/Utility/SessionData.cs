@@ -55,12 +55,12 @@ public class SessionData : ScriptableObject {
             ratings.peopleRating = Rating.Bad;
         }
 
-        float burnRate = (unitsExtinguished + 1) / (unitsBurned + 1);
-        if (burnRate > 0.85f) {
+        float extinguishRate = (unitsExtinguished + 1) / (unitsBurned + 1);
+        if (extinguishRate > 0.9f) {
             ratings.unitRating = Rating.Perfect;
-        } else if (burnRate > 0.7f) {
+        } else if (extinguishRate > 0.8f) {
             ratings.unitRating = Rating.Good;
-        } else if (burnRate > 0.5f) {
+        } else if (extinguishRate > 0.7f) {
             ratings.unitRating = Rating.Average;
         } else {
             ratings.unitRating = Rating.Bad;

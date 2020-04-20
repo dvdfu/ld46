@@ -57,16 +57,16 @@ public class ResultsScreen : MonoBehaviour {
 
         switch (r.unitRating) {
             case SessionData.Rating.Bad:
-                summary.text += " and <color=#DF3E23>countless damaged buildings.</color>";
+                summary.text += " and <color=#DF3E23>countless damaged property.</color>";
                 break;
             case SessionData.Rating.Average:
-                summary.text += " and they did their best to extinguish buildings, <color=#DF3E23>although some did burn down.</color>";
+                summary.text += " and they did their best to put out fires, although <color=#DF3E23>many things did burn down.</color>";
                 break;
             case SessionData.Rating.Good:
-                summary.text += " and <color=#DF3E23>most buildings</color> were put out within time.";
+                summary.text += " and <color=#DF3E23>most property fires were put</color> out within time.";
                 break;
             case SessionData.Rating.Perfect:
-                summary.text += " and <color=#DF3E23>almost no building</color> went unrescued.";
+                summary.text += " and <color=#DF3E23>almost nothing was left on fire</color>".;
                 break;
         }
 

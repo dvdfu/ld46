@@ -8,7 +8,7 @@ public class BuildingSpawner : MonoBehaviour {
     const int INITIAL_FIRE_HOUSES = 2;
 
     [System.Serializable]
-    struct SpawningArea {
+    public struct SpawningArea {
         public enum Type {
             NW,
             NE,
@@ -160,7 +160,7 @@ public class BuildingSpawner : MonoBehaviour {
     }
 
     Vector2 Jitter(Vector2 v) {
-        return v + new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * Random.Range(0.8f, 4f);
+        return v + MathUtils.PolarToCartesian(Random.value * 360, Random.Range(0.8f, 4f));
     }
 
     void OnDrawGizmos() {
