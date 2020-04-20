@@ -58,7 +58,7 @@ public class Player : MonoBehaviour {
     }
 
     float GetSpeed() {
-        return (5f / (5 + playerData.people)) * MAX_SPEED;
+        return (8f / (8 + playerData.people)) * MAX_SPEED;
     }
 
     IEnumerator ShootWaterRoutine() {

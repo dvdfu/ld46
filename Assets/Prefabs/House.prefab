@@ -349,6 +349,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  sessionData: {fileID: 11400000, guid: 4003d406c92dc4d399f5a227b80b003d, type: 2}
   steamPrefab: {fileID: 5949332143176750326, guid: 798195f9152604aa79655df45dd1ea6d,
     type: 3}
   debrisPrefab: {fileID: 7520732452010113133, guid: 297a2655ec41b4c9a8c407a32ff65176,
@@ -358,7 +359,7 @@ MonoBehaviour:
   mortal: {fileID: 502343201625098340}
   flameSound: {fileID: 8300000, guid: 4aead3a41c5fe4067a90c064fbdae93c, type: 3}
   extinguishSound: {fileID: 8300000, guid: 1b88a4a675fdb401e923caf8a61e54fd, type: 3}
-  fireHealthMax: 10
+  fireHealthMax: 6
 --- !u!1001 &1027772853862564948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -370,11 +371,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fire
-      objectReference: {fileID: 0}
-    - target: {fileID: 3047203322126321365, guid: 814d0881cd59247239670105a0a73007,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3047203322126321366, guid: 814d0881cd59247239670105a0a73007,
         type: 3}
@@ -429,6 +425,11 @@ PrefabInstance:
     - target: {fileID: 3047203322126321366, guid: 814d0881cd59247239670105a0a73007,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3047203322126321365, guid: 814d0881cd59247239670105a0a73007,
+        type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9216683433366639107, guid: 814d0881cd59247239670105a0a73007,
