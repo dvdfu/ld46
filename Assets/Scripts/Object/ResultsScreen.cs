@@ -66,7 +66,7 @@ public class ResultsScreen : MonoBehaviour {
                 summary.text += " and <color=#DF3E23>most property fires were put</color> out within time.";
                 break;
             case SessionData.Rating.Perfect:
-                summary.text += " and <color=#DF3E23>almost nothing was left on fire</color>".;
+                summary.text += " and <color=#DF3E23>almost nothing was left on fire</color>.";
                 break;
         }
 

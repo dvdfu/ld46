@@ -29,56 +29,55 @@ public class BuildingSpawner : MonoBehaviour {
             switch (type) {
                 case Type.NW:
                     if (Random.Range(0f, 1f) < 0.5f) {
-                        return AlignToGrid(GetRightEdgeSpawn(), Mathf.Ceil, Mathf.Floor);
+                        return AlignToGrid(GetRightEdgeSpawn(), true, false);
                     } else {
-                        return AlignToGrid(GetBottomEdgeSpawn(), Mathf.Floor, Mathf.Floor);
+                        return AlignToGrid(GetBottomEdgeSpawn(), false, false);
                     }
                 case Type.NE:
                     if (Random.Range(0f, 1f) < 0.5f) {
-                        return AlignToGrid(GetLeftEdgeSpawn(), Mathf.Floor, Mathf.Floor);
+                        return AlignToGrid(GetLeftEdgeSpawn(), false, false);
                     } else {
-                        return AlignToGrid(GetBottomEdgeSpawn(), Mathf.Floor, Mathf.Floor);
+                        return AlignToGrid(GetBottomEdgeSpawn(), false, false);
                     }
                 case Type.SW:
                     if (Random.Range(0f, 1f) < 0.5f) {
-                        return AlignToGrid(GetTopEdgeSpawn(), Mathf.Ceil, Mathf.Ceil);
+                        return AlignToGrid(GetTopEdgeSpawn(), true, true);
                     } else {
-                        return AlignToGrid(GetRightEdgeSpawn(), Mathf.Ceil, Mathf.Floor);
+                        return AlignToGrid(GetRightEdgeSpawn(), true, false);
                     }
                 case Type.SE:
                     if (Random.Range(0f, 1f) < 0.5f) {
-                        return AlignToGrid(GetLeftEdgeSpawn(), Mathf.Floor, Mathf.Floor);
+                        return AlignToGrid(GetLeftEdgeSpawn(), false, false);
                     } else {
-                        return AlignToGrid(GetTopEdgeSpawn(), Mathf.Floor, Mathf.Ceil);
+                        return AlignToGrid(GetTopEdgeSpawn(), false, true);
                     }
                 case Type.TOP:
                     float topR = Random.Range(0f, 1f);
                     if (topR < 0.33f) {
-                        return AlignToGrid(GetLeftEdgeSpawn(), Mathf.Floor, Mathf.Floor);
+                        return AlignToGrid(GetLeftEdgeSpawn(), false, false);
                     } else if (topR < 0.66f) {
-                        return AlignToGrid(GetBottomEdgeSpawn(), Mathf.Floor, Mathf.Floor);
+                        return AlignToGrid(GetBottomEdgeSpawn(), false, false);
                     } else {
-                        return AlignToGrid(GetRightEdgeSpawn(), Mathf.Ceil, Mathf.Floor);
+                        return AlignToGrid(GetRightEdgeSpawn(), true, false);
                     }
                 case Type.BOTTOM:
                     float bottomR = Random.Range(0f, 1f);
                     if (bottomR < 0.33f) {
-                        return AlignToGrid(GetLeftEdgeSpawn(), Mathf.Floor, Mathf.Floor);
+                        return AlignToGrid(GetLeftEdgeSpawn(), false, false);
                     } else if (bottomR < 0.66f) {
-                        return AlignToGrid(GetTopEdgeSpawn(), Mathf.Floor, Mathf.Ceil);
+                        return AlignToGrid(GetTopEdgeSpawn(), false, true);
                     } else {
-                        return AlignToGrid(GetRightEdgeSpawn(), Mathf.Ceil, Mathf.Floor);
+                        return AlignToGrid(GetRightEdgeSpawn(), true, false);
                     }
             }
 
             return Vector2.zero;
         }
 
-        Vector2 AlignToGrid(Vector2 v, System.Func<float, float> fx, System.Func<float, float> fy) {
-            return new Vector2(
-                fx(v.x / 32) * 32,
-                fy(v.y / 32) * 32
-            );
+        Vector2 AlignToGrid(Vector2 v, bool ceilX, bool ceilY) {
+            float x = ceilX ? Mathf.Ceil(v.x / 32) : Mathf.Floor(v.x / 32);
+            float y = ceilY ? Mathf.Ceil(v.y / 32) : Mathf.Floor(v.y / 32);
+            return new Vector2(x, y) * 32;
         }
 
         Vector2 GetRightEdgeSpawn() {
@@ -123,19 +122,19 @@ public class BuildingSpawner : MonoBehaviour {
     void Start() {
         int burningCount = 0;
         for (int i = 0; i < 25; i++) {
-            GameObject go = SpawnBuilding(housePrefab);
+            GameObject go = SpawnStructure(housePrefab);
             if (go != null && burningCount < INITIAL_FIRE_HOUSES) {
                 burningCount++;
                 Flammable f = go.GetComponentInChildren<Flammable>();
                 f.SetOnFire();
             }
         }
-        for (int i = 0; i < 10; i++) SpawnBuilding(apartmentPrefab);
+        for (int i = 0; i < 10; i++) SpawnStructure(apartmentPrefab);
         spawningTrees = true;
-        for (int i = 0; i < 20; i++) SpawnBuilding(treePrefab);
+        for (int i = 0; i < 20; i++) SpawnStructure(treePrefab);
     }
 
-    GameObject SpawnBuilding(GameObject prefab) {
+    GameObject SpawnStructure(GameObject prefab) {
         int tries = 0;
 
         GameObject go = null;
