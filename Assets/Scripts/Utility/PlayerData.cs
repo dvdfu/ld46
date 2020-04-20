@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "PlayerData", menuName = "Player Data")]
 public class PlayerData : ScriptableObject {
-    public const int WATER_MAX = 10;
+    public const int WATER_MAX = 120;
 
     public UnityEvent peopleChangeEvent = new UnityEvent();
 
