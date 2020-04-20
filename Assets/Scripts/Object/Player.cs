@@ -18,7 +18,6 @@ public class Player : MonoBehaviour {
     [SerializeField] GameObject personPrefab;
     [SerializeField] Rigidbody2D body;
     [SerializeField] Transform helicopter;
-    [SerializeField] AudioClip waterSound;
     [SerializeField] AudioClip thudSound;
     [SerializeField] AudioClip pickupSound;
 
@@ -63,16 +62,13 @@ public class Player : MonoBehaviour {
 
     IEnumerator ShootWaterRoutine() {
         while (true) {
-            if (playerData.water > 0) {
-                float x = Input.GetAxisRaw("WaterHorizontal");
-                float y = Input.GetAxisRaw("WaterVertical");
-                if (x != 0 || y != 0) {
-                    float angle = Mathf.Atan2(y, x);
-                    WaterPellet waterPellet = Instantiate(waterPelletPrefab, transform.position + Vector3.up * 20, Quaternion.identity, transform.parent).GetComponent<WaterPellet>();
-                    waterPellet.Shoot(angle);
-                    playerData.DepleteWater();
-                    SoundManager.Play(waterSound);
-                }
+            float x = Input.GetAxisRaw("WaterHorizontal");
+            float y = Input.GetAxisRaw("WaterVertical");
+            if (x != 0 || y != 0) {
+                float angle = Mathf.Atan2(y, x);
+                WaterPellet waterPellet = Instantiate(waterPelletPrefab, transform.position + Vector3.up * 20, Quaternion.identity, transform.parent).GetComponent<WaterPellet>();
+                waterPellet.Shoot(angle);
+                playerData.DepleteWater();
             }
             yield return new WaitForSeconds(WATER_SHOOT_INTERVAL);
         }

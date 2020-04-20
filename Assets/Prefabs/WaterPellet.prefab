@@ -266,12 +266,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 088f89d706ece4f8b8a8ce371fba2dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 1539f56282a3a4afe9708dc71d2950e6, type: 2}
   waterSplashPrefab: {fileID: 5949332143176750326, guid: 7b570883015c1466f95d21357f016f4c,
     type: 3}
   puddlePrefab: {fileID: 4239407308791358368, guid: a415d29f249b24242a3c1d06971161d9,
     type: 3}
   body: {fileID: 5492904990838659248}
+  waterShootSound: {fileID: 8300000, guid: f658d7583104942cbb30e74a1cfc38f4, type: 3}
   waterHitSound: {fileID: 8300000, guid: c74cbb5cc0d7148139a73f526a7ad7b7, type: 3}
+  waterEmptySound: {fileID: 8300000, guid: 19f3c609e237d4d6aa9f1fda5f3a3b23, type: 3}
 --- !u!114 &4322704187253912067
 MonoBehaviour:
   m_ObjectHideFlags: 0
