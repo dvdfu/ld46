@@ -7,9 +7,10 @@ public class Car : MonoBehaviour {
     const int CAR_CRASH_DAMAGE = 3;
     const int CRASH_SPEED_THRESHOLD = 5000;
     const float CHASE_CHANCE = 0.15f;
-    const float CHASE_DISTANCE = 120;
+    const float NEAR_PLAYER_DISTANCE = 100;
     const float PROPANE_CHANCE = 0.1f;
 
+    [SerializeField] PlayerData playerData;
     [SerializeField] SessionData sessionData;
     [SerializeField] Sprite8Directional sprite8Directional;
     [SerializeField] SpriteRenderer spriteRenderer;
@@ -28,6 +29,7 @@ public class Car : MonoBehaviour {
 
     bool hasPerson = true;
     bool canChase = false;
+    bool hasPropane;
 
     enum State {
         Normal,
@@ -73,7 +75,7 @@ public class Car : MonoBehaviour {
     void Start() {
         state = State.Normal;
         canChase = Random.value < CHASE_CHANCE;
-        StartCoroutine(PropaneRoutine());
+        hasPropane = Random.value < PROPANE_CHANCE;
     }
 
     void FixedUpdate() {
@@ -90,6 +92,17 @@ public class Car : MonoBehaviour {
             default:
             body.AddForce(GetMoveDirection().normalized * MAX_SPEED);
             break;
+        }
+        Vector2 playerDelta = playerData.position - body.position;
+        if (playerDelta.sqrMagnitude < NEAR_PLAYER_DISTANCE * NEAR_PLAYER_DISTANCE) {
+            // Near player
+            if (state == State.Normal && canChase) {
+                state = State.Chase;
+            }
+            if (hasPropane) {
+                Instantiate(propanePrefab, transform.position, Quaternion.identity, transform.parent);
+                hasPropane = false;
+            }
         }
     }
 
@@ -124,9 +137,6 @@ public class Car : MonoBehaviour {
             if (dist.magnitude < 10f) {
                 Destroy(gameObject);
             }
-            if ((target.position - transform.position).magnitude < CHASE_DISTANCE && canChase) {
-                state = State.Chase;
-            }
             return dist.normalized;
 
             case State.Chase:
@@ -137,14 +147,6 @@ public class Car : MonoBehaviour {
 
             default:
             return Vector2.zero;
-        }
-    }
-
-    IEnumerator PropaneRoutine() {
-        bool hasPropane = Random.value < PROPANE_CHANCE;
-        yield return new WaitForSeconds(3);
-        if (hasPropane) {
-            Instantiate(propanePrefab, transform.position, Quaternion.identity, transform.parent);
         }
     }
 }
