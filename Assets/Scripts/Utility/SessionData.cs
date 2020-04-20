@@ -45,22 +45,22 @@ public class SessionData : ScriptableObject {
     public Ratings GetRating() {
         Ratings ratings = new Ratings();
 
-        if (peopleDied < 5) {
+        if (peopleDied < 6) {
             ratings.peopleRating = Rating.Perfect;
-        } else if (peopleDied < 10) {
+        } else if (peopleDied < 16) {
             ratings.peopleRating = Rating.Good;
-        } else if (peopleDied < 20) {
+        } else if (peopleDied < 25) {
             ratings.peopleRating = Rating.Average; 
         } else {
             ratings.peopleRating = Rating.Bad;
         }
 
-        float extinguishRate = (unitsExtinguished + 1) / (unitsBurned + 1);
-        if (extinguishRate > 0.9f) {
+        float extinguishRate = 1f * (unitsExtinguished + 1) / (unitsBurned + 1);
+        if (extinguishRate > 0.97f) {
             ratings.unitRating = Rating.Perfect;
-        } else if (extinguishRate > 0.8f) {
+        } else if (extinguishRate > 0.92f) {
             ratings.unitRating = Rating.Good;
-        } else if (extinguishRate > 0.7f) {
+        } else if (extinguishRate > 0.86f) {
             ratings.unitRating = Rating.Average;
         } else {
             ratings.unitRating = Rating.Bad;
