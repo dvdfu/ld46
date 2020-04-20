@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -4837544862012612663}
   - component: {fileID: 129192889690161876}
   - component: {fileID: 5128814681316797363}
+  - component: {fileID: 4149455555923787757}
   m_Layer: 0
   m_Name: Tombstone
   m_TagString: Untagged
@@ -4863,6 +4864,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &4149455555923787757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109610533420614197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14deb0cea5d6c4d8499b30342bbe1e55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathSound: {fileID: 8300000, guid: 0861a4a2378f84499a17d90d7ce218a8, type: 3}
 --- !u!1 &1003468465649065365
 GameObject:
   m_ObjectHideFlags: 0
