@@ -32,8 +32,6 @@ public class UI : MonoBehaviour {
         Vector2 camPosition = Camera.main.transform.position;
         peopleContainer.GetComponent<RectTransform>().anchoredPosition = playerData.position - camPosition + new Vector2(20, 40);
 
-        int seconds = Mathf.FloorToInt(sessionData.time);
-        int ms = Mathf.FloorToInt((sessionData.time % 1) * 100);
-        timer.text = seconds.ToString() + "." + (ms < 10 ? "0" : "") + ms.ToString();
+        timer.text = Formatter.TimeToString(sessionData.time);
     }
 }

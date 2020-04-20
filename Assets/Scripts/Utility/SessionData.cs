@@ -17,6 +17,6 @@ public class SessionData : ScriptableObject {
         carsDestroyed = 0;
         housesBurned = 0;
         waterUsed = 0;
-        time = 100;
+        time = 120;
     }
 }
