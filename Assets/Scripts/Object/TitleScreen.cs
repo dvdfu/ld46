@@ -11,7 +11,9 @@ public class TitleScreen : MonoBehaviour {
     [SerializeField] GameObject worldUI;
     [SerializeField] Text prompt;
     [SerializeField] AudioClip thudSound;
-    [SerializeField] AudioClip startSound;
+    [SerializeField] AudioClip promptSound;
+    [SerializeField] GameObject house;
+    [SerializeField] GameObject fireHydrant;
 
     void Start() {
         playerData.Reset();
@@ -58,16 +60,26 @@ public class TitleScreen : MonoBehaviour {
             yield return null;
         }
         worldTransform.anchoredPosition = Vector2.zero;
+        yield return new WaitForSeconds(0.3f);
 
+        SoundManager.Play(promptSound);
+        prompt.enabled = true;
         while (Input.GetAxisRaw("PlayerHorizontal") == 0 && Input.GetAxisRaw("PlayerVertical") == 0) {
             yield return null;
         }
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
+        SoundManager.Play(promptSound);
+
+        fireHydrant.SetActive(true);
+        house.SetActive(true);
+        Flammable f = house.GetComponentInChildren<Flammable>();
+        f.SetOnFire();
+
         prompt.text = "Water - <color=\"#1E8AD4\">Arrow Keys</color>";
-        while (Input.GetAxisRaw("WaterHorizontal") == 0 && Input.GetAxisRaw("WaterVertical") == 0) {
+        while (f.IsOnFire()) {
             yield return null;
         }
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(1f);
         prompt.text = "Starting mission!";
         yield return new WaitForSeconds(2);
 
