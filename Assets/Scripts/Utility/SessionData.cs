@@ -8,16 +8,16 @@ public class SessionData : ScriptableObject {
 
     public int peopleSaved;
     public int peopleDied;
-    public int carsDestroyed;
-    public int housesBurned;
+    public int unitsBurned;
+    public int unitsExtinguished;
     public int waterUsed;
     public float time;
 
     public void Reset() {
         peopleSaved = 0;
         peopleDied = 0;
-        carsDestroyed = 0;
-        housesBurned = 0;
+        unitsBurned = 0;
+        unitsExtinguished = 0;
         waterUsed = 0;
         time = GAME_DURATION;
     }

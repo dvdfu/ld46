@@ -7,6 +7,7 @@ public class Flammable : MonoBehaviour {
     public UnityEvent igniteEvent = new UnityEvent();
     public UnityEvent extinguishEvent = new UnityEvent();
 
+    [SerializeField] SessionData sessionData;
     [SerializeField] GameObject steamPrefab;
     [SerializeField] GameObject debrisPrefab;
     [SerializeField] ParticleSystem fire;
@@ -17,9 +18,13 @@ public class Flammable : MonoBehaviour {
     [SerializeField] int fireHealthMax = 10;
 
     int fireHealth = 0;
+    bool hasBeenIgnitedBefore = false;
 
     public void SetOnFire() {
         if (!IsOnFire() && mortal.IsAlive()) {
+            if (!hasBeenIgnitedBefore) {
+                sessionData.unitsBurned++;
+            }
             fireHealth = fireHealthMax;
             fire.Play();
             smoke.Play();
@@ -36,6 +41,10 @@ public class Flammable : MonoBehaviour {
         if (IsOnFire()) {
             fireHealth--;
             if (fireHealth == 0) {
+                if (!hasBeenIgnitedBefore) {
+                    hasBeenIgnitedBefore = true;
+                    sessionData.unitsExtinguished++;
+                }
                 SoundManager.Play(extinguishSound);
                 fire.Stop();
                 smoke.Stop();

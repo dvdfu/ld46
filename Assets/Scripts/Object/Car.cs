@@ -52,7 +52,6 @@ public class Car : MonoBehaviour {
     }
 
     public void OnDie() {
-        sessionData.carsDestroyed++;
         if (hasPerson) {
             sessionData.peopleDied++;
             Instantiate(tombstonePrefab, transform.position, Quaternion.identity, transform.parent);

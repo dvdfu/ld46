@@ -33,7 +33,6 @@ public class House : MonoBehaviour {
     }
 
     public void Die() {
-        sessionData.housesBurned++;
         spriteRenderer.sprite = ashes;
         spriteRenderer.sortingLayerName = "Floor";
         if (peopleInside > 0) {
