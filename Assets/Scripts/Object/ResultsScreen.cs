@@ -66,7 +66,7 @@ public class ResultsScreen : MonoBehaviour {
                 summary.text += " and most buildings were extinguished.";
                 break;
             case SessionData.Rating.Perfect:
-                summary.text += " and almost no building was left standing.";
+                summary.text += " and almost no building went unrescued.";
                 break;
         }
 

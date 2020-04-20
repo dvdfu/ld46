@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UI : MonoBehaviour {
@@ -12,6 +13,10 @@ public class UI : MonoBehaviour {
     [SerializeField] Text deathCount;
     [SerializeField] RectTransform waterFill;
     [SerializeField] RectTransform timerFill;
+    [SerializeField] Image overlay;
+    [SerializeField] Image ready;
+    [SerializeField] Image go;
+    [SerializeField] Image finish;
 
     public void OnPeopleChange() {
         peopleCount.text = playerData.people.ToString();
@@ -21,12 +26,22 @@ public class UI : MonoBehaviour {
         }
     }
 
+    public void OnGameOver() {
+        StartCoroutine(GameOverRoutine());
+    }
+
+    void Awake() {
+        StartCoroutine(InitRoutine());
+    }
+
     void Start() {
         playerData.peopleChangeEvent.AddListener(OnPeopleChange);
+        GameManager.gameOverEvent.AddListener(OnGameOver);
     }
 
     void OnDestroy() {
         playerData.peopleChangeEvent.RemoveListener(OnPeopleChange);
+        GameManager.gameOverEvent.RemoveListener(OnGameOver);
     }
 
     void LateUpdate() {
@@ -37,5 +52,29 @@ public class UI : MonoBehaviour {
         timer.text = Formatter.TimeToString(sessionData.time);
         timerFill.sizeDelta = new Vector2(64 * (1 - sessionData.GetGameProgress()), 24);
         deathCount.text = sessionData.peopleDied.ToString();
+    }
+
+    IEnumerator InitRoutine() {
+        Time.timeScale = 0;
+        ready.enabled = true;
+        yield return new WaitForSecondsRealtime(2);
+
+        ready.enabled = false;
+        go.enabled = true;
+        overlay.enabled = false;
+        Time.timeScale = 1;
+        yield return new WaitForSecondsRealtime(1);
+
+        go.enabled = false;
+    }
+
+    IEnumerator GameOverRoutine() {
+        Time.timeScale = 0;
+        overlay.enabled = true;
+        finish.enabled = true;
+        yield return new WaitForSecondsRealtime(2);
+
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Results");
     }
 }

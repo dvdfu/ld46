@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviour {
         } else {
             sessionData.time = 0;
             GameManager.gameOverEvent.Invoke();
-            SceneManager.LoadScene("Results");
         }
     }
 }
