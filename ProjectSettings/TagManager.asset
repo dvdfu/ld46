@@ -8,6 +8,7 @@ TagManager:
   - Refill
   - Water
   - Helicopter
+  - Building
   layers:
   - Default
   - TransparentFX

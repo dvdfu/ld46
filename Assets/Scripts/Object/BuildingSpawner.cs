@@ -5,6 +5,7 @@ using UnityEngine;
 public class BuildingSpawner : MonoBehaviour {
     const float BUILDING_PADDING = 16;
     const float BUILDING_SPAWN_WIDTH = 32;
+    const int INITIAL_FIRE_HOUSES = 2;
 
     [System.Serializable]
     struct SpawningArea {
@@ -120,15 +121,24 @@ public class BuildingSpawner : MonoBehaviour {
     bool spawningTrees = false;
 
     void Start() {
-        for (int i = 0; i < 25; i++) SpawnBuilding(housePrefab);
+        int burningCount = 0;
+        for (int i = 0; i < 25; i++) {
+            GameObject go = SpawnBuilding(housePrefab);
+            if (go != null && burningCount < INITIAL_FIRE_HOUSES) {
+                burningCount++;
+                Flammable f = go.GetComponentInChildren<Flammable>();
+                f.SetOnFire();
+            }
+        }
         for (int i = 0; i < 10; i++) SpawnBuilding(apartmentPrefab);
         spawningTrees = true;
         for (int i = 0; i < 20; i++) SpawnBuilding(treePrefab);
     }
 
-    void SpawnBuilding(GameObject prefab) {
+    GameObject SpawnBuilding(GameObject prefab) {
         int tries = 0;
 
+        GameObject go = null;
         while (tries++ < 5) {
             SpawningArea spawnArea = spawningAreas[Random.Range(0, spawningAreas.Count)];
             Rect spawningArea = spawnArea.area;
@@ -142,11 +152,11 @@ public class BuildingSpawner : MonoBehaviour {
                 continue;
             }
 
-            Instantiate(prefab, Jitter(spawnPoint), Quaternion.identity, transform);
+            go = Instantiate(prefab, Jitter(spawnPoint), Quaternion.identity, transform);
             previouslySpawnedBuildings.Add(p);
             break;
         }
-        
+        return go;
     }
 
     Vector2 Jitter(Vector2 v) {

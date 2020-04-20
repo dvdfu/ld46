@@ -6,9 +6,13 @@ public class Car : MonoBehaviour {
     const float MAX_SPEED = 500;
     const int CAR_CRASH_DAMAGE = 3;
     const int CRASH_SPEED_THRESHOLD = 5000;
-    const float CHASE_CHANCE = 0.15f;
+    const float CHASE_CHANCE = 0f;
+    const float CAN_SWERVE_CHANCE = 1f;
+    const float SWERVE_CHANCE = 0.01f;
+    const float NEAR_PLAYER_SWERVE_DISTANCE = 80;
     const float NEAR_PLAYER_DISTANCE = 100;
     const float FAR_PLAYER_DISTANCE = 130;
+    const float NEAR_BUILDING_DISTANCE = 100;
     const float PROPANE_CHANCE = 0.1f;
 
     [SerializeField] PlayerData playerData;
@@ -32,10 +36,12 @@ public class Car : MonoBehaviour {
     int peopleInside;
     bool canChase;
     bool hasPropane;
+    Transform swerveTarget;
 
     enum State {
         Normal,
         Chase,
+        Swerve,
         Stop,
         Dead,
     }
@@ -75,7 +81,7 @@ public class Car : MonoBehaviour {
     }
 
     public bool IsMoving() {
-        return state == State.Normal || state == State.Chase;
+        return state == State.Normal || state == State.Chase || state == State.Swerve;
     }
 
     void Start() {
@@ -88,6 +94,10 @@ public class Car : MonoBehaviour {
             peopleInside = 1;
             canChase = Random.value < CHASE_CHANCE;
             hasPropane = Random.value < PROPANE_CHANCE;
+        }
+        
+        if (Random.value < CAN_SWERVE_CHANCE) {
+            StartCoroutine(CheckForSwerveTargets());
         }
     }
 
@@ -157,8 +167,31 @@ public class Car : MonoBehaviour {
         switch(state) {
             case State.Normal: return (destination - transform.position).normalized;
             case State.Chase: return (target.position - transform.position).normalized;
+            case State.Swerve: return (swerveTarget.position - transform.position).normalized;
             case State.Stop: return body.velocity;
             default: return Vector2.zero;
+        }
+    }
+
+    IEnumerator CheckForSwerveTargets() {
+        while (true) {
+            RaycastHit2D[] results = Physics2D.CircleCastAll(transform.position, NEAR_BUILDING_DISTANCE, Vector2.zero, 0);
+            foreach (RaycastHit2D result in results) {
+                Flammable flammable = result.collider.gameObject.GetComponent<Flammable>();
+                Vector2 playerDelta = playerData.position - body.position;
+                if (flammable
+                    && !flammable.IsOnFire()
+                    && result.collider.gameObject.transform.parent != null
+                    && result.collider.gameObject.transform.parent.tag == "Building"
+                    && state == State.Normal
+                    && Random.Range(0f, 1f) < SWERVE_CHANCE
+                    && playerDelta.sqrMagnitude < NEAR_PLAYER_SWERVE_DISTANCE * NEAR_PLAYER_SWERVE_DISTANCE) {
+
+                    state = State.Swerve;
+                    swerveTarget = result.collider.gameObject.transform;
+                }
+            }
+            yield return new WaitForSeconds(2f);
         }
     }
 }
