@@ -35,7 +35,7 @@ public class UI : MonoBehaviour {
         peopleContainer.GetComponent<RectTransform>().anchoredPosition = playerData.position - camPosition + new Vector2(20, 40);
 
         timer.text = Formatter.TimeToString(sessionData.time);
-        timerFill.sizeDelta = new Vector2(64 * sessionData.time / SessionData.GAME_DURATION, 24);
+        timerFill.sizeDelta = new Vector2(64 * (1 - sessionData.GetGameProgress()), 24);
         deathCount.text = sessionData.peopleDied.ToString();
     }
 }
