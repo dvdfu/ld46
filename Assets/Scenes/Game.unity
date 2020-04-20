@@ -570,36 +570,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawningAreas:
-  - serializedVersion: 2
-    x: -360
-    y: -176
-    width: 152
-    height: 128
-  - serializedVersion: 2
-    x: -112
-    y: -176
-    width: 224
-    height: 128
-  - serializedVersion: 2
-    x: -360
-    y: 48
-    width: 152
-    height: 128
-  - serializedVersion: 2
-    x: -112
-    y: 48
-    width: 224
-    height: 128
-  - serializedVersion: 2
-    x: 208
-    y: 48
-    width: 152
-    height: 128
-  - serializedVersion: 2
-    x: 208
-    y: -176
-    width: 152
-    height: 128
+  - type: 0
+    area:
+      serializedVersion: 2
+      x: -320
+      y: 48
+      width: 112
+      height: 128
+  - type: 4
+    area:
+      serializedVersion: 2
+      x: -112
+      y: 48
+      width: 224
+      height: 128
+  - type: 1
+    area:
+      serializedVersion: 2
+      x: 208
+      y: 48
+      width: 152
+      height: 128
+  - type: 2
+    area:
+      serializedVersion: 2
+      x: -320
+      y: -176
+      width: 112
+      height: 128
+  - type: 5
+    area:
+      serializedVersion: 2
+      x: -112
+      y: -176
+      width: 224
+      height: 128
+  - type: 3
+    area:
+      serializedVersion: 2
+      x: 208
+      y: -176
+      width: 152
+      height: 128
   treePrefab: {fileID: 3473657901759617887, guid: d4af51297420d409a826260eb6401f1c,
     type: 3}
   housePrefab: {fileID: 502343201625098342, guid: 76fcf7d6c118046539c80a42008f11c6,
@@ -790,12 +802,12 @@ PrefabInstance:
     - target: {fileID: 2510498566900832228, guid: 6690d8891c9a746c587c2c58011e2b31,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -220
+      value: -202
       objectReference: {fileID: 0}
     - target: {fileID: 2510498566900832228, guid: 6690d8891c9a746c587c2c58011e2b31,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 54
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 2510498566900832228, guid: 6690d8891c9a746c587c2c58011e2b31,
         type: 3}
