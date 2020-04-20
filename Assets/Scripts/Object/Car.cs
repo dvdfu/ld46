@@ -24,12 +24,13 @@ public class Car : MonoBehaviour {
     [SerializeField] GameObject personPrefab;
     [SerializeField] GameObject propanePrefab;
     [SerializeField] Sprite ashSprite;
+    [SerializeField] bool isBus = false;
 
     Vector3 destination;
     Transform target;
 
-    bool hasPerson = true;
-    bool canChase = false;
+    int peopleInside;
+    bool canChase;
     bool hasPropane;
 
     enum State {
@@ -46,17 +47,21 @@ public class Car : MonoBehaviour {
     }
 
     public void OnIgnite() {
-        if (hasPerson) {
-            hasPerson = false;
+        if (peopleInside > 0) {
+            for (int i = 0; i < peopleInside; i++) {
+                Vector3 offset = MathUtils.PolarToCartesian(360f * i / peopleInside, 10);
+                Instantiate(personPrefab, transform.position + offset, Quaternion.identity, transform.parent);
+            }
+            peopleInside = 0;
             state = State.Stop;
             spriteRenderer.color = Color.grey;
-            Instantiate(personPrefab, transform.position, Quaternion.identity, transform.parent);
         }
     }
 
     public void OnDie() {
-        if (hasPerson) {
-            sessionData.peopleDied++;
+        if (peopleInside > 0) {
+            sessionData.peopleDied += peopleInside;
+            peopleInside = 0;
             Instantiate(tombstonePrefab, transform.position, Quaternion.identity, transform.parent);
         }
         if (flammable.IsOnFire()) {
@@ -75,8 +80,15 @@ public class Car : MonoBehaviour {
 
     void Start() {
         state = State.Normal;
-        canChase = Random.value < CHASE_CHANCE;
-        hasPropane = Random.value < PROPANE_CHANCE;
+        if (isBus) {
+            peopleInside = 3;
+            canChase = false;
+            hasPropane = false;
+        } else {
+            peopleInside = 1;
+            canChase = Random.value < CHASE_CHANCE;
+            hasPropane = Random.value < PROPANE_CHANCE;
+        }
     }
 
     void FixedUpdate() {

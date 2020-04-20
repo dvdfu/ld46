@@ -620,6 +620,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carPrefab: {fileID: 2956700562057853038, guid: 05a13e8c2c31b4399972320d432e7767,
     type: 3}
+  busPrefab: {fileID: 3651976172339897711, guid: 5bd626489f28a42dc9d9a9f17ba22f0b,
+    type: 3}
   player: {fileID: 318175373}
   spawningPoints:
   - pos: {x: 400, y: 16}
