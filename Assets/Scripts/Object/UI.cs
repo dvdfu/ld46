@@ -29,7 +29,7 @@ public class UI : MonoBehaviour {
     }
 
     void LateUpdate() {
-        waterFill.sizeDelta = new Vector2(64f * playerData.water / PlayerData.WATER_MAX, 8);
+        waterFill.sizeDelta = new Vector2(64f * playerData.water / PlayerData.WATER_MAX, 24);
         Vector2 camPosition = Camera.main.transform.position;
         peopleContainer.GetComponent<RectTransform>().anchoredPosition = playerData.position - camPosition + new Vector2(20, 40);
 
