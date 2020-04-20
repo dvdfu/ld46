@@ -8,6 +8,7 @@ public class Car : MonoBehaviour {
     const int CRASH_SPEED_THRESHOLD = 5000;
     const float CHASE_CHANCE = 0.15f;
     const float NEAR_PLAYER_DISTANCE = 100;
+    const float FAR_PLAYER_DISTANCE = 130;
     const float PROPANE_CHANCE = 0.1f;
 
     [SerializeField] PlayerData playerData;
@@ -103,6 +104,16 @@ public class Car : MonoBehaviour {
                 Instantiate(propanePrefab, transform.position, Quaternion.identity, transform.parent);
                 hasPropane = false;
             }
+        } else if (playerDelta.sqrMagnitude > FAR_PLAYER_DISTANCE * FAR_PLAYER_DISTANCE) {
+            // Far player
+            if (state == State.Chase) {
+                state = State.Normal;
+            }
+        }
+
+        Vector2 dist = destination - transform.position;
+        if (dist.sqrMagnitude < 100) {
+            Destroy(gameObject);
         }
     }
 
@@ -132,21 +143,10 @@ public class Car : MonoBehaviour {
 
     Vector2 GetMoveDirection() {
         switch(state) {
-            case State.Normal:
-            Vector2 dist = destination - transform.position;
-            if (dist.magnitude < 10f) {
-                Destroy(gameObject);
-            }
-            return dist.normalized;
-
-            case State.Chase:
-            return (target.position - transform.position).normalized;
-
-            case State.Stop:
-            return body.velocity;
-
-            default:
-            return Vector2.zero;
+            case State.Normal: return (destination - transform.position).normalized;
+            case State.Chase: return (target.position - transform.position).normalized;
+            case State.Stop: return body.velocity;
+            default: return Vector2.zero;
         }
     }
 }
