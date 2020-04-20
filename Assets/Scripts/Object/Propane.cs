@@ -7,8 +7,8 @@ public class Propane : MonoBehaviour {
     [SerializeField] GameObject poofPrefab;
     [SerializeField] Collider2D collider;
 
-    public void Remove() {
-        Instantiate(poofPrefab, transform.position, Quaternion.identity, transform.parent);
+    public void Detonate() {
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity, transform.parent);
         Destroy(gameObject);
     }
 
@@ -17,8 +17,12 @@ public class Propane : MonoBehaviour {
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
-        Instantiate(explosionPrefab, transform.position, Quaternion.identity, transform.parent);
-        Remove();
+        if (collision.gameObject.GetComponent<Player>()) {
+            Instantiate(poofPrefab, transform.position, Quaternion.identity, transform.parent);
+            Destroy(gameObject);
+        } else {
+            Detonate();
+        }
     }
 
     IEnumerator AppearRoutine() {

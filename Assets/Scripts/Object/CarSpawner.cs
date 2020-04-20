@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CarSpawner : MonoBehaviour {
+    const float BUS_CHANCE = 0.1f;
+
     [SerializeField] GameObject carPrefab;
+    [SerializeField] GameObject busPrefab;
     [SerializeField] Player player;
     [SerializeField] List<SpawningPoint> spawningPoints;
 
@@ -21,7 +24,8 @@ public class CarSpawner : MonoBehaviour {
     IEnumerator SpawnRoutine() {
         while (true) {
             SpawningPoint spawningPoint = spawningPoints[UnityEngine.Random.Range(0, spawningPoints.Count)];
-            Car car = Instantiate(carPrefab, spawningPoint.pos, Quaternion.identity, transform).GetComponent<Car>();
+            GameObject prefab = UnityEngine.Random.value < BUS_CHANCE ? busPrefab : carPrefab;
+            Car car = Instantiate(prefab, spawningPoint.pos, Quaternion.identity, transform).GetComponent<Car>();
             car.Init(player.transform, spawningPoint.dest);
             carsSpawned++;
             yield return new WaitForSeconds(GetSpawnDelay());

@@ -7,9 +7,11 @@ public class Car : MonoBehaviour {
     const int CAR_CRASH_DAMAGE = 3;
     const int CRASH_SPEED_THRESHOLD = 5000;
     const float CHASE_CHANCE = 0.15f;
-    const float CHASE_DISTANCE = 120;
+    const float NEAR_PLAYER_DISTANCE = 100;
+    const float FAR_PLAYER_DISTANCE = 130;
     const float PROPANE_CHANCE = 0.1f;
 
+    [SerializeField] PlayerData playerData;
     [SerializeField] SessionData sessionData;
     [SerializeField] Sprite8Directional sprite8Directional;
     [SerializeField] SpriteRenderer spriteRenderer;
@@ -22,12 +24,14 @@ public class Car : MonoBehaviour {
     [SerializeField] GameObject personPrefab;
     [SerializeField] GameObject propanePrefab;
     [SerializeField] Sprite ashSprite;
+    [SerializeField] bool isBus = false;
 
     Vector3 destination;
     Transform target;
 
-    bool hasPerson = true;
-    bool canChase = false;
+    int peopleInside;
+    bool canChase;
+    bool hasPropane;
 
     enum State {
         Normal,
@@ -43,17 +47,21 @@ public class Car : MonoBehaviour {
     }
 
     public void OnIgnite() {
-        if (hasPerson) {
-            hasPerson = false;
+        if (peopleInside > 0) {
+            for (int i = 0; i < peopleInside; i++) {
+                Vector3 offset = MathUtils.PolarToCartesian(360f * i / peopleInside, 10);
+                Instantiate(personPrefab, transform.position + offset, Quaternion.identity, transform.parent);
+            }
+            peopleInside = 0;
             state = State.Stop;
             spriteRenderer.color = Color.grey;
-            Instantiate(personPrefab, transform.position, Quaternion.identity, transform.parent);
         }
     }
 
     public void OnDie() {
-        if (hasPerson) {
-            sessionData.peopleDied++;
+        if (peopleInside > 0) {
+            sessionData.peopleDied += peopleInside;
+            peopleInside = 0;
             Instantiate(tombstonePrefab, transform.position, Quaternion.identity, transform.parent);
         }
         if (flammable.IsOnFire()) {
@@ -72,8 +80,15 @@ public class Car : MonoBehaviour {
 
     void Start() {
         state = State.Normal;
-        canChase = Random.value < CHASE_CHANCE;
-        StartCoroutine(PropaneRoutine());
+        if (isBus) {
+            peopleInside = 3;
+            canChase = false;
+            hasPropane = false;
+        } else {
+            peopleInside = 1;
+            canChase = Random.value < CHASE_CHANCE;
+            hasPropane = Random.value < PROPANE_CHANCE;
+        }
     }
 
     void FixedUpdate() {
@@ -90,6 +105,27 @@ public class Car : MonoBehaviour {
             default:
             body.AddForce(GetMoveDirection().normalized * MAX_SPEED);
             break;
+        }
+        Vector2 playerDelta = playerData.position - body.position;
+        if (playerDelta.sqrMagnitude < NEAR_PLAYER_DISTANCE * NEAR_PLAYER_DISTANCE) {
+            // Near player
+            if (state == State.Normal && canChase) {
+                state = State.Chase;
+            }
+            if (hasPropane) {
+                Instantiate(propanePrefab, transform.position, Quaternion.identity, transform.parent);
+                hasPropane = false;
+            }
+        } else if (playerDelta.sqrMagnitude > FAR_PLAYER_DISTANCE * FAR_PLAYER_DISTANCE) {
+            // Far player
+            if (state == State.Chase) {
+                state = State.Normal;
+            }
+        }
+
+        Vector2 dist = destination - transform.position;
+        if (dist.sqrMagnitude < 100) {
+            Destroy(gameObject);
         }
     }
 
@@ -119,32 +155,10 @@ public class Car : MonoBehaviour {
 
     Vector2 GetMoveDirection() {
         switch(state) {
-            case State.Normal:
-            Vector2 dist = destination - transform.position;
-            if (dist.magnitude < 10f) {
-                Destroy(gameObject);
-            }
-            if ((target.position - transform.position).magnitude < CHASE_DISTANCE && canChase) {
-                state = State.Chase;
-            }
-            return dist.normalized;
-
-            case State.Chase:
-            return (target.position - transform.position).normalized;
-
-            case State.Stop:
-            return body.velocity;
-
-            default:
-            return Vector2.zero;
-        }
-    }
-
-    IEnumerator PropaneRoutine() {
-        bool hasPropane = Random.value < PROPANE_CHANCE;
-        yield return new WaitForSeconds(3);
-        if (hasPropane) {
-            Instantiate(propanePrefab, transform.position, Quaternion.identity, transform.parent);
+            case State.Normal: return (destination - transform.position).normalized;
+            case State.Chase: return (target.position - transform.position).normalized;
+            case State.Stop: return body.velocity;
+            default: return Vector2.zero;
         }
     }
 }
