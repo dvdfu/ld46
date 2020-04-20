@@ -9,6 +9,7 @@ public class SessionData : ScriptableObject {
     public int carsDestroyed;
     public int housesBurned;
     public int waterUsed;
+    public float time;
 
     public void Reset() {
         peopleSaved = 0;
@@ -16,5 +17,6 @@ public class SessionData : ScriptableObject {
         carsDestroyed = 0;
         housesBurned = 0;
         waterUsed = 0;
+        time = 100;
     }
 }
