@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildingSpawner : MonoBehaviour {
-    const int BUILDING_COUNT = 40;
+    const int BUILDING_COUNT = 80;
 
     [SerializeField] List<Rect> spawningAreas;
     [SerializeField] float spawningRate = 5; // Seconds between spawning buildings
@@ -17,18 +17,23 @@ public class BuildingSpawner : MonoBehaviour {
         }
     }
 
+    /*
     void Update() {
         if (Time.time - lastSpawnedAt >= spawningRate) {
             lastSpawnedAt = Time.time;
             SpawnBuilding();
         }
     }
+    */
 
     void SpawnBuilding() {
         Rect spawningArea = spawningAreas[Random.Range(0, spawningAreas.Count)];
-        Vector2 spawnPoint = new Vector2(Random.Range(spawningArea.xMin, spawningArea.xMax), Random.Range(spawningArea.yMin, spawningArea.yMax));
+        Vector2 spawnPoint = new Vector2(
+            Random.Range(spawningArea.xMin + 16, spawningArea.xMax - 16),
+            Random.Range(spawningArea.yMin + 16, spawningArea.yMax - 16)
+        );
         spawnPoint.x = Mathf.Floor(spawnPoint.x / 16) * 16 + 8;
-        spawnPoint.y = Mathf.Floor(spawnPoint.y / 16) * 16;
+        spawnPoint.y = Mathf.Floor(spawnPoint.y / 16) * 16 + 8;
         int buildingType = Random.Range(0, buildings.Count);
         Instantiate(buildings[buildingType], spawnPoint, Quaternion.identity, transform);
     }
