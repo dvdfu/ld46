@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
+    public static UnityEvent gameOverEvent = new UnityEvent();
+
     [SerializeField] SessionData sessionData;
     [SerializeField] PlayerData playerData;
 
@@ -16,6 +19,15 @@ public class GameManager : MonoBehaviour {
     void Update() {
         if (Input.GetKeyDown("r")) {
             SceneManager.LoadScene("Game");
+        }
+    }
+
+    void FixedUpdate() {
+        if (sessionData.time > Time.deltaTime) {
+            sessionData.time -= Time.deltaTime;
+        } else {
+            sessionData.time = 0;
+            GameManager.gameOverEvent.Invoke();
         }
     }
 }
