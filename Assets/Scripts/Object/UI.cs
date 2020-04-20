@@ -62,7 +62,7 @@ public class UI : MonoBehaviour {
 
         ready.enabled = false;
         go.enabled = true;
-        overlay.enabled = false;
+        StartCoroutine(OverlayRoutine(false));
         Time.timeScale = 1;
         music.Play();
         yield return new WaitForSecondsRealtime(1);
@@ -71,13 +71,27 @@ public class UI : MonoBehaviour {
     }
 
     IEnumerator GameOverRoutine() {
+        yield return OverlayRoutine(true);
         Time.timeScale = 0;
-        overlay.enabled = true;
         finish.enabled = true;
         music.Stop();
-        yield return new WaitForSecondsRealtime(3);
+        yield return new WaitForSecondsRealtime(2);
 
         Time.timeScale = 1;
         SceneManager.LoadScene("Results");
+    }
+
+    IEnumerator OverlayRoutine(bool show) {
+        float t = 0;
+        while (t < 0.1f) {
+            float progress = t / 0.1f;
+            if (!show) {
+                progress = 1 - progress;
+            }
+            overlay.color = new Color(0, 0, 0, progress * 0.5f);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        overlay.color = show ? new Color(0, 0, 0, 0.5f) : new Color(0, 0, 0, 0);
     }
 }

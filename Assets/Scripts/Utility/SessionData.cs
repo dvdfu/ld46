@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "SessionData", menuName = "Session Data")]
 public class SessionData : ScriptableObject {
-    public const float GAME_DURATION = 8;
+    public const float GAME_DURATION = 120;
 
     public int peopleSaved;
     public int peopleDied;
