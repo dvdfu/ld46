@@ -16,7 +16,7 @@ public class CarSpawner : MonoBehaviour {
     }
 
     float GetSpawnDelay() {
-        return Mathf.Lerp(1.5f, 0.75f, sessionData.GetGameProgress());
+        return Mathf.Lerp(1.2f, 0.8f, sessionData.GetGameProgress());
     }
 
     IEnumerator SpawnRoutine() {
@@ -39,11 +39,11 @@ public class CarSpawner : MonoBehaviour {
 
     float GetBusChance() {
         float progress = sessionData.GetGameProgress();
-        if (progress < 0.2f) {
-            return 0;
-        }
-        if (progress < 0.6f) {
+        if (progress < 0.25f) {
             return 0.1f;
+        }
+        if (progress < 0.5f) {
+            return 0.15f;
         }
         return 0.2f;
     }

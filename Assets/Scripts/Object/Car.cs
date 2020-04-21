@@ -163,9 +163,9 @@ public class Car : MonoBehaviour {
     float GetChaseChance() {
         float progress = sessionData.GetGameProgress();
         if (progress < 0.2f) {
-            return 0;
+            return 0.05f;
         }
-        if (progress < 0.6f) {
+        if (progress < 0.4f) {
             return 0.1f;
         }
         return 0.2f;
@@ -173,10 +173,10 @@ public class Car : MonoBehaviour {
 
     float GetPropaneChance() {
         float progress = sessionData.GetGameProgress();
-        if (progress < 0.2f) {
+        if (progress < 0.05f) {
             return 0;
         }
-        if (progress < 0.5f) {
+        if (progress < 0.2f) {
             return 0.05f;
         }
         return 0.1f;
