@@ -8,8 +8,8 @@ public class Car : MonoBehaviour {
     const int CRASH_SPEED_THRESHOLD = 5000;
     const float SWERVE_CHANCE = 0.01f;
     const float NEAR_PLAYER_SWERVE_DISTANCE = 80;
-    const float NEAR_PLAYER_DISTANCE = 100;
-    const float FAR_PLAYER_DISTANCE = 130;
+    const float NEAR_PLAYER_DISTANCE = 130;
+    const float FAR_PLAYER_DISTANCE = 150;
     const float NEAR_BUILDING_DISTANCE = 100;
 
     [SerializeField] PlayerData playerData;
