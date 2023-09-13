@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HelicopterPickup : MonoBehaviour {
     const float RESCUE_FLY_DURATION = 1f;
-    const float RESCUE_PICKUP_DURATION = 0.25f;
+    const float RESCUE_PICKUP_DURATION = 0.1f;
 
     [SerializeField] PlayerData playerData;
     [SerializeField] float semiMajorAxis = 200f;
