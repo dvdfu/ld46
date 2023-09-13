@@ -30,7 +30,7 @@ public class FireHydrant : MonoBehaviour {
 
     void FixedUpdate() {
         if (player != null) {
-            playerData.RefillWater(2);
+            playerData.RefillWater(100);
         }
     }
     
