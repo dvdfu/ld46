@@ -5,8 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour {
     // Consts
     const float MAX_SPEED = 1000;
-    const float WATER_SHOOT_INTERVAL = 0.05f;
-    const int WATER_DEPLETION_IN_FIRE = 10;
+    const float WATER_SHOOT_INTERVAL = 0.1f;
+    const int WATER_DEPLETION_IN_FIRE = 0.5;
     const int CAR_CRASH_DAMAGE = 2;
 
     // Unity vars
@@ -68,7 +68,6 @@ public class Player : MonoBehaviour {
                 float angle = Mathf.Atan2(y, x);
                 WaterPellet waterPellet = Instantiate(waterPelletPrefab, transform.position + Vector3.up * 20, Quaternion.identity, transform.parent).GetComponent<WaterPellet>();
                 waterPellet.Shoot(angle);
-                playerData.DepleteWater();
             }
             yield return new WaitForSeconds(WATER_SHOOT_INTERVAL);
         }
