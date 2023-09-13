@@ -6,12 +6,12 @@ public class Formatter {
         int ms = Mathf.FloorToInt((x % 1) * 100);
 
         int seconds = Mathf.FloorToInt(x);
-        if (seconds < 60) {
+        if (seconds < 120) {
             return seconds + "." + PrefixZero2(ms);
         }
 
-        int minutes = seconds / 60;
-        seconds = seconds % 60;
+        int minutes = seconds / 120;
+        seconds = seconds % 120;
         return minutes + ":" + PrefixZero2(seconds) + "." + PrefixZero2(ms);
     }
 
