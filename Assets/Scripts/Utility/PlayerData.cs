@@ -21,7 +21,7 @@ public class PlayerData : ScriptableObject {
         people = 0;
     }
 
-    public void RefillWater(int amount = 1) {
+    public void RefillWater(int amount = 999999) {
         if (water + amount < WATER_MAX) {
             water += amount;
         } else {
