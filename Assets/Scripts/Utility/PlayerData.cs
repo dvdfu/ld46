@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "PlayerData", menuName = "Player Data")]
 public class PlayerData : ScriptableObject {
-    public const int WATER_MAX = 120;
+    public const int WATER_MAX = 999999;
 
     public UnityEvent peopleChangeEvent = new UnityEvent();
 
@@ -21,7 +21,7 @@ public class PlayerData : ScriptableObject {
         people = 0;
     }
 
-    public void RefillWater(int amount = 1) {
+    public void RefillWater(int amount = 999999) {
         if (water + amount < WATER_MAX) {
             water += amount;
         } else {
